@@ -4,12 +4,10 @@ import ReactDOM from 'react-dom';
 // Sovelluksen komponentit
 import App from './App';
 
-// css
-import './index.css';
 
 
-// Renderoidaan App html sivulle
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+// Renderoidaan App html sivulle (pitää muuttaa tuo router niin että se toimii kaikilla sivuilla)
+ReactDOM.render((
+  <App />
+), document.getElementById('root'));
+

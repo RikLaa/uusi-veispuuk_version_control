@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 import './Login.css';
 
-import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Button, Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
 
 var Login = React.createClass({
@@ -37,6 +38,11 @@ var LoginBox = React.createClass({
                         <label>Sähköposti</label>
                     </div>
         
+                    
+                    
+                    <Button>
+                        <Link to="/home">Kirjaudu</Link>
+                    </Button>
                 </form>
             </div>
         );

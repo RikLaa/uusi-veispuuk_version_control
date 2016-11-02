@@ -8,9 +8,11 @@ import Container from './Container';
 var Home = React.createClass({
     render: function () {
         return (
-            <div className="row">
-                <NavBar />
-                <Container />
+            <div className="container-fluid">
+                <div className="row">
+                    <NavBar />
+                    <Container />
+                </div>
             </div>
         );
     }
