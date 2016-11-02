@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import { Nav, Navbar, NavDropdown, MenuItem } from 'react-bootstrap';
 import './NavBar.css';
 
@@ -21,12 +22,10 @@ var NavBar = React.createClass({
                    
                 </Nav>
                 <Nav pullRight>
-                    <NavDropdown eventKey={3} title="Dropdown" id="nav-dropdown-2">
-                        <MenuItem eventKey={3.1}>Action</MenuItem>
-                        <MenuItem eventKey={3.2}>Another action</MenuItem>
-                        <MenuItem eventKey={3.3}>Something else here</MenuItem>
+                    <NavDropdown eventKey={2} title="Dropdown" id="nav-dropdown-2">
+                        <MenuItem eventKey={2.1} href="/profile">Oma profiili</MenuItem>
                         <MenuItem divider />
-                        <MenuItem eventKey={3.3}>Separated link</MenuItem>
+                        <MenuItem eventKey={2.2} href="/">Kirjaudu ulos</MenuItem>
                     </NavDropdown>
                 </Nav>
             </Navbar>

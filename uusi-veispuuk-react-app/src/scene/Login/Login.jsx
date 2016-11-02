@@ -41,7 +41,12 @@ var LoginBox = React.createClass({
                     
                     
                     <Button>
-                        <Link to="/home">Kirjaudu</Link>
+                        <Link to="/home">Kirjaudu sisään</Link>
+                    </Button>
+
+                    
+                    <Button>
+                        <Link to="/registeration">Rekisteröidy</Link>
                     </Button>
                 </form>
             </div>
