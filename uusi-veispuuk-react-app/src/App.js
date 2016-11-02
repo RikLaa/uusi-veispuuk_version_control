@@ -1,33 +1,19 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+//import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Home from './scene/Home/Home.jsx';
 import Login from './scene/Login/Login.jsx';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
-
-var Application = React.createClass({
+var App = React.createClass({
   render: function () {
     return (
-      <div className="container">
-        asdf
-        <Login />
-      </div>
+      <div className="container-fluid">
+        <Home />
+        
+     </div>
     );
   }
 });
 
-export default Login;
+
+export default App;
