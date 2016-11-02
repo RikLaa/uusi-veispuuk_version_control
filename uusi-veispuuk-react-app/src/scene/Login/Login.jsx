@@ -9,12 +9,10 @@ var Login = React.createClass({
     render: function () {
         return (
             <div className="container">
-            <div className="row vertical-center">asdf
-                
+                <div className="row vertical-center">
                     <LoginBox />
-                
-            </div>
                 </div>
+            </div>
         );
     }
 });
