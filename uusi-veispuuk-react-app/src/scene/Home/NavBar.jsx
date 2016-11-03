@@ -1,38 +1,36 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router';
-import { Nav, Navbar, NavDropdown, MenuItem } from 'react-bootstrap';
+import React from 'react';
+import { Nav, Navbar, NavDropdown, NavItem, MenuItem } from 'react-bootstrap';
 import './NavBar.css';
 
 
 var NavBar = React.createClass({
     render: function () {
         return (
-            <Navbar fluid>
-                
-                <Nav>
-                     
-                    <NavDropdown span="" eventKey={1} noCaret title={<span className="glyphicon glyphicon-menu-hamburger"></span>} id="nav-dropdown-1">
-                        <MenuItem eventKey={1.1}>Action</MenuItem>
-                        <MenuItem eventKey={1.2}>Another action</MenuItem>
-                        <MenuItem eventKey={1.3}>Something else here</MenuItem>
+            <div className="row">
+                <Navbar fluid>
+                    <Nav pullLeft>
+                        <NavDropdown noCaret eventKey={1} title={<span className="glyphicon glyphicon-menu-hamburger" />} id="nav-dropdown-1">
+                        <MenuItem eventKey={1.1}>Aloita keskustelu</MenuItem>
                         <MenuItem divider />
-                        <MenuItem eventKey={1.3}>Separated link</MenuItem>
+                        <MenuItem eventKey={1.2}>Lisää kuva</MenuItem>
+                        <MenuItem divider />
+                        <MenuItem eventKey={1.3}>FAQ</MenuItem>
                     </NavDropdown>
-
-                        {/* <a href="#">React-Bootstrap</a>*/}
-
-                
-                </Nav>
-                <Nav pullRight>
-                    <NavDropdown eventKey={2} title="Dropdown" id="nav-dropdown-2">
-                        <MenuItem eventKey={2.1} href="/home/profile">Oma profiili</MenuItem>
-                        <MenuItem divider />
+                    <NavItem eventKey={1} href="#"><span className="glyphicon glyphicon-search" /></NavItem>
+                        {/* <NavItem eventKey={2} href="#">Link</NavItem> */}
+                    </Nav>
+                        
+                        <Nav pullRight>
+                        <NavDropdown noCaret eventKey={2} title={<span className="glyphicon glyphicon-user" />} id="nav-dropdown-2">
+                        <MenuItem eventKey={2.1} href="/home/profile">Profiili</MenuItem>
+                            <MenuItem divider />
                         <MenuItem eventKey={2.2} href="/">Kirjaudu ulos</MenuItem>
+
+                        
                     </NavDropdown>
-                </Nav>
-              
-            </Navbar>
-            
+                    </Nav>
+                </Navbar>
+            </div>
         );
     }
 });

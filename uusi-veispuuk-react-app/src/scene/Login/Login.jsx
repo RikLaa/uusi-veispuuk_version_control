@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router';
+
+import { Button } from 'react-bootstrap';
 
 import './Login.css';
 
-import { Button, Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
 
 var Login = React.createClass({

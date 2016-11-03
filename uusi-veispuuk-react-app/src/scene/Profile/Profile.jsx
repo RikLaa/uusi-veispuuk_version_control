@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import NavBar from '../Home/NavBar.jsx';
 
 var Profile = React.createClass({
     render: function () {
         return (
-            <div className="container-fluid">
+            <div className="container">
                 <div className="row">
-                        <p>profiiiiiiiiiiiiiiiiiiiliiiiiiiiiiiiiiiiiiiiiiiiiiiii</p>
+                            <p>profiiiiiiiiiiiiiiiiiiiliiiiiiiiiiiiiiiiiiiiiiiiiiiii sivut</p>
+                            <p>Tänne sitten se profiili ja ne asetukset</p>
                 </div>
             </div>
         );

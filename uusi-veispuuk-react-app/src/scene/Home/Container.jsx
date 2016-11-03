@@ -1,13 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
+
 
 var Container = React.createClass({
     render: function () {
         return (
             <div className="container">
-                <p>Tämä on se container mihin sisältö ladataan</p>
+               <div className="row">
+                    <p>Tähän sitten tulisi ne keskustelut ja kuvat</p>               
+               </div>
             </div>    
         );
     }
 })
+
 
 export default Container;

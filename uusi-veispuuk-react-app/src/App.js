@@ -1,24 +1,32 @@
-// Reactin kirjastot
-import React, { Component } from 'react';
-import { Router, Route, hashHistory, browserHistory } from 'react-router';
+/*------------------------------LUE TÄMÄ--------------------------------  */
+/*------------------------------!!!!!!!!--------------------------------  */
+/* Kun importtaat komponentteja käytä alla olevaa syntaksia. Eli (import "komponentti" from "kirjasto").
+HUOM !!! react-router kirjastosta importtaessa katso alla oleva sääntö.
+ps. jQueryn importtaaminen = import $ from 'jquery'
+*/
 
-// Sovelluksen komponentit
+// Reactin kirjastot
+import React from 'react';
+// jos importtaat router kirjastosta käytä alla olevaa syntaksia. Jostain syystä esim "import Link from 'react-router' ei toiminut oikein
+import { Router, Route, browserHistory, IndexRedirect } from 'react-router';
+
+
+// Sovelluksen komponentit, eli näkymät
 import Home from './scene/Home/Home.jsx';
+import Container from './scene/Home/Container.jsx';
+import Profile from './scene//Profile/Profile.jsx';
 import Login from './scene/Login/Login.jsx';
 import Registeration from './scene/Registeration/Registeration.jsx'
-import Profile from './scene//Profile/Profile.jsx';
 
-// css
+// css. App.css tulee bootstrapin jälkeen joten siinä tehdyt muutokset yliajavat kaikki muut
 import 'bootstrap/dist/css/bootstrap.min.css';
+// Tehdäänkö yksi yleinen css tiedosto vai tehdäänkö aina komponenteille omat?
 import './App.css';
 
 
-// Tähän App-komponenttiin voi aluksi tuoda muita komponentteja joita haluaa renderöitävän
-// Container-fluid määritys mahdollistaa esim navbarille toimimisen koko sivun leveydelle.
-// Muut komponentit voidaan sitoa "container" luokan sisälle. Mutta tehdään se itse komponentin omassa tiedostossa, ei tässä
-
-/*--------------TESTAUKSEEN NOPEASTI-----------------*/ 
-// POISTA TÄSTÄ KOMMENTIT NIIN ONNISTUU TESTAUS ILMAN ROUTERIA
+/*--------------TESTAUKSEEN NOPEASTI ( ei tarvita periaatteessa enään )-----------------*/ 
+/* POISTA TÄSTÄ ALHAALTA KOMMENTIT NIIN ONNISTUU TESTAUS ILMAN ROUTERIA 
+MUISTA KOMMENTOIDA TUO ALEMPI ROUTER KOMPONENTTI SILLOIN POIS */
 
 /*var App = React.createClass({
   render: function () {
@@ -32,14 +40,16 @@ import './App.css';
 
 
 // React router toimii tässä. Profile polku ei toimi vielä linkkinä jostain syystä.
+// Jos haluat editoida esim registeration -sivua, niin kirjoita selaimeen osoiteriville  "localhost:3000/registeration", tällöin näät kyseisen sivun
 var App = React.createClass({
   render: function () {
     return (
         <Router history={browserHistory}>
           <Route path="/" component={Login} />
           <Route path="registeration" component={Registeration}></Route>
-        
           <Route path="home" component={Home}>
+            <IndexRedirect to="/home/main"></IndexRedirect>
+            <Route path="main" component={Container}></Route>
             <Route path="profile" component={Profile}></Route>
           </Route>
       </Router>
@@ -47,5 +57,7 @@ var App = React.createClass({
   }
 });
 
-// Exporttaa tällä sivulla luodun komponentin
+
+
+// Exporttaa tällä sivulla luodun komponentin. Käytetään tätä syntaksia exportatessa.
 export default App;
