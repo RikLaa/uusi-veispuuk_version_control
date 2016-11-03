@@ -6,7 +6,6 @@ import { Button } from 'react-bootstrap';
 import './Login.css';
 
 
-
 var Login = React.createClass({
     render: function() {
         return (
@@ -53,8 +52,4 @@ var LoginBox = React.createClass({
 });
 
 
-          
-
-
-//module.exports = Testi;
 export default Login;

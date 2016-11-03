@@ -20,6 +20,4 @@ var Home = React.createClass({
 });
 
 
-
-
 export default Home;
