@@ -17,6 +17,10 @@ import './App.css';
 // Container-fluid määritys mahdollistaa esim navbarille toimimisen koko sivun leveydelle.
 // Muut komponentit voidaan sitoa "container" luokan sisälle. Mutta tehdään se itse komponentin omassa tiedostossa, 
 // ei tässä
+
+/*--------------TESTAUKSEEN NOPEASTI-----------------*/ 
+// POISTA TÄSTÄ KOMMENTIT NIIN ONNISTUU TESTAUS ILMAN ROUTERIA
+
 /*var App = React.createClass({
   render: function () {
     return (
@@ -24,6 +28,8 @@ import './App.css';
     );
   }
 });*/
+
+/*---------------------------------------------------*/
 
 
 // React router toimii tässä. Profile polku ei toimi vielä linkkinä jostain syystä.
