@@ -15,8 +15,7 @@ import './App.css';
 
 // Tähän App-komponenttiin voi aluksi tuoda muita komponentteja joita haluaa renderöitävän
 // Container-fluid määritys mahdollistaa esim navbarille toimimisen koko sivun leveydelle.
-// Muut komponentit voidaan sitoa "container" luokan sisälle. Mutta tehdään se itse komponentin omassa tiedostossa, 
-// ei tässä
+// Muut komponentit voidaan sitoa "container" luokan sisälle. Mutta tehdään se itse komponentin omassa tiedostossa, ei tässä
 
 /*--------------TESTAUKSEEN NOPEASTI-----------------*/ 
 // POISTA TÄSTÄ KOMMENTIT NIIN ONNISTUU TESTAUS ILMAN ROUTERIA
