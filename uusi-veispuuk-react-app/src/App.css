@@ -1,24 +1,31 @@
-.App {
-  text-align: center;
+/*
+----------------- PÄÄTYYLIT ---------------
+
+Koitetaan pitää tämä hyvin organisoituna ja tyyliluokat ja id järkevästi nimettynä (jos niitä teette)!
+Jos tulee uusia tiedostoja ja komponentteja niin tehkää niillekkin uudet osionsa.
+
+*/
+
+/*-----------------------LOGIN---------------------*/
+
+
+
+/*-----------------------REGISTRATION---------------------*/
+
+
+/*-----------------------HOME---------------------*/
+
+
+/*-----------------------CONTAINER---------------------*/
+
+
+/*-----------------------NAVBAR---------------------*/
+
+/* Tämä on navbarin vasemman puolimmaiselle dropdown menulle, iconin koko */
+#nav-dropdown-1 {
+    font-size: 20px;
+
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
+/*-----------------------PROFILE---------------------*/
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}

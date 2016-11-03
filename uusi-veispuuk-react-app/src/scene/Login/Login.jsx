@@ -1,30 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Link } from 'react-router';
 
-import 'react-bootstrap/dist/react-bootstrap.js';
-import 'bootstrap/dist/css/bootstrap.min.css';
-// import '!style!css!bootstrap/dist/css/bootstrap.min.css';
 import './Login.css';
-//require ('bootstrap/dist/css/bootstrap.css');
-import { ButtonToolbar, Button, Modal, Tooltip, Popover, OverlayTrigger } from 'react-bootstrap';
+
+import { Button, Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
 
 var Login = React.createClass({
-    render: function () {
+    render: function() {
         return (
-            <div className="row vertical-center">asdf
-                
+            <div className="container">
+                <div className="row vertical-center">
                     <LoginBox />
-                
+                </div>
             </div>
         );
     }
-});
+})
 
 var LoginBox = React.createClass({
-    render: function() {
+    render: function () {
         return (
             <div className="col-md-4 col-md-offset-4 login-box border">
-                <span>Example</span>
                 <form className="col-md-offset-1">
                     <div className="form-group">
                         <label>Etunimi</label>
@@ -39,11 +36,24 @@ var LoginBox = React.createClass({
                     <div className="form-group">
                         <label>Sähköposti</label>
                     </div>
-        
+                    
+                    { this.props.children }
+                     <Button>
+                        <Link to="home">Kirjaudu sisään</Link>
+                    </Button>
+                    <Button>
+                        <Link to="registeration">Rekisteröidy</Link>
+                    </Button>
                 </form>
+                
             </div>
         );
     }
-})
+});
 
-module.exports = Login;
+
+          
+
+
+//module.exports = Testi;
+export default Login;

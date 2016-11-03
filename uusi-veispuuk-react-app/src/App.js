@@ -1,33 +1,46 @@
+// Reactin kirjastot
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Router, Route, hashHistory, browserHistory } from 'react-router';
+
+// Sovelluksen komponentit
+import Home from './scene/Home/Home.jsx';
 import Login from './scene/Login/Login.jsx';
+import Registeration from './scene/Registeration/Registeration.jsx'
+import Profile from './scene//Profile/Profile.jsx';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+// css
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
-var Application = React.createClass({
+
+// Tähän App-komponenttiin voi aluksi tuoda muita komponentteja joita haluaa renderöitävän
+// Container-fluid määritys mahdollistaa esim navbarille toimimisen koko sivun leveydelle.
+// Muut komponentit voidaan sitoa "container" luokan sisälle. Mutta tehdään se itse komponentin omassa tiedostossa, 
+// ei tässä
+/*var App = React.createClass({
   render: function () {
     return (
-      <div className="container">
-        asdf
-        <Login />
-      </div>
+        <Home />
+    );
+  }
+});*/
+
+
+// React router toimii tässä. Profile polku ei toimi vielä linkkinä jostain syystä.
+var App = React.createClass({
+  render: function () {
+    return (
+        <Router history={browserHistory}>
+          <Route path="/" component={Login} />
+          <Route path="registeration" component={Registeration}></Route>
+        
+          <Route path="home" component={Home}>
+            <Route path="profile" component={Profile}></Route>
+          </Route>
+      </Router>
     );
   }
 });
 
-export default Login;
+// Exporttaa tällä sivulla luodun komponentin
+export default App;

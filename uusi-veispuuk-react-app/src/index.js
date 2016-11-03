@@ -1,9 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('container')
-);
+// Sovelluksen komponentit
+import App from './App';
+
+
+
+// Renderoidaan App html sivulle (pitää muuttaa tuo router niin että se toimii kaikilla sivuilla)
+ReactDOM.render((
+  <App />
+), document.getElementById('root'));
+
