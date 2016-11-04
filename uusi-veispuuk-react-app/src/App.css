@@ -6,6 +6,8 @@ Jos tulee uusia tiedostoja ja komponentteja niin tehkää niillekkin uudet osion
 
 */
 
+
+
 /*-----------------------LOGIN---------------------*/
 
 
@@ -21,10 +23,16 @@ Jos tulee uusia tiedostoja ja komponentteja niin tehkää niillekkin uudet osion
 
 /*-----------------------NAVBAR---------------------*/
 
-/* Tämä on navbarin vasemman puolimmaiselle dropdown menulle, iconin koko */
-#nav-dropdown-1 {
-    font-size: 20px;
+#navBar {
+    /*background: #f8f8f8;* alkup. background*/
+    background: transparent;
+    border: none;
+}
 
+
+#nav-dropdown-2 {
+    /*Tehdään iconista pyöreä*/
+    border-radius: 60px;
 }
 
 /*-----------------------PROFILE---------------------*/
