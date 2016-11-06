@@ -5,7 +5,15 @@ Koitetaan pitää tämä hyvin organisoituna ja tyyliluokat ja id järkevästi n
 Jos tulee uusia tiedostoja ja komponentteja niin tehkää niillekkin uudet osionsa.
 
 */
+/*-----------------------YLEISLUOKKIA---------------------*/
+.addBorder {
+    border: 1px solid black;
 
+}
+
+.addMargin {
+    margin: 5px;
+}
 
 
 /*-----------------------LOGIN---------------------*/

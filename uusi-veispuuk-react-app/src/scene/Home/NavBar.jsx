@@ -1,9 +1,18 @@
 import React from 'react';
+import firebase from 'firebase';
 import { Nav, Navbar, NavDropdown, NavItem, MenuItem } from 'react-bootstrap';
 import './NavBar.css';
 
 
 var NavBar = React.createClass({
+    handleSignOut: function () {
+        firebase.auth().signOut().then(function() {
+            // Sign-out successful.
+            }, function(error) {
+            // An error happened.
+        });
+        console.log("signed out");  
+    },
     handleSearch: function (e) {
         console.log(e);  
     },
@@ -27,7 +36,7 @@ var NavBar = React.createClass({
                         <NavDropdown noCaret eventKey={3} title={<span className="glyphicon glyphicon-user" />} id="nav-dropdown-2">
                         <MenuItem eventKey={3.1} href="#/home/profile">Profiili</MenuItem>
                             <MenuItem divider />
-                        <MenuItem eventKey={3.2} href="/">Kirjaudu ulos</MenuItem>
+                        <MenuItem eventKey={3.2} onClick={this.handleSignOut} href="/">Kirjaudu ulos</MenuItem>
 
                         
                     </NavDropdown>

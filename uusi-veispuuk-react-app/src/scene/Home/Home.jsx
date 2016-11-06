@@ -10,6 +10,7 @@ ylimmäksi diviksi 'container' koska emme halua että ne ovat koko sivun leveyde
 ja Profile komponenteissa valmiiksi jotta tähän ei tarvitsisi luoda enempää divejä */
 var Home = React.createClass({
     render: function () {
+
         return (            
             <div className="container-fluid">
                     <NavBar />
