@@ -12,7 +12,11 @@ Jos tulee uusia tiedostoja ja komponentteja niin tehkää niillekkin uudet osion
 }
 
 .addMargin {
-    margin: 5px;
+    margin: 0px;
+}
+
+.addPadding {
+    padding: 1%;
 }
 
 

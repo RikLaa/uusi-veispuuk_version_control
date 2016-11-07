@@ -48,7 +48,7 @@ var Container = React.createClass({
         };
         // käydään läpi kaikki postaukset this.state.posts -taulukosta
         var posts = this.state.posts.map(function (post) {
-            console.log(post);
+            //console.log(post);
             var key = post.postId;
             var title = post.title;
             var content = post.content;

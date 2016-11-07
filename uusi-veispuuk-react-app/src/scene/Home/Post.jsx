@@ -34,9 +34,11 @@ var Post = React.createClass({
 
         return (
             <div>
-                <div onClick={this.open} className="col-md-2 addBorder">
-                    <h3>{this.props.title}</h3>
-                    <p>{this.props.content}</p>
+                <div onClick={this.open} className="col-md-4 addPadding">
+                    <div className="addBorder">
+                        <h3>{this.props.title}</h3>
+                        <p>{this.props.content}</p>
+                    </div>
                 </div>
                 {/* Modalin show -property määrittää onko model avattuna vai ei. Sille annettaan this.state.showModal arvo
                     joka määritettiin ylempänä */}
