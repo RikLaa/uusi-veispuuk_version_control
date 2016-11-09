@@ -34,8 +34,8 @@ var Post = React.createClass({
 
         return (
             <div>
-                <div onClick={this.open} className="col-md-4 addPadding">
-                    <div className="addBorder">
+                <div onClick={this.open} className="col-md-4">
+                    <div className="addBorder postBox">
                         <h3>{this.props.title}</h3>
                         <p>{this.props.content}</p>
                     </div>
@@ -45,6 +45,7 @@ var Post = React.createClass({
                 <Modal show={this.state.showModal} onHide={this.close}>
                     <Modal.Header closeButton>
                         <Modal.Title>{this.props.title}</Modal.Title>
+                        <br />
                         <p>{this.props.content}</p>
                         <hr />
                         {comments}
