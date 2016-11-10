@@ -23,18 +23,18 @@ var Post = React.createClass({
     },
     render: function () {
         // käydään läpi kaikki kommentit ja renderoidaan ne näytölle Comment -komponentin avulla
-        var comments = this.props.comments.map(function (comment) {
-            console.log(comment);
-            var key = comment.commentId;
-            var content = comment.content;
-            return (
-                 <Comment key={key} content={content} />
-            );    
-        });
+         var comments = this.props.comments.map(function (comment) {
+             var key = comment.commentID;
+             //console.log(key);
+             var content = comment.content;
+             return (
+                  <Comment key={key} content={content} />
+             );    
+         });
 
         return (
             <div>
-                <div onClick={this.open} className="col-md-4">
+                <div onClick={this.open} className="col-md-3">
                     <div className="addBorder postBox">
                         <h3>{this.props.title}</h3>
                         <p>{this.props.content}</p>

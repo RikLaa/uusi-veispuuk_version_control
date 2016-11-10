@@ -1,0 +1,56 @@
+{
+  "posts": [
+    '{{repeat(200)}}',
+    {
+      postID: '{{index()}}',
+      userID: '{{integer([0], [200])}}',
+      date: '{{date()}}',
+      title: '{{lorem([3], ["words"])}}',
+      content: '{{lorem([2])}}',
+      tag: '{{random(["vapaa-aika"], ["kalja"], ["muu"], ["vaininsinöörit"], ["pasin_koodit"], ["opiskelu"],["kissa"])}}',
+      comments: [
+         '{{repeat([1], [15])}}',
+        {
+          commentID: '{{index()}}',
+          userID: '{{integer([0], [200])}}',
+          date: '{{date()}}',
+         content: '{{lorem([3])}}'
+        }
+      ]      
+    }
+  ],
+    "imgPosts": [
+       '{{repeat(30)}}',
+   	{
+      postID: '{{index()}}',
+      userID: '{{integer([0], [200])}}',
+      date: '{{date()}}',
+      path: 'images/{{integer([0], [30])}}.jpg',
+      title: '{{lorem([3], ["words"])}}',
+      content: '{{lorem([2])}}',
+        tag: '{{random(["vapaa-aika"], ["kalja"], ["muu"], ["vaininsinöörit"], ["pasin_koodit"], ["opiskelu"],["kissa"])}}',
+      comments: [
+         '{{repeat([1], [15])}}',
+        {
+          commentID: '{{index()}}',
+          userID: '{{integer([0], [200])}}',
+          date: '{{date()}}',
+         content: '{{lorem([3])}}'
+        }
+      ]      
+    }
+    ],
+   "users": [
+       '{{repeat(50)}}',
+     {
+      userID:  '{{index()}}',
+      firstName: '{{firstName()}}',
+      lastName: '{{surname()}}',
+      email: '{{email([random])}}',
+      campus: '{{random(["dynamo"], ["rajakatu"],["musiikkikampus"])}}',
+      field: '{{random(["sta"], ["hvv"],["ttv"])}}',
+      password: '{{lorem([1], ["words"])}}',
+      picture:  '{{index()}}'
+     }
+   ]
+}
