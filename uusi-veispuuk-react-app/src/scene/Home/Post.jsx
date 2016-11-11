@@ -22,16 +22,30 @@ var Post = React.createClass({
         });
     },
     render: function () {
+
+
         // käydään läpi kaikki kommentit ja renderoidaan ne näytölle Comment -komponentin avulla
          var comments = this.props.comments.map(function (comment) {
-             var key = comment.commentID;
-             //console.log(key);
-             var content = comment.content;
-             return (
-                  <Comment key={key} content={content} />
-             );    
-         });
+             var userID = comment.userID;
+             
+             var name = this.props.users.map( function(user) {
+                 if (userID === user.userID) {
+                     var nameString = user.firstName + " " + user.lastName;
+                     return nameString;
+                 };
+             });
 
+             var key = comment.commentID;
+             var content = comment.content;
+             var date = comment.date.slice(0, 11);
+             var time = comment.date.slice(16, 21);
+             //console.log(time);
+             return (
+                  <Comment key={key} userName={name} content={content} date={date} time={time}/>
+             );    
+         }.bind(this));
+
+         // renderoidaan postaus näytölle
         return (
             <div>
                 <div onClick={this.open} className="col-md-3">
@@ -47,6 +61,9 @@ var Post = React.createClass({
                         <Modal.Title>{this.props.title}</Modal.Title>
                         <br />
                         <p>{this.props.content}</p>
+                        <p>{this.props.userName}</p>
+                        <p>#{this.props.tag}</p>
+                       <small>{this.props.date} klo {this.props.time}</small>
                         <hr />
                         {comments}
                     </Modal.Header>
