@@ -41,7 +41,7 @@ MUISTA KOMMENTOIDA TUO ALEMPI ROUTER KOMPONENTTI SILLOIN POIS */
 
 
 // React router toimii tässä. Profile polku ei toimi vielä linkkinä jostain syystä.
-// Jos haluat editoida esim registeration -sivua, niin kirjoita selaimeen osoiteriville  "localhost:3000/registeration", tällöin näät kyseisen sivun
+// Jos haluat editoida esim registeration -sivua, niin kirjoitaaa selaimeen osoiteriville  "localhost:3000/registeration", tällöin näät kyseisen sivun
 var App = React.createClass({
   render: function () {
     return (
