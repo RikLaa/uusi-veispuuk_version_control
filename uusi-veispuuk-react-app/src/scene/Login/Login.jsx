@@ -34,7 +34,7 @@ var Login = React.createClass({
             </div>
         );
     }
-})
+});
 
 var LoginBox = React.createClass({
     handleSignIn: function () {
@@ -83,7 +83,6 @@ var LoginBox = React.createClass({
 });
 
 
-          
 
 
 //module.exports = Testi;

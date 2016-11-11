@@ -15,6 +15,7 @@ import { Router, Route, hashHistory, IndexRedirect } from 'react-router';
 import Home from './scene/Home/Home.jsx';
 import Container from './scene/Home/Container.jsx';
 import Profile from './scene//Profile/Profile.jsx';
+import FAQ from './scene/Home/FAQ.jsx';
 import Login from './scene/Login/Login.jsx';
 import Registeration from './scene/Registeration/Registeration.jsx'
 
@@ -51,6 +52,7 @@ var App = React.createClass({
             <IndexRedirect to="/home/main"></IndexRedirect>
             <Route path="main" component={Container}></Route>
             <Route path="profile" component={Profile}></Route>
+            <Route path="FAQ" component={FAQ}></Route>
           </Route>
       </Router>
     );

@@ -117,6 +117,8 @@ var Container = React.createClass({
                 if (userID === user.userID) {
                     var userString = user.firstName + " " + user.lastName;
                     return userString;
+                } else {
+                    return "";
                 }
             });
 

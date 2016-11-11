@@ -32,7 +32,9 @@ var Post = React.createClass({
                  if (userID === user.userID) {
                      var nameString = user.firstName + " " + user.lastName;
                      return nameString;
-                 };
+                 } else {
+                     return "";
+                 }
              });
 
              var key = comment.commentID;
