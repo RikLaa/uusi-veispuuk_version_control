@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, FormGroup, Form, FormControl, Col, Checkbox, ControlLabel, InputGroup, DropdownButton, MenuItem } from 'react-bootstrap';
+import { Button, FormGroup, Form, FormControl, Col, Checkbox, ControlLabel, InputGroup, DropdownButton, MenuItem,FieldGroup } from 'react-bootstrap';
 import $ from 'jquery';
 
 
@@ -9,6 +9,23 @@ var Registration = React.createClass({
             console.log("click");
         });
     },
+    
+    //Handle add picture
+  addPicture: function(e){
+      console.log(e.target);
+      var reader = new FileReader();
+
+    reader.onload = function (e) {
+        // get loaded data and render thumbnail.
+        console.log(e.target.result);
+        document.getElementById("image_esikatselu").src = e.target.result;
+    };
+
+    // read the image file as a data URL.
+    reader.readAsDataURL(e.target.files[0]);
+  },
+    
+    
     render: function () {
         return (
             <div className="container">
@@ -54,6 +71,13 @@ var Registration = React.createClass({
         <FormControl type="password" placeholder="" />
       </Col>
     </FormGroup>
+                         
+       
+    <label>  
+<input type="file" id="uploadimage" name="datafile" size="45" onChange= {this.addPicture} />
+        <img id="image_esikatselu"/>
+        </label>    
+                         
     
      <FormGroup>
            <Col componentClass={ControlLabel} sm={2}>
