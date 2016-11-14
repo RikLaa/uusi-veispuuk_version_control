@@ -12,6 +12,10 @@ html, body {
 }
 
 /*-----------------------YLEISLUOKKIA---------------------*/
+.test {
+    background: blue;
+    
+}
 .center-block {
   display: block;
   margin-left: auto;
@@ -102,6 +106,7 @@ html, body {
     height: 250px;
     margin: 10px;
     padding: 20px; 
+    overflow: hidden;
 }
 
 /*-----------------------NAVBAR---------------------*/

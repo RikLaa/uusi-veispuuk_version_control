@@ -14,7 +14,7 @@ var NavBar = React.createClass({
         return {
             showModal: {
                 picture: false ,
-                post: false 
+                post: false   
             }
         }
     },

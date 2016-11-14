@@ -73,11 +73,15 @@ var Container = React.createClass({
                 var posts = [];
                 var recentPostsRef = postsTable.orderByKey().startAt('0').limitToLast(amountToRetrieve).once('value', function(snapshot) {
                    
-                     posts = $.map(snapshot.val(), function(post, index) {
+                    //console.log(snapshot.val());
+                    posts = $.map(snapshot.val(), function(post, index) {
+                        if (post != undefined) {
                          return [post];
-                     });
-                     posts.reverse();
-                     console.log("postaukset");
+                        } 
+                    });
+                    posts.reverse();
+                     console.log(posts);
+                    console.log("postaukset");
                     //console.log(posts);
                     /* tallennetaan taulukko this.state.posts -tilaan,
                     ja vaihdetaan loading: false. Jolloin tiedetään että kaikki on ladattu. */
