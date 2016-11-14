@@ -29,65 +29,15 @@ body {background-color: #fff;}
 
 
 form {
-  width: 450px;
+  width:60%;
   margin-left:auto;
   margin-right:auto;
   padding: 25px 35px;
-  background-color: #555;
+  background-color: #ffffff;
   border-radius: 15px;
   border: 1px solid #000;
 }
 
-fieldset {
-  padding: 0px 10px 10px 10px;
-  margin: 0 0 20px;
-  border: 1px solid #000;
-  background: #e0e0e0;
-  border-radius: 10px;
-}
-
-legend {
-  color: #ffffff;
-  background: #53949c;
-  font-weight: 800;
-  text-align: left;
-  padding: 3px;
-  width: 40%;
-  border: 1px solid #000;
-  border-radius: 5px;
-  font-family: 'Dosis', sans-serif;
- }
-
-#nappi {
-  color: #ffffff;
-  background: #53949c;
-  font-weight: 800;
-  text-align: center;
-  padding: 3px;
-  width: 100px;
-  height: 60px;
-  border: 1px solid #000;
-  border-radius: 5px;
-  font-family: 'Dosis', sans-serif;
- }
-
-
-
-label {
-  display: block;
-  float: left;
-  clear: left;
-  text-align: left;
-  width: 100%;
-  padding: .3em 0 0 0;
-  margin: .13em 0 0 0;
-}
-
-footer {
-	text-align: center;
-	color: #666;
-	margin-top: 6px;
-}
 
 #image_esikatselu {
     max-width: 70%;

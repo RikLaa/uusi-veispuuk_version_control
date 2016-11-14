@@ -1,13 +1,21 @@
 import React from 'react';
-import { Button, FormGroup, Form, FormControl, Col, Checkbox, ControlLabel, InputGroup, DropdownButton, MenuItem,FieldGroup } from 'react-bootstrap';
+import { Button, FormGroup, Form, FormControl, Col, Checkbox, ControlLabel, InputGroup, DropdownButton, MenuItem,FieldGroup, Modal, poover,tooltip } from 'react-bootstrap';
 import $ from 'jquery';
 
 
 var Registration = React.createClass({
+    getInitialState: function() {
+        return{showModal: false}
+       },
     componentDidMount: function () {
         $('#registerButton').click(function () {
             console.log("click");
         });
+    },
+    Open: function () {
+        this.setState ({
+            showModal: true
+        })
     },
     
     //Handle add picture
@@ -25,6 +33,16 @@ var Registration = React.createClass({
     reader.readAsDataURL(e.target.files[0]);
   },
     
+    //validate form text inputs
+    validateText: function (){
+           var x = document.forms["rekisterointi"]["formHorizontalFirstName"].value;
+    if (x == null || x == "") {
+        alert("Name must be filled out");
+        return false;
+    }
+     
+    },
+    
     
     render: function () {
         return (
@@ -32,10 +50,9 @@ var Registration = React.createClass({
                 <div className="row">
                
   
-
-                     <Form horizontal>
+<Form horizontal name="rekisterointi" onsubmit="return validateForm()" method="#" >
                          <h3>Rekisteröidy</h3>
-    <FormGroup controlId="formHorizontalEmail">
+    <FormGroup controlId="formHorizontalFirstName" name="formHorizontalFirstName" >
       <Col componentClass={ControlLabel} sm={2}>
         Etunimi
       </Col>
@@ -43,6 +60,16 @@ var Registration = React.createClass({
         <FormControl type="name" placeholder="" />
       </Col>
     </FormGroup>
+        
+        <FormGroup controlId="formHorizontalLastName">
+      <Col componentClass={ControlLabel} sm={2}>
+        Sukunimi
+      </Col>
+      <Col sm={10}>
+        <FormControl type="name" placeholder="" />
+      </Col>
+    </FormGroup>
+                       
                          
     <FormGroup controlId="formHorizontalEmail">
       <Col componentClass={ControlLabel} sm={2}>
@@ -72,31 +99,33 @@ var Registration = React.createClass({
       </Col>
     </FormGroup>
                          
-       
-    <label>  
+   <FormGroup controlId="formHorizontalPassword">
+      <Col componentClass={ControlLabel} sm={2}>
+        Lataa kuva
+      </Col>
+      <Col sm={10}>
+      
 <input type="file" id="uploadimage" name="datafile" size="45" onChange= {this.addPicture} />
         <img id="image_esikatselu"/>
-        </label>    
+        
+             </Col>
+    </FormGroup>
                          
     
-     <FormGroup>
+     <FormGroup controlId="formHorizontalPassword">
            <Col componentClass={ControlLabel} sm={2}>
-        Kampus
+        <ControlLabel>Kampus</ControlLabel>
       </Col>
     <Col sm={10}> 
-      <InputGroup>
-        <FormControl type="text" />
-        <DropdownButton
-          componentClass={InputGroup.Button}
-          id="input-dropdown-addon"
-          title="">
-          <MenuItem key="1">Dynamo</MenuItem>
-            <MenuItem key="2">Rajakatu</MenuItem>
-            <MenuItem key="3">Biotalousinstituutti</MenuItem>
-            <MenuItem key="4">Suomalainen musiikkikampus</MenuItem>
-            
-        </DropdownButton>
-      </InputGroup>
+   
+    
+      <FormControl componentClass="select" placeholder="select">
+        <option value="select">Rajakatu</option>
+        <option value="other">Dynamo</option>
+        <option value="other">Suomalainen Musiikkikampus</option>
+        <option value="other">Biotalousinstituutti</option>
+      </FormControl>
+    
          </Col>
     </FormGroup>
 
@@ -117,15 +146,46 @@ var Registration = React.createClass({
 
     <FormGroup>
       <Col smOffset={2} sm={10}>
-        <Button id="registerButton" bsStyle="success" type="submit">
+        <Button id="registerButton" bsStyle="success" type="submit" onClick={this.Open} >
           Rekisteröidy
         </Button>
       </Col>
     </FormGroup>
   </Form> 
                     
-  
-                    
+<div>
+   <Modal show={this.state.showModal}>
+    <Modal.Header>
+       <h1>Rekisteröitymisesi onnistui</h1></Modal.Header>
+       
+       <Modal.Body>
+            <h4></h4>
+            <p>Voit nyt kirjautua sisään Veispuukkiin.</p>
+           <FormGroup controlId="formHorizontalEmail">
+      <Col componentClass={ControlLabel} sm={2}>
+        Sähköposti
+      </Col>
+      <Col sm={10}>
+        <FormControl type="email" placeholder="" />
+              <FormGroup controlId="formHorizontalPassword">
+      <Col componentClass={ControlLabel} sm={2}>
+        Salasana
+      </Col>
+      <Col sm={10}>
+        <FormControl type="password" placeholder="" />
+      </Col>
+    </FormGroup>
+        
+      </Col>
+    </FormGroup>
+
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={this.close}>Close</Button>
+          </Modal.Footer>
+
+    </Modal> 
+</div>       
                     
                     
                     
@@ -134,56 +194,6 @@ var Registration = React.createClass({
         );
     }
 });
-/*      <form id="registerform" autocomplete="on" method="" oninput="z1.value=a.value;z2.value=b.value" action="TÄHÄN_PHP_ACTION_MIKÄ_LÄHETTÄÄ_TIEDOT_KANTAAN">
-  <fieldset>
-  <legend>Rekisteröidy</legend>
-    <label>Etunimi<br/>
-      <input id="kokonimi" name="name" type="text" placeholder="" autofocus required size="45" />
-    </label>
-      <label>Sukunimi<br/>
-      <input id="sukunimi" name="name" type="text" placeholder="" autofocus required size="45" />
-    </label>
 
-    <label>Sähköposti<br/>
-      <input id="email" name="email" type="email" value="@student.jamk.fi" placeholder="" required size="45"/>
-    </label>
-    <p>Rekisteröityäksesi tarvitset voimassaolevan JAMK:in sähköpostiosoitteen</p>
-    
-       <label>Salasana<br/>
-      <input id="salasana" name="password" type="password" placeholder="" autofocus required size="45"/>
-    </label>
-      
-    <label>Kampus
-  <input type="text" name="" list="kampus" placeholder="Valitse"/ >
-  <datalist id="kampus">
-   <option value="Rajakatu"/>
-   <option value="Dynamo"/>
-   <option value="Biotalousinstituutti"/>
-   <option value="Suomalainen musiikkikampus"/>
-      
-  </datalist>
-        </label>
-          <label>Koulutusala<br/>
-      <input id="ala" name="ala" type="text" placeholder="" autofocus required size="45" />
-    </label>
-      
-      
-
-    <label>  <br/>
-<input type="file" id="uploadimage" name="datafile" size="45"/>
-        <img id="image_esikatselu"/>
-        </label>
-
-     
-  </fieldset>
-
-
-
-
-
-
- 
-<button type='submit' name='nappi' value='valmis' id='nappi'>Valmis</button>
-</form> */
 
 export default Registration;
