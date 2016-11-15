@@ -28,7 +28,7 @@ body {background-color: #fff;}
 
 
 
-form {
+#rekisterointi {
   width:60%;
   margin-left:auto;
   margin-right:auto;
@@ -41,39 +41,27 @@ form {
 
 #image_esikatselu {
     max-width: 70%;
-
 }
 
-
-/* Placeholderin pohjavÃ¤ri*/
-::-webkit-input-placeholder {
-   color: blue;border: 1px solid black;
+/*Rekisteröidy napista aukeava modaali*/
+#modal_rekisterointi
+{
+    background-color:#ffffff; /*määrittää näkyykö rekisteröintilomake taustalla, jos tähän ei laita mitään, niin lomake näkyy*/
+    text-align: center;
+}
+#modal_rekisterointi_body
+{
+    
 }
 
-:-moz-placeholder { /* Firefox 18- */
-   color: blue;  border: 1px solid black;
+#modal_rekisterointi_footer {
+    text-align: center;
+}
+#modal_form {
+text-align: left;
+padding-top: 10%;
 }
 
-::-moz-placeholder {  /* Firefox 19+ */
-   color: blue;  border: 1px solid black;
-}
-
-:-ms-input-placeholder {  
-   color: blue; border: 1px solid black; 
-}
-
-/* Punaiset ulkoreunat pois pakollisilta kentiltÃ¤ siinÃ¤ tilassa
-   kun syÃ¶tetyt arvot ovat vielÃ¤ kelvottomat */
-:invalid {box-shadow: none;}
-:-moz-submit-invalid {box-shadow: none;}
-:-moz-ui-invalid {box-shadow:none;}
-
-/* Pakollisten kenttien muut muotoilut */
-:required {
-margin: 0;
-padding: 1px;
-border: 1px solid #fff;
-}
 
 /*-----------------------HOME---------------------*/
 

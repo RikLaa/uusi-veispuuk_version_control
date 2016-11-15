@@ -50,7 +50,7 @@ var Registration = React.createClass({
                 <div className="row">
                
   
-<Form horizontal name="rekisterointi" onsubmit="return validateForm()" method="#" >
+<Form horizontal id="rekisterointi" name="rekisterointi" onsubmit="return validateForm()" method="#" >
                          <h3>Rekisteröidy</h3>
     <FormGroup controlId="formHorizontalFirstName" name="formHorizontalFirstName" >
       <Col componentClass={ControlLabel} sm={2}>
@@ -154,20 +154,30 @@ var Registration = React.createClass({
   </Form> 
                     
 <div>
-   <Modal show={this.state.showModal}>
+   <Modal show={this.state.showModal} id= "modal_rekisterointi">
+       
     <Modal.Header>
        <h1>Rekisteröitymisesi onnistui</h1></Modal.Header>
        
-       <Modal.Body>
-            <h4></h4>
-            <p>Voit nyt kirjautua sisään Veispuukkiin.</p>
-           <FormGroup controlId="formHorizontalEmail">
+       <Modal.Body id= "modal_rekisterointi_body">
+           <div id ="modal_rekisterointi_teksti">
+            <h4>Sait vahvistuksen sähköpostiisi.</h4>
+            <p>
+                Etkö saanut vahvistusta? <a>klikkaa tästä.</a>
+            </p>
+           </div>
+         <div id="modal_form"> 
+<Form horizontal>
+    <FormGroup controlId="formHorizontalEmail">
       <Col componentClass={ControlLabel} sm={2}>
         Sähköposti
       </Col>
       <Col sm={10}>
         <FormControl type="email" placeholder="" />
-              <FormGroup controlId="formHorizontalPassword">
+      </Col>
+    </FormGroup>
+
+    <FormGroup controlId="formHorizontalPassword">
       <Col componentClass={ControlLabel} sm={2}>
         Salasana
       </Col>
@@ -175,13 +185,27 @@ var Registration = React.createClass({
         <FormControl type="password" placeholder="" />
       </Col>
     </FormGroup>
-        
+
+    <FormGroup>
+      <Col smOffset={2} sm={10}>
+        <Checkbox>Muista minut</Checkbox>
       </Col>
     </FormGroup>
 
+    <FormGroup>
+      <Col smOffset={2} sm={10}>
+    
+      </Col>
+    </FormGroup>
+  </Form>        
+          </div>     
+          
+
           </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={this.close}>Close</Button>
+          <Modal.Footer id="modal_rekisterointi_footer">
+               <Button type="submit" bsStyle="success" onClick={this.close} href="#/home">
+          Kirjaudu sisään
+        </Button>
           </Modal.Footer>
 
     </Modal> 
