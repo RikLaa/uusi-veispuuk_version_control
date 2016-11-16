@@ -1,6 +1,9 @@
 import React from 'react';
 import { Button, FormGroup, Form, FormControl, Col, Checkbox, ControlLabel, InputGroup, DropdownButton, MenuItem,FieldGroup, Modal, poover,tooltip } from 'react-bootstrap';
 import $ from 'jquery';
+import firebase from 'firebase';
+import { Link } from 'react-router';
+
 
 
 var Registration = React.createClass({
@@ -43,14 +46,29 @@ var Registration = React.createClass({
      
     },
     
+        handleSignIn: function () {
+
+        var email = "testi@testi.com";
+        var password = "salasana";
+        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // ...
+        });
+        console.log("signed in");
+            
+    },
+    
+    
     
     render: function () {
         return (
             <div className="container">
                 <div className="row">
                
-  
-<Form horizontal id="rekisterointi" name="rekisterointi" onsubmit="return validateForm()" method="#" >
+
+<Form horizontal id="rekisterointi"  className="col-md-8 col-md-offset-2" onsubmit="return validateForm()" method="#" >
                          <h3>Rekisteröidy</h3>
     <FormGroup controlId="formHorizontalFirstName" name="formHorizontalFirstName" >
       <Col componentClass={ControlLabel} sm={2}>
@@ -203,18 +221,20 @@ var Registration = React.createClass({
 
           </Modal.Body>
           <Modal.Footer id="modal_rekisterointi_footer">
-               <Button type="submit" bsStyle="success" onClick={this.close} href="#/home">
-          Kirjaudu sisään
+              { this.props.children }
+
+              <Button type="submit" bsStyle="success" onClick={this.handleSignIn}> <Link id="button1" to="home">Kirjaudu sisään</Link>
         </Button>
+     
           </Modal.Footer>
 
     </Modal> 
 </div>       
                     
-                    
+                    </div>    
                     
                 </div>
-            </div>
+           
         );
     }
 });
