@@ -21,6 +21,26 @@ var Registration = React.createClass({
         })
     },
     
+    //handle submit Form Validation
+    handleSubmit: function (e) {
+        // prevent normal submit event
+        e.preventDefault();
+        var name = this.refs.name.value;
+        var email = this.refs.email.value;
+        var fname = this.refs.fname.value;
+        var password = this.refs.password.value;
+        var password2 = this.refs.password2.value;
+        var box = this.refs.box.value;
+        console.log("Pasi");
+         console.log(this.refs.name.value);
+        if (name == "") {
+        alert("Name must be filled out");
+        return false;
+    }
+        
+    },
+    
+    
     //Handle add picture
   addPicture: function(e){
       console.log(e.target);
@@ -38,11 +58,7 @@ var Registration = React.createClass({
     
     //validate form text inputs
     validateText: function (){
-           var x = document.forms["rekisterointi"]["formHorizontalFirstName"].value;
-    if (x == null || x == "") {
-        alert("Name must be filled out");
-        return false;
-    }
+        
      
     },
     
@@ -68,14 +84,14 @@ var Registration = React.createClass({
                 <div className="row">
                
 
-<Form horizontal id="rekisterointi"  className="col-md-8 col-md-offset-2" onsubmit="return validateForm()" method="#" >
+<Form horizontal id="rekisterointi"  className="col-md-8 col-md-offset-2" onsubmit={this.handleSubmit} method="#" >
                          <h3>Rekisteröidy</h3>
     <FormGroup controlId="formHorizontalFirstName" name="formHorizontalFirstName" >
       <Col componentClass={ControlLabel} sm={2}>
         Etunimi
       </Col>
       <Col sm={10}>
-        <FormControl type="name" placeholder="" />
+        <FormControl type="name" placeholder="" ref='fname'/>
       </Col>
     </FormGroup>
         
@@ -84,7 +100,7 @@ var Registration = React.createClass({
         Sukunimi
       </Col>
       <Col sm={10}>
-        <FormControl type="name" placeholder="" />
+        <FormControl type="name" placeholder="" ref='name' />
       </Col>
     </FormGroup>
                        
@@ -94,7 +110,7 @@ var Registration = React.createClass({
         Sähköposti
       </Col>
       <Col sm={10}>
-        <FormControl type="email" placeholder="" />
+        <FormControl type="email" placeholder=""  ref='email'/>
           Rekisteröityäksesi tarvitset voimassaolevan JAMK:in sähköpostiosoitteen.
       </Col>
     </FormGroup>
@@ -104,7 +120,7 @@ var Registration = React.createClass({
         Salasana
       </Col>
       <Col sm={10}>
-        <FormControl type="password" placeholder="" />
+        <FormControl type="password" placeholder="" ref='password' />
       </Col>
     </FormGroup>
                          
@@ -113,7 +129,7 @@ var Registration = React.createClass({
         Salasana uudestaan
       </Col>
       <Col sm={10}>
-        <FormControl type="password" placeholder="" />
+        <FormControl type="password" placeholder="" ref='password2'/>
       </Col>
     </FormGroup>
                          
@@ -123,7 +139,7 @@ var Registration = React.createClass({
       </Col>
       <Col sm={10}>
       
-<input type="file" id="uploadimage" name="datafile" size="45" onChange= {this.addPicture} />
+<input type="file" id="uploadimage" name="datafile" size="45" onChange= {this.addPicture}  ref='picture'/>
         <img id="image_esikatselu"/>
         
              </Col>
@@ -158,7 +174,7 @@ var Registration = React.createClass({
 
     <FormGroup>
       <Col smOffset={2} sm={10}>
-        <Checkbox>Olen 18 vuotias</Checkbox>
+        <Checkbox ref='box'>Olen 18 vuotias</Checkbox>
       </Col>
     </FormGroup>
 
