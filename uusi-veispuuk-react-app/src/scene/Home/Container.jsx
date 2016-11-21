@@ -75,7 +75,7 @@ var Container = React.createClass({
                    
                     //console.log(snapshot.val());
                     posts = $.map(snapshot.val(), function(post, index) {
-                        if (post != undefined) {
+                        if (post !== undefined) {
                          return [post];
                         } 
                     });

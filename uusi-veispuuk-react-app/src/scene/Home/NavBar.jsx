@@ -1,5 +1,6 @@
 import React from 'react';
 import firebase from 'firebase';
+import $ from 'jquery';
 
 import AddPostModal from './NavBarModals/AddPostModal.jsx';
 import AddPictureModal from './NavBarModals/AddPictureModal.jsx';
@@ -14,9 +15,10 @@ var NavBar = React.createClass({
         return {
             showModal: {
                 picture: false ,
-                post: false,
-                search: false   
-            }
+                post: false 
+            },
+            showSearch: false,
+            searchInput: ''
         }
     },
     showModal: function(type) {
@@ -36,6 +38,7 @@ var NavBar = React.createClass({
         }
        
     },
+    // suljetaan modaalit
     close: function() {
         // suljetaan modaali
         this.setState({
@@ -53,18 +56,26 @@ var NavBar = React.createClass({
         });
         console.log("signed out");  
     },
-    handleSearch: function (e) {
-        console.log(e);  
-        if (this.state.search) {
+    // määritellään search boxin näkyvyys
+    showSearch: function (e) { 
+        if (this.state.showSearch === false) {
             this.setState({
-                search: true
+                showSearch: true
             })  
-            console.log(this.state.search); 
+            //console.log(this.state.search); 
         } else {
             this.setState({
-                search: false
+                showSearch: false
             });
         }
+    },
+    getSearchInput: function(e) {
+        var searchWord = e.target.value;
+        this.setState({
+            searchInput: searchWord
+        });
+        // viedään hakusana isä-komponentille
+        this.props.getSearchInput(searchWord);
     },
     render: function () {
         return (
@@ -78,21 +89,26 @@ var NavBar = React.createClass({
                         <MenuItem divider />
                         <MenuItem eventKey={1.3} href="#/home/FAQ">FAQ</MenuItem>
                     </NavDropdown>
-                    <NavItem onClick={this.handleSearch} eventKey={2} href="#/home/search"><span className="glyphicon glyphicon-search" /></NavItem>
+                    <NavItem onClick={this.showSearch} eventKey={2} href={ this.state.showSearch ? ("#/home/search") : ("#/home/")}><span className="glyphicon glyphicon-search" /></NavItem>
                         {/* <NavItem eventKey={2} href="#">Link</NavItem> */}
 
                     <NavItem>
-                    { this.state.search ? <div ref="searchIcon">
+                    { this.state.showSearch ? (
+                         <div id="searchIcon" ref="searchIcon" className="fade-in">
                             <form>
                                 <FormGroup bsSize="sm">
                                     <FormControl 
                                     type="text"
                                     value={this.state.value}
-                                    placeholder="#mitähalutetsiä" />
+                                    placeholder="#mitähalutetsiä"
+                                    onChange={this.getSearchInput} />
                                     
                                 </FormGroup>
                             </form>
-                        </div> : null  }
+                        </div>
+                        
+                    ) : null }
+                   
                         
                     </NavItem>
                     </Nav>
