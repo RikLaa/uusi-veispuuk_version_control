@@ -4,7 +4,7 @@ import firebase from 'firebase';
 import AddPostModal from './NavBarModals/AddPostModal.jsx';
 import AddPictureModal from './NavBarModals/AddPictureModal.jsx';
 
-import { Nav, Navbar, NavDropdown, NavItem, MenuItem } from 'react-bootstrap';
+import { Nav, Navbar, NavDropdown, NavItem, MenuItem, FormGroup, FormControl } from 'react-bootstrap';
 import './NavBar.css';
 
 
@@ -14,7 +14,8 @@ var NavBar = React.createClass({
         return {
             showModal: {
                 picture: false ,
-                post: false   
+                post: false,
+                search: false   
             }
         }
     },
@@ -54,6 +55,16 @@ var NavBar = React.createClass({
     },
     handleSearch: function (e) {
         console.log(e);  
+        if (this.state.search) {
+            this.setState({
+                search: true
+            })  
+            console.log(this.state.search); 
+        } else {
+            this.setState({
+                search: false
+            });
+        }
     },
     render: function () {
         return (
@@ -67,8 +78,23 @@ var NavBar = React.createClass({
                         <MenuItem divider />
                         <MenuItem eventKey={1.3} href="#/home/FAQ">FAQ</MenuItem>
                     </NavDropdown>
-                    <NavItem onClick={this.handleSearch} eventKey={2} href="#"><span className="glyphicon glyphicon-search" /></NavItem>
+                    <NavItem onClick={this.handleSearch} eventKey={2} href="#/home/search"><span className="glyphicon glyphicon-search" /></NavItem>
                         {/* <NavItem eventKey={2} href="#">Link</NavItem> */}
+
+                    <NavItem>
+                    { this.state.search ? <div ref="searchIcon">
+                            <form>
+                                <FormGroup bsSize="sm">
+                                    <FormControl 
+                                    type="text"
+                                    value={this.state.value}
+                                    placeholder="#mitähalutetsiä" />
+                                    
+                                </FormGroup>
+                            </form>
+                        </div> : null  }
+                        
+                    </NavItem>
                     </Nav>
                         
                         <Nav pullRight>
