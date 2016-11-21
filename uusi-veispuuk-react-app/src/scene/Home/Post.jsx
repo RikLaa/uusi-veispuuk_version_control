@@ -26,7 +26,7 @@ var Post = React.createClass({
 
         // käydään läpi kaikki kommentit ja renderoidaan ne näytölle Comment -komponentin avulla
          var comments = this.props.comments.map(function (comment) {
-             var userID = comment.userID;
+             /*var userID = comment.userID;
              
              var name = this.props.users.map( function(user) {
                  if (userID === user.userID) {
@@ -35,7 +35,7 @@ var Post = React.createClass({
                  } else {
                      return "";
                  }
-             });
+             });*/
 
              var key = comment.commentID;
              var content = comment.content;

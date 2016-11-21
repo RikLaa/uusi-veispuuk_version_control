@@ -43,8 +43,8 @@ var LoginBox = React.createClass({
         var password = "salasana";
         firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
             // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
+            //var errorCode = error.code;
+            //var errorMessage = error.message;
             // ...
         });
         console.log("signed in");

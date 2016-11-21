@@ -2,6 +2,10 @@ import React from 'react';
 import firebase from 'firebase';
 import $ from 'jquery';
 
+import { Button } from 'react-bootstrap';
+
+import Post from './Post.jsx';
+
 var Search = React.createClass({
     getInitialState: function() {
         return {
@@ -12,29 +16,51 @@ var Search = React.createClass({
         }
     },
     componentDidMount: function() {
-        this.searchContent()
+
+    },
+    // tätä funkiota kutsutaan aina kun searchWord päivittyy
+    componentWillReceiveProps: function() {
+        console.log("prop update");
+        //this.searchContent();
     },
     searchContent: function() {
-          var amountToRetrieve = this.state.postNumbers;
-        amountToRetrieve += 12;
+          //var amountToRetrieve = this.state.postNumbers;
+        //amountToRetrieve += 12;
         console.log(amountToRetrieve);
+        var amountToRetrieve = 50;
+        var searchTag = this.props.searchWord;
+        console.log(searchTag);
 
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
                 
-                var postsTable = firebase.database().ref('posts');
+                var postsTable = firebase.database().ref('posts/');
                 var posts = [];
                 var imgPostsTable = firebase.database().ref('imgPosts');
                 var imgPosts = [];
 
-                var getPosts = postsTable.orderByKey().startAt('0').limitToLast(amountToRetrieve).once('value', function(snapshot) {
+                var getPosts = postsTable.orderByChild('tag').equalTo(searchTag).once('value', function(snapshot) {
                     posts = $.map(snapshot.val(), function(post, index) {
                         return [post];
                     });
                     posts.reverse();
-
+                    console.log(this.state.loading);
                     this.setState({
-                        posts: posts
+                        posts: posts,
+                        loading: 1
+                    });
+
+                }.bind(this));
+
+                var getImgPosts = imgPostsTable.orderByKey().startAt('0').limitToLast(amountToRetrieve).once('value', function(snapshot) {
+                    imgPosts = $.map(snapshot.val(), function(imgPost, index) {
+                        return [imgPost];
+                    });
+                    imgPosts.reverse();
+                    
+                    this.setState({
+                        imgPosts: imgPosts
+                        //loading: this.state.loading + 1
                     });
 
                 }.bind(this));
@@ -48,27 +74,55 @@ var Search = React.createClass({
     },
     render: function() {
 
-        if (this.state.loading !== 0) {
+        if (this.state.loading !== 1) {
             return(
-                <p>loading</p>
+               <div className="fade-in">
+                    <div className="loader center-block"></div>
+                </div>   
             )
         }
 
-        var post = this.state.posts.map(function(post, index) {
-            console.log(post.tag);
-            if (this.props.searchWord === post.tag) {
-                return <p >{post.tag}</p>
-            } else {
-                return null
+        var posts = this.state.posts.map(function(post, index) {
+            // haetaan sanan pituus jottain voidaan hakea myös kirjaimilla
+            var length = this.props.searchWord.length;
+            // ei hyväksytä tyhjää hakukenttää (jolloin haetaan kaikki)
+            if (length > 0) {
+
+                var key = post.postID;
+                var name = 'nimi tähän';
+                var users = [];
+                var title = post.title;
+                var content = post.content;
+                var comments = post.comments;
+                var date = post.date.slice(0, 11);
+                var time = post.date.slice(16, 21);
+                var tag = post.tag;
+                // tehdään tagista yhtä lyhyt kuin hakusanasta jolloin voidaan suoraan verrata niitä
+                var searchTag = post.tag.slice(0, length);
+
+                if (this.props.searchWord === searchTag) {
+
+                    return  <Post key={key} userName={name} users={this.state.users} title={title} content={content} comments={comments} date={date} time={time} tag={tag}/>
+                } else {
+                    return null
+                }
             }
+            
         }.bind(this));
 
         // return
         return (
-            <div>
-                <p>Löytyyköhän tuolla mitään..</p>
-                <p>{post}</p>
-            </div>
+             <div className="container">
+               <div className="row fade-in">
+                    {posts}               
+               </div>
+
+               {/*<div className="row">
+                    <p className="text-center addMargin">
+                        <Button onClick={this.getJSON} className="text-center">Lataa lisää..</Button>
+                    </p>
+               </div>*/}
+            </div>    
             
         );
     }

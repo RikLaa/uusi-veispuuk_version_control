@@ -1,6 +1,6 @@
 import React from 'react';
 import firebase from 'firebase';
-import $ from 'jquery';
+//import $ from 'jquery';
 
 import AddPostModal from './NavBarModals/AddPostModal.jsx';
 import AddPictureModal from './NavBarModals/AddPictureModal.jsx';
@@ -67,6 +67,7 @@ var NavBar = React.createClass({
             this.setState({
                 showSearch: false
             });
+           this.props.getSearchInput('');
         }
     },
     getSearchInput: function(e) {
