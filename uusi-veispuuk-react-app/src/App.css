@@ -48,8 +48,8 @@ margin-top: 10%;
   padding: 25px 35px;
   background-color: #ffffff;
   border-radius: 15px;
-  border: 1px solid #000;
-
+  border: 1px solid #000;  
+  
 }
 
 
@@ -78,6 +78,13 @@ padding-top: 10%;
 #button1 {
     text-decoration: none;
     color: #ffffff;
+}
+.p_cursive {
+    font-style: italic;
+}
+.h3_center {
+      text-align: center;
+    font-size: 200%;
 }
 
 /*-----------------------HOME---------------------*/

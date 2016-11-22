@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, FormGroup, Form, FormControl, Col, Checkbox, ControlLabel, InputGroup, DropdownButton, MenuItem,FieldGroup, Modal, poover,tooltip } from 'react-bootstrap';
+import { Button, FormGroup, Form, FormControl, Col, Checkbox, ControlLabel, InputGroup, DropdownButton, MenuItem,FieldGroup, Modal, poover,tooltip, HelpBlock } from 'react-bootstrap';
 import $ from 'jquery';
 import firebase from 'firebase';
 import { Link } from 'react-router';
@@ -20,9 +20,15 @@ var Registration = React.createClass({
             showModal: true
         })
     },
+    close: function () {
+        // suljetaan Modal määrittämällä showModal arvoksi false
+        this.setState({
+            showModal: false
+        });
+    },
     
     //handle submit Form Validation
-    handleSubmit: function (e) {
+    validateForm: function (e) {
         // prevent normal submit event
         e.preventDefault();
         var name = this.refs.name.value;
@@ -31,13 +37,18 @@ var Registration = React.createClass({
         var password = this.refs.password.value;
         var password2 = this.refs.password2.value;
         var box = this.refs.box.value;
-        console.log("Pasi");
          console.log(this.refs.name.value);
-        if (name == "") {
+        if (name === null) {
         alert("Name must be filled out");
         return false;
     }
-        
+        if (password === null) {
+        alert("password must be filled out");
+        return false;
+    }
+        else {
+            this.Open();
+        }
     },
     
     
@@ -84,18 +95,22 @@ var Registration = React.createClass({
                 <div className="row">
                
 
-<Form horizontal id="rekisterointi"  className="col-md-8 col-md-offset-2" onsubmit={this.handleSubmit} method="#" >
-                         <h3>Rekisteröidy</h3>
-    <FormGroup controlId="formHorizontalFirstName" name="formHorizontalFirstName" >
+<Form horizontal id="rekisterointi"  className="col-md-8 col-md-offset-2" onsubmit={this.validateForm} data-toggle="validator" method="#" >
+                         <h3 className="h3_center">Rekisteröidy Veispuukkiin</h3><hr />
+            <p>Veispuukki on sosiaalinen media opiskelijoille. Rekisteröidy nyt, niin pääset mukaan siihen parempaan opiskelijaelämään.</p>
+            <p className="p_cursive">Vihreällä merkityt kohdat ovat pakollisia.</p>
+            <hr />
+            
+    <FormGroup controlId="formHorizontalFirstName" name="formHorizontalFirstName" validationState="success" >
       <Col componentClass={ControlLabel} sm={2}>
         Etunimi
       </Col>
       <Col sm={10}>
-        <FormControl type="name" placeholder="" ref='fname'/>
+        <FormControl type="name" placeholder="" ref='fname' />
       </Col>
     </FormGroup>
-        
-        <FormGroup controlId="formHorizontalLastName">
+
+        <FormGroup controlId="formHorizontalLastName" validationState="success">
       <Col componentClass={ControlLabel} sm={2}>
         Sukunimi
       </Col>
@@ -105,7 +120,7 @@ var Registration = React.createClass({
     </FormGroup>
                        
                          
-    <FormGroup controlId="formHorizontalEmail">
+    <FormGroup controlId="formHorizontalEmail" validationState="success">
       <Col componentClass={ControlLabel} sm={2}>
         Sähköposti
       </Col>
@@ -115,7 +130,7 @@ var Registration = React.createClass({
       </Col>
     </FormGroup>
 
-    <FormGroup controlId="formHorizontalPassword">
+    <FormGroup controlId="formHorizontalPassword" validationState="success">
       <Col componentClass={ControlLabel} sm={2}>
         Salasana
       </Col>
@@ -124,9 +139,9 @@ var Registration = React.createClass({
       </Col>
     </FormGroup>
                          
-    <FormGroup controlId="formHorizontalPassword">
+    <FormGroup controlId="formHorizontalPassword" validationState="success">
       <Col componentClass={ControlLabel} sm={2}>
-        Salasana uudestaan
+        Salasana uudelleen
       </Col>
       <Col sm={10}>
         <FormControl type="password" placeholder="" ref='password2'/>
@@ -174,13 +189,14 @@ var Registration = React.createClass({
 
     <FormGroup>
       <Col smOffset={2} sm={10}>
-        <Checkbox ref='box'>Olen 18 vuotias</Checkbox>
+        <Checkbox ref='box' validationState="success">Olen 18 vuotias</Checkbox>
       </Col>
     </FormGroup>
+            
 
     <FormGroup>
       <Col smOffset={2} sm={10}>
-        <Button id="registerButton" bsStyle="success" type="submit" onClick={this.Open} >
+        <Button id="registerButton" bsStyle="success" type="submit" onClick={this.validateForm} >
           Rekisteröidy
         </Button>
       </Col>
@@ -188,9 +204,11 @@ var Registration = React.createClass({
   </Form> 
                     
 <div>
-   <Modal show={this.state.showModal} id= "modal_rekisterointi">
+ {/* Rekisteröinti onnistui modaali*/}
+            <Modal show={this.state.showModal} id= "modal_rekisterointi">
        
-    <Modal.Header>
+    <Modal.Header closeButton onClick={this.close}>
+
        <h1>Rekisteröitymisesi onnistui</h1></Modal.Header>
        
        <Modal.Body id= "modal_rekisterointi_body">
