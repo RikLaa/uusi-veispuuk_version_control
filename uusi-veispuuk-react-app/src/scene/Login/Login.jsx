@@ -34,7 +34,7 @@ var Login = React.createClass({
             </div>
         );
     }
-})
+});
 
 var LoginBox = React.createClass({
     getInitialState: function() {
@@ -47,8 +47,8 @@ var LoginBox = React.createClass({
         var password = "salasana";
         firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
             // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
+            //var errorCode = error.code;
+            //var errorMessage = error.message;
             // ...
         });
         console.log("signed in");
@@ -119,7 +119,6 @@ var LoginBox = React.createClass({
 });
 
 
-          
 
 
 //module.exports = Testi;

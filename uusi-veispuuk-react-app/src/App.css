@@ -1,18 +1,106 @@
 /*
 ----------------- PÄÄTYYLIT ---------------
-
 Koitetaan pitää tämä hyvin organisoituna ja tyyliluokat ja id järkevästi nimettynä (jos niitä teette)!
 Jos tulee uusia tiedostoja ja komponentteja niin tehkää niillekkin uudet osionsa.
 
 */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
 /*-----------------------YLEISLUOKKIA---------------------*/
+.test {
+    background: blue;
+    
+}
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.full-height {
+    height: 800px;
+}
+
+.vertical-align {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .addBorder {
     border: 1px solid black;
 
 }
 
 .addMargin {
-    margin: 5px;
+    margin: 10px;
+}
+
+.addPadding {
+    padding: 1%;
+}
+
+.loader-parent {
+    height: 100px;
+    
+}
+
+.loader {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    margin-top: -30px;
+    margin-left: -30px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.fade-in {
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 0.2s;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.fade-out {
+    opacity: 0;
+    animation-name: fadeOutOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 0.2s;
+}
+
+@keyframes fadeOutOpacity {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }
 
 
@@ -91,7 +179,16 @@ padding-top: 10%;
 
 
 /*-----------------------CONTAINER---------------------*/
-
+.col-md-4 {
+    padding: 10px;
+   
+}
+.postBox {
+    height: 250px;
+    margin: 10px;
+    padding: 20px; 
+    overflow: hidden;
+}
 
 /*-----------------------NAVBAR---------------------*/
 
