@@ -11,7 +11,18 @@ html, body {
     font-family: sans-serif;
 }
 .container {
-    background-color: aquamarine;
+    border: 1px solid black;
+}
+
+.heading_text {
+    text-align: center;
+    padding-bottom: 2%;
+    font-size: 400%;
+    
+}
+.link, .link:hover, .link:visited, .link:active {
+    text-decoration: none;
+    color: black;
 }
 /*-----------------------YLEISLUOKKIA---------------------*/
 .test {
@@ -214,4 +225,9 @@ padding-top: 10%;
 
 .container_heading {
  text-align: center;   
+}
+
+.faq_q_a {
+    
+    padding: 1.5%;
 }

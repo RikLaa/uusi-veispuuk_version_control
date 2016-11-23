@@ -35,6 +35,7 @@ var Home = React.createClass({
             <div className="container-fluid">
                     <NavBar getSearchInput={this.saveSearchInput}/>
                 {/* this.props.children */}
+                    <a className="link" href="#/home"> <h1 className="heading_text">Veispuuk</h1> </a>
                   {/*  searchWord annettaan myös propseina search.jsx sivulle */}
                   {React.cloneElement(this.props.children, { searchWord: this.state.searchWord })}
             </div>

@@ -34,25 +34,30 @@ var Registration = React.createClass({
         // prevent normal submit event
         e.preventDefault();
       //  var name = this.refs.name.value;
-        var name = ReactDOM.findDOMNode(this.refs.name.value);
+        // Console.log tulostaa inputin valuen vain jos on määritelty näin:ReactDOM.findDOMNode(this.refs.name); jos laittaa (this.refs.email.value); Niin valuea ei saada. Kuitenkaan tämä taktiikka ei sitten toimi loppuun asti. DUH
+        //Palataan asiaan jos liikaa aikaa..
+        var name = ReactDOM.findDOMNode(this.refs.name);
         var email = ReactDOM.findDOMNode(this.refs.email.value);
         var fname = ReactDOM.findDOMNode(this.refs.fname.value);
-        var password = ReactDOM.findDOMNode(this.refs.password.value);
-        var password2 = ReactDOM.findDOMNode(this.refs.password2.value);
+        var password = ReactDOM.findDOMNode(this.refs.password);
+        var password2 = ReactDOM.findDOMNode(this.refs.password2);
         var box = ReactDOM.findDOMNode(this.refs.box.value);
          console.log(name.value);
-        console.log(this.refs.email);
-        if (name === undefined) {
-        alert("Name must be filled out");
-        return false;
-    }
-        if (password === null) {
+        console.log(password.value);
+        console.log(password2.value);
+        
+   //     if (name.value === "" || name=="" || name==null) { } {
+    //    alert("Name must be filled out");
+    //    return false;
+    //}
+         if (name.value === null) {
+         alert("Name must be filled out");
+         return false;
+     }
+               if (password === null) {
         alert("password must be filled out");
-        return false;
-    }
-        else {
-            this.Open();
-        }
+       return false;}
+       else { this.Open();}
     },
     
     
@@ -99,7 +104,7 @@ var Registration = React.createClass({
                 <div className="row">
                
 
-<Form horizontal id="rekisterointi"  className="col-md-8 col-md-offset-2" onsubmit={this.validateForm} data-toggle="validator" method="#" >
+<Form horizontal id="rekisterointi"  className="col-md-8 col-md-offset-2" onSubmit={this.validateForm} data-toggle="validator" method="#" >
                          <h3 className="h3_center">Rekisteröidy Veispuukkiin</h3><hr />
             <p>Veispuukki on sosiaalinen media opiskelijoille. Rekisteröidy nyt, niin pääset mukaan siihen parempaan opiskelijaelämään.</p>
             <p className="p_cursive">Vihreällä merkityt kohdat ovat pakollisia.</p>

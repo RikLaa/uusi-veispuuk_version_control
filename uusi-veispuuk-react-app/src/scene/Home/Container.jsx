@@ -145,6 +145,7 @@ var Container = React.createClass({
         // tässä renderoidaan viimeiseksi koko Container 
         return (
             <div className="container">
+            <h1 className="container_heading">Uusimmat</h1>
                <div className="row fade-in">
                     {posts}               
                </div>
