@@ -26,7 +26,7 @@ var Home = React.createClass({
     render: function () {
 
         return (            
-            <div className="container-fluid background-color">
+            <div className="container-fluid">
                     <NavBar getSearchInput={this.saveSearchInput}/>
                 {/* this.props.children */}
                   {/*  searchWord annettaan myös propseina search.jsx sivulle */}

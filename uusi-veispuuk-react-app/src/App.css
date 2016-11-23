@@ -9,6 +9,7 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
+    background: #dde1e3;
 }
 
 .background-color {
@@ -31,8 +32,8 @@ html, body {
     background: #E20505;
 }
 
-.color-red {
-    color: #E20505;
+.title-color {
+    color: #3498db;
 }
 
 
@@ -59,7 +60,7 @@ html, body {
 }
 
 .addBorder {
-    border: 1px solid black;
+    border: 1px solid #b2b2b2;
 
 }
 
@@ -160,10 +161,13 @@ html, body {
     border: none;
 }
 
- a:hover { color: #fff !important; }
+.navbar-icon:hover {
+    color: #fff !important;
+}
+ /*a:hover { color: #fff !important; }*/
 ul.nav a { color: #777 !important; }
-ul.nav a:hover { color: #fff !important; }
-ul.nav a:focus { color: #E20505 !important; }
+/*ul.nav a:hover { color: #fff !important; }*/
+/*ul.nav a:focus { color: #E20505 !important; }*/
 ul.nav a:visited { color: #777 !important; }
 
 #nav-dropdown-2 {

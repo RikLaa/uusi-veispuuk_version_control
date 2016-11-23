@@ -52,7 +52,7 @@ var Post = React.createClass({
             <div>
                 <div onClick={this.open} className="col-md-3">
                     <div className="addBorder postBox post-box-color">
-                        <h3>{this.props.title}</h3>
+                        <h3 className="title-color">{this.props.title}</h3>
                         <p>{this.props.content}</p>
                     </div>
                 </div>
@@ -60,7 +60,7 @@ var Post = React.createClass({
                     joka määritettiin ylempänä */}
                 <Modal show={this.state.showModal} onHide={this.close}>
                     <Modal.Header closeButton>
-                        <Modal.Title>{this.props.title}</Modal.Title>
+                        <Modal.Title className="title-color">{this.props.title}</Modal.Title>
                         <br />
                         <p>{this.props.content}</p>
                         <p>{this.props.userName}</p>
