@@ -11,10 +11,36 @@ html, body {
     font-family: sans-serif;
 }
 
+.background-color {
+    background: #dde1e3;
+}
+
+.post-box-color {
+    background: #FFF;
+}
+
+.grey {
+    background: #323232;
+}
+
+.grey-text {
+    background: #ADADAD;
+}
+
+.red {
+    background: #E20505;
+}
+
+.color-red {
+    color: #E20505;
+}
+
+
+
+
 /*-----------------------YLEISLUOKKIA---------------------*/
 .test {
     background: blue;
-    
 }
 .center-block {
   display: block;
@@ -130,10 +156,15 @@ html, body {
 
 #navBar {
     /*background: #f8f8f8;* alkup. background*/
-    background: transparent;
+    /*background: transparent;*/
     border: none;
 }
 
+ a:hover { color: #fff !important; }
+ul.nav a { color: #777 !important; }
+ul.nav a:hover { color: #fff !important; }
+ul.nav a:focus { color: #E20505 !important; }
+ul.nav a:visited { color: #777 !important; }
 
 #nav-dropdown-2 {
     /*Tehdään iconista pyöreä*/

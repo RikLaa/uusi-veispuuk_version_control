@@ -51,7 +51,7 @@ var Post = React.createClass({
         return (
             <div>
                 <div onClick={this.open} className="col-md-3">
-                    <div className="addBorder postBox">
+                    <div className="addBorder postBox post-box-color">
                         <h3>{this.props.title}</h3>
                         <p>{this.props.content}</p>
                     </div>
