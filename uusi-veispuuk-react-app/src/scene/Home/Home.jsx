@@ -16,21 +16,27 @@ var Home = React.createClass({
             searchWord: ''
         }
     },
+    componentWillReceiveProps: function() {
+        console.log("testi");
+        
+    },
     saveSearchInput: function(searchWord) {
         this.setState({
             searchWord: searchWord
         });
 
+        this.forceUpdate();
+        console.log(this.state.searchWord + " isä");
         WORD = searchWord;
     },
     render: function () {
-
+        console.log("testi " + this.state.searchWord);
         return (            
             <div className="container-fluid">
                     <NavBar getSearchInput={this.saveSearchInput}/>
                 {/* this.props.children */}
                   {/*  searchWord annettaan myös propseina search.jsx sivulle */}
-                  {React.cloneElement(this.props.children, { searchWord: WORD })}
+                  {React.cloneElement(this.props.children, { searchWord: this.state.searchWord })}
             </div>
         );
     }

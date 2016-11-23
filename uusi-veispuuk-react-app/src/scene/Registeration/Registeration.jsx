@@ -3,6 +3,7 @@ import { Button, FormGroup, Form, FormControl, Col, Checkbox, ControlLabel, Inpu
 import $ from 'jquery';
 import firebase from 'firebase';
 import { Link } from 'react-router';
+import ReactDOM from 'react-dom';
 
 
 
@@ -29,16 +30,19 @@ var Registration = React.createClass({
     
     //handle submit Form Validation
     validateForm: function (e) {
+      //  var divDOMNode = ReactDOM.findDOMNode(ref);
         // prevent normal submit event
         e.preventDefault();
-        var name = this.refs.name.value;
-        var email = this.refs.email.value;
-        var fname = this.refs.fname.value;
-        var password = this.refs.password.value;
-        var password2 = this.refs.password2.value;
-        var box = this.refs.box.value;
-         console.log(this.refs.name.value);
-        if (name === null) {
+      //  var name = this.refs.name.value;
+        var name = ReactDOM.findDOMNode(this.refs.name.value);
+        var email = ReactDOM.findDOMNode(this.refs.email.value);
+        var fname = ReactDOM.findDOMNode(this.refs.fname.value);
+        var password = ReactDOM.findDOMNode(this.refs.password.value);
+        var password2 = ReactDOM.findDOMNode(this.refs.password2.value);
+        var box = ReactDOM.findDOMNode(this.refs.box.value);
+         console.log(name.value);
+        console.log(this.refs.email);
+        if (name === undefined) {
         alert("Name must be filled out");
         return false;
     }
@@ -115,7 +119,7 @@ var Registration = React.createClass({
         Sukunimi
       </Col>
       <Col sm={10}>
-        <FormControl type="name" placeholder="" ref='name' />
+        <FormControl type="name" placeholder="" ref='name'  />
       </Col>
     </FormGroup>
                        
