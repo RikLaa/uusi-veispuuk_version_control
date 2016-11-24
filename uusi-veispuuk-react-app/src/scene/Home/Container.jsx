@@ -36,7 +36,7 @@ var Container = React.createClass({
 
                 var amountToRetrieve = this.state.postNumbers;
                 amountToRetrieve += 12;
-                console.log(amountToRetrieve);
+                // console.log(amountToRetrieve);
 
                 // hae käyttäjät
                 var users = [];
@@ -44,7 +44,7 @@ var Container = React.createClass({
                     users = $.map(snapshot.val(), function(user, index) {
                         return [user];
                     });
-                    console.log("käyttäjät");
+                    // console.log("käyttäjät");
                     // tallennetaan käyttäjät containerin this.state.users tilaan. Lisätään loading tilaa yhdellä
                     this.setState({
                         users: users,
@@ -60,7 +60,7 @@ var Container = React.createClass({
                         return [imgPost];
                     });
                     imgPosts.reverse();
-                    console.log("kuvat");
+                    // console.log("kuvat");
                     //console.log(imgPosts);
                     this.setState( {
                         imgPosts: imgPosts,
@@ -80,8 +80,8 @@ var Container = React.createClass({
                         } 
                     });
                     posts.reverse();
-                     console.log(posts);
-                    console.log("postaukset");
+                    //  console.log(posts);
+                    // console.log("postaukset");
                     //console.log(posts);
                     /* tallennetaan taulukko this.state.posts -tilaan,
                     ja vaihdetaan loading: false. Jolloin tiedetään että kaikki on ladattu. */

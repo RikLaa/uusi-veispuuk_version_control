@@ -1,12 +1,13 @@
 import React from 'react';
 import Comment from './Comment.jsx';
-import { Modal } from 'react-bootstrap';
+import { Button, Form, FormControl, FormGroup, Modal } from 'react-bootstrap';
 
 var Post = React.createClass({
     getInitialState: function () {
         return {
             // tämä arvo määrää onko Modal avattuna vai suljettua
-            showModal: false
+            showModal: false,
+            comments: this.props.comments
         }
     },
     open: function () {
@@ -20,6 +21,32 @@ var Post = React.createClass({
         this.setState({
             showModal: false
         });
+    },
+    addComment: function() {
+        console.log(this.state.comments);
+        var comments = this.state.comments;
+
+        var key = this.state.comments.length + 1;
+        var userName = 'Testikäyttäjä';
+        var content = document.getElementById('comment-text-field').value;
+        var date = 'Mon Aug 12';
+        var time = '19:45';
+    
+        var newComment = {
+            commentID: key,
+            content: content,
+            date: date,
+            time: time
+        };
+
+        comments.push(newComment);
+        this.setState({
+            comments: comments
+        });
+
+        // nollataan texbox
+        document.getElementById('comment-text-field').value = '';
+
     },
     render: function () {
 
@@ -41,11 +68,13 @@ var Post = React.createClass({
              var content = comment.content;
              var date = comment.date.slice(0, 11);
              var time = comment.date.slice(16, 21);
-             //console.log(time);
+            //  console.log(time);
              return (
                   <Comment key={key} userName={name} content={content} date={date} time={time}/>
              );    
          }.bind(this));
+
+         
 
          // renderoidaan postaus näytölle
         return (
@@ -68,6 +97,18 @@ var Post = React.createClass({
                        <small>{this.props.date} klo {this.props.time}</small>
                         <hr />
                         {comments}
+
+                        <Form>
+                            <FormGroup>
+                                <FormControl id="comment-text-field" bsSize="large" className="comment-text-field" componentClass="textarea"></FormControl>
+                            </FormGroup>
+                            
+                            <FormGroup>
+                                <Button onClick={this.addComment} className="pull-right">Lähetä</Button>
+                            </FormGroup>
+                        </Form>
+
+                        
                     </Modal.Header>
                 </Modal>
 

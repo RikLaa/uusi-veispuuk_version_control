@@ -21,6 +21,10 @@ var NavBar = React.createClass({
             searchInput: ''
         }
     },
+    componentDidUpdate: function() {
+        //console.log(this.state.searchInput);
+         //this.props.getSearchInput(searchWord);
+    },
     showModal: function(type) {
         // määritetään näkyvyys jommalle kummalle modaalille
         if (type === "picture") {
@@ -58,6 +62,8 @@ var NavBar = React.createClass({
     },
     // määritellään search boxin näkyvyys
     showSearch: function (e) { 
+        
+        console.log(location.hash);
         if (this.state.showSearch === false) {
             this.setState({
                 showSearch: true
@@ -70,13 +76,15 @@ var NavBar = React.createClass({
            this.props.getSearchInput('');
         }
     },
+
+    //  Haetaan input kentästä kirjaimet jotta voidaan etsiä postauksia search-sivulla
     getSearchInput: function(e) {
         var searchWord = e.target.value;
         this.setState({
             searchInput: searchWord
         });
         // viedään hakusana isä-komponentille
-        this.props.getSearchInput(searchWord);
+        this.props.getSearchInput(this.state.searchInput);
     },
     render: function () {
         return (
@@ -97,7 +105,7 @@ var NavBar = React.createClass({
                     {this.state.showSearch ? (
                         <Navbar.Form pullLeft>
                             <FormGroup>
-                                <FormControl type="text" placeholder="Search" />
+                                <FormControl onChange={this.getSearchInput} type="text" placeholder="#Mitähaluatetsiä" />
                             </FormGroup>
 
                                 <FormGroup controlId="formControlsSelect">

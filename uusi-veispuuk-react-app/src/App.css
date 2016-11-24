@@ -153,6 +153,11 @@ html, body {
     overflow: hidden;
 }
 
+.comment-text-field {
+    max-width: 100%;
+    height: 150px !important;
+}
+
 /*-----------------------NAVBAR---------------------*/
 
 #navBar {
