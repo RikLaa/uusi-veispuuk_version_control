@@ -76,11 +76,7 @@ var Registration = React.createClass({
     reader.readAsDataURL(e.target.files[0]);
   },
     
-    //validate form text inputs
-    validateText: function (){
-        
-     
-    },
+
     
         handleSignIn: function () {
 

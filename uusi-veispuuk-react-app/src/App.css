@@ -116,6 +116,19 @@ html, body {
     }
 }
 
+/*------------------HEADINGS------------------*/
+.p_cursive {
+    font-style: italic;
+}
+.h3_center {
+    text-align: center;
+    font-size: 200%;
+}
+.h5_center {
+    text-align: center;
+    font-size: 100%;
+    font-weight:bold;
+}
 
 /*-----------------------LOGIN---------------------*/
 
@@ -138,9 +151,6 @@ button_center{
 
 /*-----------------------REGISTRATION---------------------*/
 
-
-* {font-family: 'Open Sans', sans-serif;}
-body {background-color: #fff;}
 
 
 
@@ -180,15 +190,19 @@ padding-top: 10%;
     text-decoration: none;
     color: #ffffff;
 }
-.p_cursive {
-    font-style: italic;
-}
-.h3_center {
-      text-align: center;
-    font-size: 200%;
-}
+
 
 /*-----------------------HOME---------------------*/
+
+/*-----------------------ADD PICTURE / ADD POST MODALS----------------*/
+
+#image_thumb {
+    max-width: 100%;
+}
+#file_input {
+    display: none;
+}
+
 
 
 /*-----------------------CONTAINER---------------------*/
