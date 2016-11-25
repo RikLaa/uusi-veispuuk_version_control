@@ -51,6 +51,17 @@ html, body {
     color: #3498db;
 }
 
+#Veispuuk_logo
+{
+    font-size: 450%;
+    margin-bottom: 2%;
+    text-align: center;
+}
+#Veispuuk_logo_link
+{
+    text-decoration: none;
+}
+
 
 
 
@@ -230,7 +241,7 @@ padding-top: 10%;
     max-width: 100%;
 }
 #file_input {
-    display: none;
+  
 }
 
 

@@ -35,7 +35,7 @@ var AddPictureModal = React.createClass({
             <h5 className="h5_center">Esikatselu</h5>
             <div className="col-md-10 col-md-offset-3">
             <label className="btn btn-default btn-file">
-            <input type="file" id="uploadimage" name="datafile" size="45" onChange= {this.addPicture}  ref='picture'/>
+            <input id="add_picture" type="file" id="uploadimage" name="datafile" size="45" onChange= {this.addPicture}  ref='picture'/>
             </label>
             </div>
             </FormGroup>

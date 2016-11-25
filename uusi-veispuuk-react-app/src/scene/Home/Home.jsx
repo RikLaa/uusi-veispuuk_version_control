@@ -31,16 +31,16 @@ var Home = React.createClass({
     },
     render: function () {
 
-        return (            
-            <div className="container-fluid">
-                    <NavBar getSearchInput={this.saveSearchInput}/>
-                {/* this.props.children */}
-                    <a className="link" href="#/home"> <h1 className="heading_text">Veispuuk</h1> </a>
-                  {/*  searchWord annettaan myös propseina search.jsx sivulle */}
+        var searchWordToSearch = this.state.searchWord;
+         return (            
+             <div className="container-fluid">
+                     <NavBar getSearchInput={this.saveSearchInput}/>
+                 <a id="Veispuuk_logo_link" href="#/home/"> <h1 id="Veispuuk_logo">Veispuuk</h1></a>
+                 {/* this.props.children */}
+                   {/*  searchWord annettaan myös propseina search.jsx sivulle */}
 
                   {this.props.children && React.cloneElement(this.props.children, { searchWord: this.state.searchWord })}
-
-            </div>
+             </div>
         );
     }
 });
