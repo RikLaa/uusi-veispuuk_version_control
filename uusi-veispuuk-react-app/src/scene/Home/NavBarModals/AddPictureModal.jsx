@@ -60,7 +60,7 @@ var AddPictureModal = React.createClass({
                     </Modal.Body>
                 <Modal.Footer>
             <div className="col-sm-3 col-md-offset-9">
-           <Button type="submit" bsStyle="success">Julkaise</Button>
+           <Button type="submit" bsStyle="success" onClick={this.props.onClick}>Julkaise</Button>
              </div>
                 </Modal.Footer>
             

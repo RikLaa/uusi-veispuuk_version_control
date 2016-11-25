@@ -9,10 +9,12 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
+    background: #dde1e3;
 }
 .container {
     border: 1px solid black;
 }
+
 
 .heading_text {
     text-align: center;
@@ -24,10 +26,38 @@ html, body {
     text-decoration: none;
     color: black;
 }
+
+.background-color {
+    background: #dde1e3;
+}
+
+.post-box-color {
+    background: #FFF;
+}
+
+.grey {
+    background: #323232;
+}
+
+.grey-text {
+    background: #ADADAD;
+}
+
+.red {
+    background: #E20505;
+}
+
+.title-color {
+    color: #3498db;
+}
+
+
+
+
+
 /*-----------------------YLEISLUOKKIA---------------------*/
 .test {
     background: blue;
-    
 }
 .center-block {
   display: block;
@@ -46,7 +76,7 @@ html, body {
 }
 
 .addBorder {
-    border: 1px solid black;
+    border: 1px solid #b2b2b2;
 
 }
 
@@ -217,14 +247,27 @@ padding-top: 10%;
     overflow: hidden;
 }
 
+.comment-text-field {
+    max-width: 100%;
+    height: 150px !important;
+}
+
 /*-----------------------NAVBAR---------------------*/
 
 #navBar {
     /*background: #f8f8f8;* alkup. background*/
-    background: transparent;
+    /*background: transparent;*/
     border: none;
 }
 
+.navbar-icon:hover {
+    color: #fff !important;
+}
+ /*a:hover { color: #fff !important; }*/
+ul.nav a { color: #777 !important; }
+/*ul.nav a:hover { color: #fff !important; }*/
+/*ul.nav a:focus { color: #E20505 !important; }*/
+ul.nav a:visited { color: #777 !important; }
 
 #nav-dropdown-2 {
     /*Tehdään iconista pyöreä*/

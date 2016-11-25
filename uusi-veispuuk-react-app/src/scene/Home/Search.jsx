@@ -21,17 +21,41 @@ var Search = React.createClass({
     // tätä funkiota kutsutaan aina kun searchWord päivittyy
     componentWillReceiveProps: function() {
         console.log("prop update");
-        console.log(this.props.searchWord);
-        //this.searchContent();
+
+        this.searchContent();
+        
     },
     searchContent: function() {
           //var amountToRetrieve = this.state.postNumbers;
         //amountToRetrieve += 12;
         console.log(amountToRetrieve);
         var amountToRetrieve = 50;
-        var searchTag = this.props.searchWord;
-        console.log(searchTag);
+        this.setState({
+            loading: 0
+        });
+        var searchWord = this.props.searchWord;
+        var searchTag;
 
+        if (searchWord === 'm') {
+            searchTag = 'muu';
+        } else if (searchWord === 'pas') {
+            searchTag = 'pasin_koodit';
+        } else if (searchWord === 'va') {
+            searchTag = 'vapaa-aika';
+        } else if (searchWord === 'vai') {
+            searchTag = 'vainsinsinoorijutut';
+        } else if (searchWord === 'ka') {
+            searchTag = 'kalja';
+        } else if (searchWord === 'ki') {
+            searchTag = 'kissa';
+        } else if (searchWord === 'o') {
+            searchTag = 'opiskelu';
+        } else {
+            searchTag ='';
+        }
+        
+        console.log(searchTag);
+        if (searchTag != '') {
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
                 
@@ -44,11 +68,15 @@ var Search = React.createClass({
                     posts = $.map(snapshot.val(), function(post, index) {
                         return [post];
                     });
+                    var loadingNumber = 0;
+                    if (posts.length != 0) {
+                        loadingNumber = 1;
+                    }
                     posts.reverse();
                     console.log(this.state.loading);
                     this.setState({
                         posts: posts,
-                        loading: 1
+                        loading: loadingNumber
                     });
 
                 }.bind(this));
@@ -72,6 +100,8 @@ var Search = React.createClass({
                 console.log("user not logged in");
             }
         }.bind(this));
+
+        }
     },
     render: function() {
 
