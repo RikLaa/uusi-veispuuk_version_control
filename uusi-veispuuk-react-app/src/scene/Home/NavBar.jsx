@@ -18,7 +18,8 @@ var NavBar = React.createClass({
                 post: false 
             },
             showSearch: false,
-            searchInput: ''
+            searchInput: '',
+            newPostsToRender: []
         }
     },
     componentDidUpdate: function() {
@@ -86,7 +87,22 @@ var NavBar = React.createClass({
         // viedään hakusana isä-komponentille
         this.props.getSearchInput(this.state.searchInput);
     },
+    newPostsToRender: function(newPosts) {
+        this.setState({
+            newPostsToRender: newPosts
+        });
+
+          this.props.newPostsToRender(this.state.newPosts);
+          console.log(this.state.newPosts);
+       
+    },
+     addPost: function(post) {
+       // lähetetään uudet postaukset isälle
+       this.props.addPost(post);
+       console.log(post);
+    },
     render: function () {
+
         return (
             <div className="row">
                 <Navbar id="navBar" className="grey" fluid>
@@ -131,7 +147,7 @@ var NavBar = React.createClass({
                 </Navbar>
 
                 <AddPictureModal showModal={this.state.showModal.picture} onClick={this.close} />
-                <AddPostModal showModal={this.state.showModal.post} onClick={this.close} />
+                <AddPostModal newPostsToRender={this.newPostsToRender} addPost={this.addPost} showModal={this.state.showModal.post} onClick={this.close} />
             </div>
         );
     }

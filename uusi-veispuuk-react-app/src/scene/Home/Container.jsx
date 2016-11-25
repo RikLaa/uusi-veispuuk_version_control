@@ -10,7 +10,7 @@ import { Button ,Modal } from 'react-bootstrap';
 var Container = React.createClass({
     getInitialState: function () {
         // loading tila näyttää onko postaukset ladattu vai ei
-        return {
+        return { 
             loading: 0,
             users: [],
             posts: [],
@@ -20,6 +20,19 @@ var Container = React.createClass({
     },
     componentDidMount: function () {
       this.getJSON();
+    },
+    componentWillReceiveProps: function() {
+        //console.log(this.props.newPosts);
+        var newPost = this.props.newPostToAdd;
+        //newPosts.reverse();
+        var oldPosts = this.state.posts;
+        oldPosts.unshift(newPost);
+        console.log(oldPosts[0]);
+        console.log(newPost);
+        this.setState({
+            posts: oldPosts
+        });
+
     },
     getJSON: function() {
           /* tehdään jos käyttäjä on kirjautunut sisään. Koska kaikki on asynconista joudutaan aina suorittamaan
@@ -99,6 +112,8 @@ var Container = React.createClass({
             }.bind(this));  
     },
     render: function () {
+
+
         // jos kaikkia ajax käskyjä ei ole vielä haettu (yhteensä 3), niin näytetään latausruutu
         if (this.state.loading < 3) { 
             return (
