@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, FormGroup, Form, FormControl, Col, Checkbox, ControlLabel, InputGroup, DropdownButton, MenuItem,FieldGroup, Modal, poover,tooltip, HelpBlock  } from 'react-bootstrap';
+import { Button, FormGroup, Form, FormControl, ControlLabel, Modal } from 'react-bootstrap';
 
 var AddPostModal = React.createClass({
     getInitialState: function() {
@@ -10,7 +10,6 @@ var AddPostModal = React.createClass({
     addPost: function(e) {
         var d = new Date();
         var key = d.getMilliseconds();
-        var userName = 'testikäyttäjä';
         var title = document.getElementById('postHeaderInput').value;
         var content = document.getElementById('postContentInput').value;
         var comments = [];
@@ -36,14 +35,11 @@ var AddPostModal = React.createClass({
     },
     render: function() {
 
-        // välitetään uudet postaukset propseina isälle
-         //this.props.newPostsToRender(this.state.newPosts); 
-
         return (
             <div>
                 <Modal show={this.props.showModal} onHide={this.props.onClick}>
                         <Modal.Header closeButton>
-                        <Modal.Title>Aloita keskustelu</Modal.Title> </Modal.Header>
+                        <Modal.Title className="text-center">Aloita keskustelu</Modal.Title> </Modal.Header>
                         <Modal.Body>
             
                         <Form horizontal>

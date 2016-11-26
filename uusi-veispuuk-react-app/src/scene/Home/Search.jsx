@@ -24,9 +24,7 @@ var Search = React.createClass({
         
     },
     searchContent: function(nextProps) {
-          //var amountToRetrieve = this.state.postNumbers;
-        //amountToRetrieve += 12;
-        console.log(amountToRetrieve);
+
         var amountToRetrieve = this.state.amountToRetrieve + 50;
         this.setState({
             loading: true
@@ -38,7 +36,7 @@ var Search = React.createClass({
 
         
         console.log(searchTag);
-        if (searchTag != '') {
+        if (searchTag !== '') {
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
                 
@@ -87,7 +85,7 @@ var Search = React.createClass({
     },
     render: function() {
 
-        if (this.state.loading == true) {
+        if (this.state.loading === true) {
             return(
                <div className="fade-in">
                     <div className="loader center-block"></div>
@@ -131,7 +129,7 @@ var Search = React.createClass({
                     {posts}               
                </div>
 
-             { this.state.posts.length != 0 ?  (
+             { this.state.posts.length !== 0 ?  (
                    <div className="row">
                     <p className="text-center addMargin">
                         <Button onClick={this.searchContent} className="text-center">Lataa lisää..</Button>

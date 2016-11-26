@@ -3,7 +3,7 @@ import firebase from 'firebase';
 import $ from 'jquery';
 import Post from './Post.jsx';
 
-import { Button ,Modal } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 
 

@@ -5,7 +5,7 @@ import firebase from 'firebase';
 import AddPostModal from './NavBarModals/AddPostModal.jsx';
 import AddPictureModal from './NavBarModals/AddPictureModal.jsx';
 
-import { Button, ControlLabel, Nav, Navbar, NavDropdown, NavItem, MenuItem, FormGroup, FormControl } from 'react-bootstrap';
+import { Button, Nav, Navbar, NavDropdown, NavItem, MenuItem, FormGroup, FormControl } from 'react-bootstrap';
 import './NavBar.css';
 
 
