@@ -1,0 +1,54 @@
+img{
+    display:block;
+    height: 250px;
+    width: 250px;
+    float: left;
+    margin-top: 50px;
+
+    
+}
+
+
+.profilePostaukset {
+    height: 200px;
+    float: left;
+    position:fixed;
+    clear:left;
+    margin-left: 125px;
+    
+}
+
+h2 {
+    
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    text-align: left;
+    
+    
+}
+
+.enimi{
+    margin-top: 300px;
+    
+}
+
+.snimi{
+    margin-top: 0px;
+    
+}
+
+.info{
+    max-width: 250px;
+    margin-right: auto;
+    
+}
+
+p{
+    
+    
+}
