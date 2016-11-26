@@ -27,7 +27,6 @@ var Post = React.createClass({
         var comments = this.state.comments;
 
         var key = this.state.comments.length + 1;
-        var userName = 'Testikäyttäjä';
         var content = document.getElementById('comment-text-field').value;
         var date = 'Mon Aug 12';
         var time = '19:45';
@@ -63,7 +62,7 @@ var Post = React.createClass({
                      return "";
                  }
              });*/
-
+             var name = 'username';
              var key = comment.commentID;
              var content = comment.content;
              var date = comment.date.slice(0, 11);
@@ -72,7 +71,7 @@ var Post = React.createClass({
              return (
                   <Comment key={key} userName={name} content={content} date={date} time={time}/>
              );    
-         }.bind(this));
+         });
 
          
 

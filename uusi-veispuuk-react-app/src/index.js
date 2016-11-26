@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 
 
-// Renderoidaan App html sivulle. Tähän ei ei periaatteessa tarvitse koskea milloinkaan.
+// Renderoidaan App html  sivulle. Tähän ei ei periaatteessa tarvitse koskea milloinkaan.
 ReactDOM.render((
   <App />
 ), document.getElementById('root'));

@@ -3,14 +3,14 @@ import firebase from 'firebase';
 import $ from 'jquery';
 import Post from './Post.jsx';
 
-import { Button ,Modal } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 
 
 var Container = React.createClass({
     getInitialState: function () {
         // loading tila näyttää onko postaukset ladattu vai ei
-        return {
+        return { 
             loading: 0,
             users: [],
             posts: [],
@@ -20,6 +20,15 @@ var Container = React.createClass({
     },
     componentDidMount: function () {
       this.getJSON();
+    },
+    componentWillReceiveProps: function(nextProps) {
+        var newPost = nextProps.newPostToAdd; // uusi postaus
+        var oldPosts = this.state.posts; // vanhat postaukset
+        oldPosts.unshift(newPost); // uusi postaus taulukon kärkeen
+        this.setState({
+            posts: oldPosts
+        });
+
     },
     getJSON: function() {
           /* tehdään jos käyttäjä on kirjautunut sisään. Koska kaikki on asynconista joudutaan aina suorittamaan
@@ -99,6 +108,8 @@ var Container = React.createClass({
             }.bind(this));  
     },
     render: function () {
+
+
         // jos kaikkia ajax käskyjä ei ole vielä haettu (yhteensä 3), niin näytetään latausruutu
         if (this.state.loading < 3) { 
             return (
@@ -145,6 +156,7 @@ var Container = React.createClass({
         // tässä renderoidaan viimeiseksi koko Container 
         return (
             <div className="container">
+            <h2 className="container_heading">Uusimmat</h2>
                <div className="row fade-in">
                     {posts}               
                </div>

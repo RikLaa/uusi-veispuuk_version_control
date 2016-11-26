@@ -5,7 +5,7 @@ import firebase from 'firebase';
 import AddPostModal from './NavBarModals/AddPostModal.jsx';
 import AddPictureModal from './NavBarModals/AddPictureModal.jsx';
 
-import { Button, ControlLabel, Nav, Navbar, NavDropdown, NavItem, MenuItem, FormGroup, FormControl } from 'react-bootstrap';
+import { Button, Nav, Navbar, NavDropdown, NavItem, MenuItem, FormGroup, FormControl } from 'react-bootstrap';
 import './NavBar.css';
 
 
@@ -18,13 +18,14 @@ var NavBar = React.createClass({
                 post: false 
             },
             showSearch: false,
-            searchInput: ''
+            searchInput: '',
+            newPostsToRender: []
         }
     },
-    componentDidUpdate: function() {
-        //console.log(this.state.searchInput);
-         //this.props.getSearchInput(searchWord);
-    },
+   componentDidUpdate: function() {
+       //console.log(this.state.searchInput);
+        //this.props.getSearchInput(searchWord);
+   },
     showModal: function(type) {
         // määritetään näkyvyys jommalle kummalle modaalille
         if (type === "picture") {
@@ -73,20 +74,23 @@ var NavBar = React.createClass({
             this.setState({
                 showSearch: false
             });
-           this.props.getSearchInput('');
+           //this.props.getSearchInput('');
         }
     },
 
     //  Haetaan input kentästä kirjaimet jotta voidaan etsiä postauksia search-sivulla
     getSearchInput: function(e) {
-        var searchWord = e.target.value;
-        this.setState({
-            searchInput: searchWord
-        });
-        // viedään hakusana isä-komponentille
-        this.props.getSearchInput(this.state.searchInput);
+        var searchWord = document.getElementById('searchInput').value;
+        console.log(searchWord);
+        this.props.searchInputToParent(searchWord); // viedään hakusana isä-komponentille
+    },
+     addPostToParent: function(post) {
+       // lähetetään uudet postaukset isälle
+       this.props.addPostToParent(post);
+       console.log(post);
     },
     render: function () {
+
         return (
             <div className="row">
                 <Navbar id="navBar" className="grey" fluid>
@@ -105,7 +109,7 @@ var NavBar = React.createClass({
                     {this.state.showSearch ? (
                         <Navbar.Form pullLeft>
                             <FormGroup>
-                                <FormControl onChange={this.getSearchInput} type="text" placeholder="#Mitähaluatetsiä" />
+                                <FormControl id="searchInput" type="text" placeholder="#Mitähaluatetsiä" />
                             </FormGroup>
 
                                 <FormGroup controlId="formControlsSelect">
@@ -114,10 +118,14 @@ var NavBar = React.createClass({
                                 <option value="kuva">Kuva</option>
                             </FormControl>
                             </FormGroup>
-                            <Button type="submit">Etsi</Button>
+                            <Button onClick={this.getSearchInput} type="submit">Etsi</Button>
                         </Navbar.Form>
                     ) : null }
                         
+                        {/*<Nav className="col-sm-10" id="navbar_logo">
+                            <NavItem href="#/home/" className="" id="">Etusivulle</NavItem>
+                        </Nav>*/}
+
                         <Nav pullRight>
                         <NavDropdown noCaret eventKey={3} title={<span className="glyphicon glyphicon-user navbar-icon" />} id="nav-dropdown-2">
                         <MenuItem eventKey={3.1} href="#/home/profile">Profiili</MenuItem>
@@ -131,7 +139,7 @@ var NavBar = React.createClass({
                 </Navbar>
 
                 <AddPictureModal showModal={this.state.showModal.picture} onClick={this.close} />
-                <AddPostModal showModal={this.state.showModal.post} onClick={this.close} />
+                <AddPostModal newPostsToRender={this.newPostsToRender} addPostToParent={this.addPostToParent} showModal={this.state.showModal.post} onClick={this.close} />
             </div>
         );
     }
