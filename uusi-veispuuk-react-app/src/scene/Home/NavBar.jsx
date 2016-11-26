@@ -74,31 +74,19 @@ var NavBar = React.createClass({
             this.setState({
                 showSearch: false
             });
-           this.props.getSearchInput('');
+           //this.props.getSearchInput('');
         }
     },
 
     //  Haetaan input kentästä kirjaimet jotta voidaan etsiä postauksia search-sivulla
     getSearchInput: function(e) {
-        var searchWord = e.target.value;
-        this.setState({
-            searchInput: searchWord
-        });
-        // viedään hakusana isä-komponentille
-        this.props.getSearchInput(this.state.searchInput);
+        var searchWord = document.getElementById('searchInput').value;
+        console.log(searchWord);
+        this.props.searchInputToParent(searchWord); // viedään hakusana isä-komponentille
     },
-    newPostsToRender: function(newPosts) {
-        this.setState({
-            newPostsToRender: newPosts
-        });
-
-          this.props.newPostsToRender(this.state.newPosts);
-          console.log(this.state.newPosts);
-       
-    },
-     addPost: function(post) {
+     addPostToParent: function(post) {
        // lähetetään uudet postaukset isälle
-       this.props.addPost(post);
+       this.props.addPostToParent(post);
        console.log(post);
     },
     render: function () {
@@ -121,7 +109,7 @@ var NavBar = React.createClass({
                     {this.state.showSearch ? (
                         <Navbar.Form pullLeft>
                             <FormGroup>
-                                <FormControl onChange={this.getSearchInput} type="text" placeholder="#Mitähaluatetsiä" />
+                                <FormControl id="searchInput" type="text" placeholder="#Mitähaluatetsiä" />
                             </FormGroup>
 
                                 <FormGroup controlId="formControlsSelect">
@@ -130,7 +118,7 @@ var NavBar = React.createClass({
                                 <option value="kuva">Kuva</option>
                             </FormControl>
                             </FormGroup>
-                            <Button type="submit">Etsi</Button>
+                            <Button onClick={this.getSearchInput} type="submit">Etsi</Button>
                         </Navbar.Form>
                     ) : null }
                         
@@ -147,7 +135,7 @@ var NavBar = React.createClass({
                 </Navbar>
 
                 <AddPictureModal showModal={this.state.showModal.picture} onClick={this.close} />
-                <AddPostModal newPostsToRender={this.newPostsToRender} addPost={this.addPost} showModal={this.state.showModal.post} onClick={this.close} />
+                <AddPostModal newPostsToRender={this.newPostsToRender} addPostToParent={this.addPostToParent} showModal={this.state.showModal.post} onClick={this.close} />
             </div>
         );
     }

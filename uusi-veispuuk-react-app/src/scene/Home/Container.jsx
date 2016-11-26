@@ -21,14 +21,10 @@ var Container = React.createClass({
     componentDidMount: function () {
       this.getJSON();
     },
-    componentWillReceiveProps: function() {
-        //console.log(this.props.newPosts);
-        var newPost = this.props.newPostToAdd;
-        //newPosts.reverse();
-        var oldPosts = this.state.posts;
-        oldPosts.unshift(newPost);
-        console.log(oldPosts[0]);
-        console.log(newPost);
+    componentWillReceiveProps: function(nextProps) {
+        var newPost = nextProps.newPostToAdd; // uusi postaus
+        var oldPosts = this.state.posts; // vanhat postaukset
+        oldPosts.unshift(newPost); // uusi postaus taulukon kärkeen
         this.setState({
             posts: oldPosts
         });

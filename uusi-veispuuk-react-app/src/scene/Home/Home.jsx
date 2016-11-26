@@ -12,19 +12,10 @@ var Home = React.createClass({
     getInitialState: function() {
         return {
             searchWord: '',
-            newPost: {
-                postID: 321,
-                userID: 10,
-                title: 'fix',
-                content: 'your software has many errors plz fix. this sucks',
-                comments: [],
-                date: 'Sun Aug 19 2007 17:04:32 GMT+0300 (EEST)',
-                tag: '#koira'    
-            }
+            newPost: null
         }
     },
     saveSearchInput: function(searchWord) {
-        console.log('isä ' + searchWord);
         this.setState({
             searchWord: searchWord
         });
@@ -39,7 +30,7 @@ var Home = React.createClass({
     render: function () {
         return (            
             <div className="container-fluid">
-                    <NavBar getSearchInput={this.saveSearchInput} addPost={this.addPost}/>
+                    <NavBar searchInputToParent={this.saveSearchInput} addPostToParent={this.addPost}/>
                 {/* this.props.children */}
                   {/*  searchWord annettaan myös propseina search.jsx sivulle */}
                   {this.props.children && React.cloneElement(this.props.children, { searchWord: this.state.searchWord, newPostToAdd: this.state.newPost })}

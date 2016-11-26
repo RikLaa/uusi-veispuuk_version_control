@@ -31,11 +31,7 @@ var AddPostModal = React.createClass({
         var allNewPosts = this.state.newPosts;
         allNewPosts.unshift(newPost);
 
-        this.props.addPost(newPost);
-
-        this.setState({
-            allNewPosts: allNewPosts
-        });
+        this.props.addPostToParent(newPost);
 
     },
     render: function() {

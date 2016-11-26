@@ -12,46 +12,30 @@ var Search = React.createClass({
             posts: [],
             imgPosts: [],
             loading: 0,
-            postNumbers: 0
+            amountToRetrieve: 0
         }
     },
     componentDidMount: function() {
 
     },
     // tätä funkiota kutsutaan aina kun searchWord päivittyy
-    componentWillReceiveProps: function() {
-        console.log("prop update");
-        this.searchContent();
+    componentWillReceiveProps: function(nextProps) {
+        this.searchContent(nextProps);
         
     },
-    searchContent: function() {
+    searchContent: function(nextProps) {
           //var amountToRetrieve = this.state.postNumbers;
         //amountToRetrieve += 12;
         console.log(amountToRetrieve);
-        var amountToRetrieve = 50;
+        var amountToRetrieve = this.state.amountToRetrieve + 50;
         this.setState({
-            loading: 0
+            loading: true
         });
-        var searchWord = this.props.searchWord;
-        var searchTag;
+        console.log(nextProps.searchWord);
+        var searchWord = nextProps.searchWord;
+        var searchTag = searchWord;
+        
 
-        if (searchWord === 'm') {
-            searchTag = 'muu';
-        } else if (searchWord === 'pas') {
-            searchTag = 'pasin_koodit';
-        } else if (searchWord === 'va') {
-            searchTag = 'vapaa-aika';
-        } else if (searchWord === 'vai') {
-            searchTag = 'vainsinsinoorijutut';
-        } else if (searchWord === 'ka') {
-            searchTag = 'kalja';
-        } else if (searchWord === 'ki') {
-            searchTag = 'kissa';
-        } else if (searchWord === 'o') {
-            searchTag = 'opiskelu';
-        } else {
-            searchTag ='';
-        }
         
         console.log(searchTag);
         if (searchTag != '') {
@@ -67,15 +51,14 @@ var Search = React.createClass({
                     posts = $.map(snapshot.val(), function(post, index) {
                         return [post];
                     });
-                    var loadingNumber = 0;
-                    if (posts.length != 0) {
-                        loadingNumber = 1;
-                    }
+                    console.log(posts);
+                   
                     posts.reverse();
                     console.log(this.state.loading);
                     this.setState({
                         posts: posts,
-                        loading: loadingNumber
+                        loading: false,
+                        amountToRetrieve: amountToRetrieve
                     });
 
                 }.bind(this));
@@ -104,13 +87,14 @@ var Search = React.createClass({
     },
     render: function() {
 
-        if (this.state.loading !== 1) {
+        if (this.state.loading == true) {
             return(
                <div className="fade-in">
                     <div className="loader center-block"></div>
                 </div>   
             )
         }
+
 
         var posts = this.state.posts.map(function(post, index) {
             // haetaan sanan pituus jottain voidaan hakea myös kirjaimilla
@@ -147,11 +131,13 @@ var Search = React.createClass({
                     {posts}               
                </div>
 
-               {/*<div className="row">
+             { this.state.posts.length != 0 ?  (
+                   <div className="row">
                     <p className="text-center addMargin">
-                        <Button onClick={this.getJSON} className="text-center">Lataa lisää..</Button>
+                        <Button onClick={this.searchContent} className="text-center">Lataa lisää..</Button>
                     </p>
-               </div>*/}
+                </div>
+             ) : ( null ) }
             </div>    
             
         );
