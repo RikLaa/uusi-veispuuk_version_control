@@ -2,5 +2,18 @@ img{
     display:block;
     height: 250px;
     width: 250px;
+    float: left;
+
     
 }
+
+
+.profilePostaukset {
+    height: 200px;
+    float: left;
+    position:fixed;
+    clear:left;
+    margin-left: 125px;
+    
+}
+

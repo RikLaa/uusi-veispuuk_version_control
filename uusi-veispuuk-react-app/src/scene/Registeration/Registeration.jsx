@@ -13,7 +13,7 @@ var Registration = React.createClass({
         return (
             <div className="container">
                 <div className="row">
-                    <Button id="registerButton" bsStyle="success">rekistöreöidy</Button>
+                    <Button id="registerButton" bsStyle="success">rekisteröidy</Button>
                     
                 </div>
             </div>

@@ -2,8 +2,8 @@ import React from 'react';
 import firebase from 'firebase';
 import $ from 'jquery';
 import Post from '../Home/Post.jsx';
-
 import { Button } from 'react-bootstrap';
+import './Profile.css'
 
 
 
@@ -44,7 +44,7 @@ var Profileposts = React.createClass({
                 var postsTable = firebase.database().ref('posts');
 
                 var amountToRetrieve = this.state.postNumbers;
-                amountToRetrieve += 12;
+                amountToRetrieve += 8;
                 // console.log(amountToRetrieve);
 
                 // hae käyttäjät
@@ -155,17 +155,12 @@ var Profileposts = React.createClass({
         
         // tässä renderoidaan viimeiseksi koko Container 
         return (
-            <div className="container">
+            <div className="profilePostaukset">
                <div className="row fade-in">
                     {posts}               
                </div>
-
-               <div className="row">
-                    <p className="text-center addMargin">
-                        <Button onClick={this.getJSON} className="text-center">Lataa lisää..</Button>
-                    </p>
-               </div>
-            </div>    
+            </div>
+ 
         );
     }
 })
