@@ -15,6 +15,10 @@ var Home = React.createClass({
             newPost: null
         }
     },
+    componentWillReceiveProps: function() {
+        console.log("testi");
+        
+    },
     saveSearchInput: function(searchWord) {
         this.setState({
             searchWord: searchWord
@@ -38,6 +42,8 @@ var Home = React.createClass({
         );
     }
 });
+
+
 
 
 export default Home;

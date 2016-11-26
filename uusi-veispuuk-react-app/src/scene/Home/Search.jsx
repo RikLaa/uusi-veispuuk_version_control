@@ -21,7 +21,7 @@ var Search = React.createClass({
     // tätä funkiota kutsutaan aina kun searchWord päivittyy
     componentWillReceiveProps: function(nextProps) {
         this.searchContent(nextProps);
-        
+ 
     },
     searchContent: function(nextProps) {
 

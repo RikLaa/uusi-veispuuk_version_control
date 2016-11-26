@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, FormGroup, Form, FormControl, ControlLabel, Modal, Image } from 'react-bootstrap';
 
+
 var AddPictureModal = React.createClass({
     
         //Handle add picture
@@ -11,6 +12,7 @@ var AddPictureModal = React.createClass({
     reader.onload = function (e) {
         // get loaded data and render thumbnail.
         //console.log(e.target.result);
+
         document.getElementById("image_thumb").src = e.target.result;
     };
 

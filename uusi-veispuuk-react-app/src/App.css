@@ -11,6 +11,21 @@ html, body {
     font-family: sans-serif;
     background: #dde1e3;
 }
+.container {
+    border: 1px solid black;
+}
+
+
+.heading_text {
+    text-align: center;
+    padding-bottom: 2%;
+    font-size: 400%;
+    
+}
+.link, .link:hover, .link:visited, .link:active {
+    text-decoration: none;
+    color: black;
+}
 
 .background-color {
     background: #dde1e3;
@@ -35,6 +50,18 @@ html, body {
 .title-color {
     color: #3498db;
 }
+
+#Veispuuk_logo
+{
+    font-size: 450%;
+    margin-bottom: 2%;
+    text-align: center;
+}
+#Veispuuk_logo_link
+{
+    text-decoration: none;
+}
+
 
 
 
@@ -130,15 +157,93 @@ html, body {
     }
 }
 
+/*------------------HEADINGS------------------*/
+.p_cursive {
+    font-style: italic;
+}
+.h3_center {
+    text-align: center;
+    font-size: 200%;
+}
+.h5_center {
+    text-align: center;
+    font-size: 100%;
+    font-weight:bold;
+}
 
 /*-----------------------LOGIN---------------------*/
 
+#modal_login
+{
+    background-color:#ffffff; /*määrittää näkyykö rekisteröintilomake taustalla, jos tähän ei laita mitään, niin lomake näkyy*/
+    text-align: center;
+}
 
+#modal_form_login {
+text-align: left;
+padding-top: 10%;
+}
+#modal_login_footer {
+text-align: center;
+}
+button_center{
+    text-align: center;
+}
 
 /*-----------------------REGISTRATION---------------------*/
 
 
+
+
+#rekisterointi {
+margin-top: 5%;
+  padding: 25px 35px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  border: 1px solid #000;  
+  
+}
+
+
+#image_esikatselu {
+    max-width: 70%;
+}
+
+/*Rekisteröidy napista aukeava modaali*/
+#modal_rekisterointi
+{
+    background-color:#ffffff; /*määrittää näkyykö rekisteröintilomake taustalla, jos tähän ei laita mitään, niin lomake näkyy*/
+    text-align: center;
+}
+#modal_rekisterointi_body
+{
+    
+}
+
+#modal_rekisterointi_footer {
+    text-align: center;
+}
+#modal_form {
+text-align: left;
+padding-top: 10%;
+}
+#button1 {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+
 /*-----------------------HOME---------------------*/
+
+/*-----------------------ADD PICTURE / ADD POST MODALS----------------*/
+
+#image_thumb {
+    max-width: 100%;
+}
+#file_input {
+  
+}
+
 
 
 /*-----------------------CONTAINER---------------------*/
@@ -182,3 +287,15 @@ ul.nav a:visited { color: #777 !important; }
 
 /*-----------------------PROFILE---------------------*/
 
+
+
+/*-----------------------FAQ---------------------*/
+
+.container_heading {
+ text-align: center;   
+}
+
+.faq_q_a {
+    
+    padding: 1.5%;
+}

@@ -33,6 +33,7 @@ var AddPostModal = React.createClass({
         this.props.addPostToParent(newPost);
 
     },
+
     render: function() {
 
         return (

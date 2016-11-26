@@ -22,10 +22,10 @@ var NavBar = React.createClass({
             newPostsToRender: []
         }
     },
-    componentDidUpdate: function() {
-        //console.log(this.state.searchInput);
-         //this.props.getSearchInput(searchWord);
-    },
+   componentDidUpdate: function() {
+       //console.log(this.state.searchInput);
+        //this.props.getSearchInput(searchWord);
+   },
     showModal: function(type) {
         // määritetään näkyvyys jommalle kummalle modaalille
         if (type === "picture") {
