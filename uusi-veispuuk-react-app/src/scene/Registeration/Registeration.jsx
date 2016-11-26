@@ -93,9 +93,9 @@ var Registration = React.createClass({
         return (
             <div className="container">
                 <div className="row">
-<<<<<<< HEAD
+
                     <Button id="registerButton" bsStyle="success">rekisteröidy</Button>
-=======
+
                
 
 <Form horizontal id="rekisterointi"  className="col-md-8 col-md-offset-2" onSubmit={this.validateForm} data-toggle="validator" method="#" >
@@ -269,7 +269,6 @@ var Registration = React.createClass({
 </div>       
                     
                     </div>    
->>>>>>> refs/remotes/origin/Develop
                     
                 </div>
            

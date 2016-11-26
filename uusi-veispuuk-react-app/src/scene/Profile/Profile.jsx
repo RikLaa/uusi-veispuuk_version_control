@@ -11,6 +11,9 @@ import comments from '../Home/Comment.jsx'
 import {Form, FormControl, FormGroup} from 'react-bootstrap';
 import Profileposts from './Profileposts.jsx'
 import Post from './Profileposts.jsx'
+import Comment from '../Home/Comment.jsx'
+import Profilename from './Profilename.jsx'
+import './Profile.css'
 
 var Profile = React.createClass({
     render: function () {
@@ -36,14 +39,31 @@ var Profile = React.createClass({
             
             <div className="profilePostaukset">
             <Post />
-            </div>
+
+            <div>
             
               </div>
+            </div>
+                            <div className="enimi">
+                                <h2>Ismo</h2>
+                                
+                            </div>
+                            <div className="snimi">
+                                <h2>Insinööri</h2>
+                                
+                            </div>
+                            <div className="userinfo">
+                                <p>Olen ismo ja opiskelen insinööriksi.</p>
+                            </div>                   
+                               </div> 
+           
+            
             
 
         );
            
     }
+    
     
   
  
