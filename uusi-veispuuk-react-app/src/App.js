@@ -14,7 +14,9 @@ import { Router, Route, hashHistory, IndexRedirect } from 'react-router';
 // Sovelluksen komponentit, eli näkymät
 import Home from './scene/Home/Home.jsx';
 import Container from './scene/Home/Container.jsx';
+import Search from './scene/Home/Search.jsx';
 import Profile from './scene//Profile/Profile.jsx';
+import FAQ from './scene/Home/FAQ.jsx';
 import Login from './scene/Login/Login.jsx';
 import Registeration from './scene/Registeration/Registeration.jsx'
 
@@ -38,9 +40,8 @@ MUISTA KOMMENTOIDA TUO ALEMPI ROUTER KOMPONENTTI SILLOIN POIS */
 
 /*---------------------------------------------------*/
 
-
 // React router toimii tässä. Profile polku ei toimi vielä linkkinä jostain syystä.
-// Jos haluat editoida esim registeration -sivua, niin kirjoita selaimeen osoiteriville  "localhost:3000/registeration", tällöin näät kyseisen sivun
+// Jos haluat editoida esim registeration -sivua, niin kirjoitaaa selaimeen osoiteriville  "localhost:3000/registeration", tällöin näät kyseisen sivun
 var App = React.createClass({
   render: function () {
     return (
@@ -50,7 +51,9 @@ var App = React.createClass({
           <Route path="home" component={Home}>
             <IndexRedirect to="/home/main"></IndexRedirect>
             <Route path="main" component={Container}></Route>
+            <Route path="search" component={Search}></Route>
             <Route path="profile" component={Profile}></Route>
+            <Route path="FAQ" component={FAQ}></Route>
           </Route>
       </Router>
     );
