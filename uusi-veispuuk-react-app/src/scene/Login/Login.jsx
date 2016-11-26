@@ -60,7 +60,7 @@ var LoginBox = React.createClass({
 
 
                 <div>
-                <Modal show={this.state.showModal} id= "modal_login">
+                <Modal show={this.state.showModal} id="modal_login">
                 <Modal.Header><h1>Tervetuloa!</h1></Modal.Header>
                 <Modal.Body> 
                              <div id="modal_form_login"> 
@@ -96,14 +96,14 @@ var LoginBox = React.createClass({
                             </div> 
                 </Modal.Body>
                
-                    <Modal.Footer id= "modal_login_footer"> 
+                    <Modal.Footer id="modal_login_footer"> 
                 { this.props.children }
                         
                         
                     <Button type="submit" bsStyle="success" onClick={this.handleSignIn} > <Link id="button1" to="home">Kirjaudu sisään</Link></Button>
                                        
                      
-                        <Button type="submit" bsStyle="primary" onClick={this.handleSignIn}> <Link id="button1" to="registeration">Rekisteröidy</Link></Button>
+                        <Button type="submit" bsStyle="primary"> <Link id="button1" to="registeration">Rekisteröidy</Link></Button>
                         
                          <Button type="submit" bsStyle="info" onClick={this.handleSignIn}> <Link id="button1" to="FAQ">FAQ</Link></Button>
                     </Modal.Footer>

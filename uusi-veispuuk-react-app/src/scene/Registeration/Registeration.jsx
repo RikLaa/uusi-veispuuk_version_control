@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, FormGroup, Form, FormControl, Col, Checkbox, ControlLabel, InputGroup, DropdownButton, MenuItem,FieldGroup, Modal, poover,tooltip, HelpBlock } from 'react-bootstrap';
+import { Button, FormGroup, Form, FormControl, Col, Checkbox, ControlLabel, Modal } from 'react-bootstrap';
 import $ from 'jquery';
 import firebase from 'firebase';
 import { Link } from 'react-router';
@@ -36,12 +36,13 @@ var Registration = React.createClass({
       //  var name = this.refs.name.value;
         // Console.log tulostaa inputin valuen vain jos on määritelty näin:ReactDOM.findDOMNode(this.refs.name); jos laittaa (this.refs.email.value); Niin valuea ei saada. Kuitenkaan tämä taktiikka ei sitten toimi loppuun asti. DUH
         //Palataan asiaan jos liikaa aikaa..
+        
         var name = ReactDOM.findDOMNode(this.refs.name);
-        var email = ReactDOM.findDOMNode(this.refs.email.value);
-        var fname = ReactDOM.findDOMNode(this.refs.fname.value);
+        // var email = ReactDOM.findDOMNode(this.refs.email.value);
+        // var fname = ReactDOM.findDOMNode(this.refs.fname.value);
         var password = ReactDOM.findDOMNode(this.refs.password);
         var password2 = ReactDOM.findDOMNode(this.refs.password2);
-        var box = ReactDOM.findDOMNode(this.refs.box.value);
+        // var box = ReactDOM.findDOMNode(this.refs.box.value);
          console.log(name.value);
         console.log(password.value);
         console.log(password2.value);
@@ -62,7 +63,7 @@ var Registration = React.createClass({
     
     
     //Handle add picture
-  addPicture: function(e){
+    addPicture: function(e){
       console.log(e.target);
       var reader = new FileReader();
 
@@ -74,11 +75,8 @@ var Registration = React.createClass({
 
     // read the image file as a data URL.
     reader.readAsDataURL(e.target.files[0]);
-  },
-    
-
-    
-        handleSignIn: function () {
+  },  
+    handleSignIn: function () {
 
         var email = "testi@testi.com";
         var password = "salasana";
@@ -91,9 +89,6 @@ var Registration = React.createClass({
         console.log("signed in");
             
     },
-    
-    
-    
     render: function () {
         return (
             <div className="container">
@@ -159,8 +154,8 @@ var Registration = React.createClass({
       </Col>
       <Col sm={10}>
       
-<input type="file" id="uploadimage" name="datafile" size="45" onChange= {this.addPicture}  ref='picture'/>
-        <img id="image_esikatselu"/>
+<input type="file" id="uploadimage" name="datafile" size="45" onChange={this.addPicture}  ref='picture'/>
+        <img alt="preview" id="image_esikatselu"/>
         
              </Col>
     </FormGroup>
@@ -210,14 +205,14 @@ var Registration = React.createClass({
                     
 <div>
  {/* Rekisteröinti onnistui modaali*/}
-            <Modal show={this.state.showModal} id= "modal_rekisterointi">
+            <Modal show={this.state.showModal} id="modal_rekisterointi">
        
     <Modal.Header closeButton onClick={this.close}>
 
        <h1>Rekisteröitymisesi onnistui</h1></Modal.Header>
        
-       <Modal.Body id= "modal_rekisterointi_body">
-           <div id ="modal_rekisterointi_teksti">
+       <Modal.Body id="modal_rekisterointi_body">
+           <div id="modal_rekisterointi_teksti">
             <h4>Sait vahvistuksen sähköpostiisi.</h4>
             <p>
                 Etkö saanut vahvistusta? <a>klikkaa tästä.</a>

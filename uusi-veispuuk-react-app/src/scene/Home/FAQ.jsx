@@ -1,11 +1,5 @@
 import React from 'react';
-import firebase from 'firebase';
-import $ from 'jquery';
-
-import { Button ,Modal } from 'react-bootstrap';
-import file from './FAQ.json';
-
-
+// import firebase from 'firebase';
 
 
 var FAQ = React.createClass({
