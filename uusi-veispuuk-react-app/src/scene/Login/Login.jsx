@@ -16,13 +16,13 @@ import './Login.css';
   };
   firebase.initializeApp(config);
 
-firebase.auth().onAuthStateChanged(function(user) {
+/*firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
       console.log("user signed in");
   } else {
     console.log("user NOT signed in");
   }
-});
+});*/
 
 var Login = React.createClass({
     render: function() {
@@ -97,7 +97,7 @@ var LoginBox = React.createClass({
                 </Modal.Body>
                
                     <Modal.Footer id="modal_login_footer"> 
-                { this.props.children }
+                
                         
                         
                     <Button type="submit" bsStyle="success" onClick={this.handleSignIn} > <Link id="button1" to="home">Kirjaudu sisään</Link></Button>
@@ -105,7 +105,7 @@ var LoginBox = React.createClass({
                      
                         <Button type="submit" bsStyle="primary"> <Link id="button1" to="registeration">Rekisteröidy</Link></Button>
                         
-                         <Button type="submit" bsStyle="info" onClick={this.handleSignIn}> <Link id="button1" to="FAQ">FAQ</Link></Button>
+                         <Button type="submit" bsStyle="info"> <Link id="button1" to="FAQ">FAQ</Link></Button>
                     </Modal.Footer>
                 </Modal>
                 

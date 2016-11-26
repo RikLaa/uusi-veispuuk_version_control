@@ -122,6 +122,10 @@ var NavBar = React.createClass({
                         </Navbar.Form>
                     ) : null }
                         
+                        {/*<Nav className="col-sm-10" id="navbar_logo">
+                            <NavItem href="#/home/" className="" id="">Etusivulle</NavItem>
+                        </Nav>*/}
+
                         <Nav pullRight>
                         <NavDropdown noCaret eventKey={3} title={<span className="glyphicon glyphicon-user navbar-icon" />} id="nav-dropdown-2">
                         <MenuItem eventKey={3.1} href="#/home/profile">Profiili</MenuItem>

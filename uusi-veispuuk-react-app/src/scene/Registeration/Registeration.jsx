@@ -255,7 +255,7 @@ var Registration = React.createClass({
 
           </Modal.Body>
           <Modal.Footer id="modal_rekisterointi_footer">
-              { this.props.children }
+              
 
               <Button type="submit" bsStyle="success" onClick={this.handleSignIn}> <Link id="button1" to="home">Kirjaudu sisään</Link>
         </Button>

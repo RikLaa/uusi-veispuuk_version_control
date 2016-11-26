@@ -48,6 +48,7 @@ var App = React.createClass({
         <Router history={hashHistory}>
           <Route path="/" component={Login} />
           <Route path="registeration" component={Registeration}></Route>
+          <Route path="FAQ" component={FAQ}></Route>
           <Route path="home" component={Home}>
             <IndexRedirect to="/home/main"></IndexRedirect>
             <Route path="main" component={Container}></Route>

@@ -62,7 +62,7 @@ var Post = React.createClass({
                      return "";
                  }
              });*/
-
+             var name = 'username';
              var key = comment.commentID;
              var content = comment.content;
              var date = comment.date.slice(0, 11);

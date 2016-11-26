@@ -12,7 +12,7 @@ html, body {
     background: #dde1e3;
 }
 .container {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
 }
 
 
@@ -215,10 +215,7 @@ margin-top: 5%;
     background-color:#ffffff; /*määrittää näkyykö rekisteröintilomake taustalla, jos tähän ei laita mitään, niin lomake näkyy*/
     text-align: center;
 }
-#modal_rekisterointi_body
-{
-    
-}
+
 
 #modal_rekisterointi_footer {
     text-align: center;
@@ -240,9 +237,7 @@ padding-top: 10%;
 #image_thumb {
     max-width: 100%;
 }
-#file_input {
-  
-}
+
 
 
 
@@ -283,6 +278,10 @@ ul.nav a:visited { color: #777 !important; }
 #nav-dropdown-2 {
     /*Tehdään iconista pyöreä*/
     border-radius: 60px;
+}
+
+#navbar_logo {
+    
 }
 
 /*-----------------------PROFILE---------------------*/
