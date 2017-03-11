@@ -61,7 +61,6 @@ var App = React.createClass({
   }
 });
 
-console.log('hellou');
 
 
 // Exporttaa tällä sivulla luodun komponentin. Käytetään tätä syntaksia exportatessa.
