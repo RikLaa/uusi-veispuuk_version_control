@@ -8,7 +8,7 @@ ps. jQueryn importtaaminen = import $ from 'jquery'
 // Reactin kirjastot
 import React from 'react';
 // jos importtaat router kirjastosta käytä alla olevaa syntaksia. Jostain syystä esim "import Link from 'react-router' ei toiminut oikein
-import { Router, Route, hashHistory, IndexRedirect } from 'react-router';
+import { Router, Route, browserHistory, IndexRedirect } from 'react-router';
 
 
 // Sovelluksen komponentit, eli näkymät
@@ -45,7 +45,7 @@ MUISTA KOMMENTOIDA TUO ALEMPI ROUTER KOMPONENTTI SILLOIN POIS */
 var App = React.createClass({
   render: function () {
     return (
-        <Router history={hashHistory}>
+        <Router history={browserHistory}>
           <Route path="/" component={Login} />
           <Route path="registeration" component={Registeration}></Route>
           <Route path="FAQ" component={FAQ}></Route>

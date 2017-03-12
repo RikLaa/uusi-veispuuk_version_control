@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 // Pääsivun sisältö. Navbar, container yms
 import NavBar from './NavBar.jsx';
@@ -30,6 +31,13 @@ var Home = React.createClass({
         this.setState({
             newPost: post
         });
+    },
+    componentDidMount: function() {
+        console.log('mounted');
+        axios.get('/api')
+        .then( (response) => {
+            console.log(response);
+        } )
     },
     render: function () {
         return (            

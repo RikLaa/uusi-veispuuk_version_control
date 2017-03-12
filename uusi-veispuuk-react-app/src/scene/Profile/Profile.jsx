@@ -1,7 +1,7 @@
 import React from 'react';
 import * as firebase from 'firebase';
 import './Profile.css';
-import $ from 'jquery';
+// import $ from 'jquery';
 import { Button ,Modal } from 'react-bootstrap';
 import Container from '../Home/Container.jsx'
 import data from './Userdata.json'

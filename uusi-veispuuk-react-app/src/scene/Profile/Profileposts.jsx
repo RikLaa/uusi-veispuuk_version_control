@@ -1,6 +1,6 @@
 import React from 'react';
 import firebase from 'firebase';
-import $ from 'jquery';
+
 import Post from '../Home/Post.jsx';
 import { Button } from 'react-bootstrap';
 import './Profile.css'
@@ -50,9 +50,13 @@ var Profileposts = React.createClass({
                 // hae käyttäjät
                 var users = [];
                 var usersRef = usersTable.once('value', function(snapshot) {
-                    users = $.map(snapshot.val(), function(user, index) {
+                    users = snapshot.val().map( function(user, index) {
                         return [user];
-                    });
+                    })
+
+                    // users = $.map(snapshot.val(), function(user, index) {
+                    //     return [user];
+                    // });
                     // console.log("käyttäjät");
                     // tallennetaan käyttäjät containerin this.state.users tilaan. Lisätään loading tilaa yhdellä
                     this.setState({
@@ -65,9 +69,13 @@ var Profileposts = React.createClass({
                 // hae kuvapostaukset
                 var imgPosts = [];
                 var recentImgPostsRef = imgPostsTable.orderByKey().startAt('0').limitToLast(amountToRetrieve).once('value', function(snapshot) {
-                    imgPosts = $.map(snapshot.val(), function(imgPost, index) {
+                imgPosts = snapshot.val().map( function(imgPost, index) {
                         return [imgPost];
                     });
+                    
+                    // imgPosts = $.map(snapshot.val(), function(imgPost, index) {
+                    //     return [imgPost];
+                    // });
                     imgPosts.reverse();
                     // console.log("kuvat");
                     //console.log(imgPosts);
@@ -81,13 +89,17 @@ var Profileposts = React.createClass({
                 // hae tekstipostaukset
                 var posts = [];
                 var recentPostsRef = postsTable.orderByKey().startAt('0').limitToLast(amountToRetrieve).once('value', function(snapshot) {
-                   
-                    //console.log(snapshot.val());
-                    posts = $.map(snapshot.val(), function(post, index) {
+                   posts = snapshot.val().map(function(post, index) {
                         if (post !== undefined) {
                          return [post];
-                        } 
+                        }
                     });
+                    //console.log(snapshot.val());
+                    // posts = $.map(snapshot.val(), function(post, index) {
+                    //     if (post !== undefined) {
+                    //      return [post];
+                    //     } 
+                    // });
                     posts.reverse();
                     //  console.log(posts);
                     // console.log("postaukset");

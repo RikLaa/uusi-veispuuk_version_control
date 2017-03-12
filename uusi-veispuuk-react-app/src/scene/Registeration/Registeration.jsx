@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, FormGroup, Form, FormControl, Col, Checkbox, ControlLabel, Modal } from 'react-bootstrap';
-import $ from 'jquery';
+// import $ from 'jquery';
 import firebase from 'firebase';
 import { Link } from 'react-router';
 import ReactDOM from 'react-dom';
@@ -12,9 +12,9 @@ var Registration = React.createClass({
         return{showModal: false}
        },
     componentDidMount: function () {
-        $('#registerButton').click(function () {
-            console.log("click");
-        });
+        // $('#registerButton').click(function () {
+        //     console.log("click");
+        // });
     },
     Open: function () {
         this.setState ({
