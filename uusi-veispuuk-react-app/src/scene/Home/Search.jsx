@@ -1,6 +1,6 @@
 import React from 'react';
 import firebase from 'firebase';
-import $ from 'jquery';
+// import $ from 'jquery';
 
 import { Button } from 'react-bootstrap';
 
@@ -45,10 +45,14 @@ var Search = React.createClass({
                 var imgPostsTable = firebase.database().ref('imgPosts');
                 var imgPosts = [];
 
-                var getPosts = postsTable.orderByChild('tag').equalTo(searchTag).once('value', function(snapshot) {
-                    posts = $.map(snapshot.val(), function(post, index) {
+                postsTable.orderByChild('tag').equalTo(searchTag).once('value', function(snapshot) {
+                    posts = snapshot.val().map(function(post, index) {
                         return [post];
                     });
+
+                    // posts = $.map(snapshot.val(), function(post, index) {
+                    //     return [post];
+                    // });
                     console.log(posts);
                    
                     posts.reverse();
@@ -61,10 +65,14 @@ var Search = React.createClass({
 
                 }.bind(this));
 
-                var getImgPosts = imgPostsTable.orderByKey().startAt('0').limitToLast(amountToRetrieve).once('value', function(snapshot) {
-                    imgPosts = $.map(snapshot.val(), function(imgPost, index) {
+                imgPostsTable.orderByKey().startAt('0').limitToLast(amountToRetrieve).once('value', function(snapshot) {
+                    imgPosts = snapshot.val().map( function(imgPost, index) {
                         return [imgPost];
                     });
+
+                    // imgPosts = $.map(snapshot.val(), function(imgPost, index) {
+                    //     return [imgPost];
+                    // });
                     imgPosts.reverse();
                     
                     this.setState({
