@@ -1,5 +1,4 @@
 import React from 'react';
-import * as firebase from 'firebase';
 import './Profile.css';
 // import $ from 'jquery';
 import { Button ,Modal } from 'react-bootstrap';
@@ -17,20 +16,6 @@ import './Profile.css'
 
 var Profile = React.createClass({
     render: function () {
-        
-        function showimage() {
-         var storageRef = firebase.storage().ref();
-         var spaceRef = storageRef.child('images/0.jpg');
-         storageRef.child('images/0.jpg').getDownloadURL().then(function(url) {
-             var profiilikuva = url;
-             alert(url);
-             document.querySelector('img').src = 'profiilikuva';
-             
-             var database = firebase.database();
-
-         });
-
-     }
         
         return (
             <div id="profiilikuva">

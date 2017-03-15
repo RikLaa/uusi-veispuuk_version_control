@@ -1,6 +1,4 @@
 import React from 'react';
-import firebase from 'firebase';
-//import $ from 'jquery';
 
 import AddPostModal from './NavBarModals/AddPostModal.jsx';
 import AddPictureModal from './NavBarModals/AddPictureModal.jsx';
@@ -54,12 +52,7 @@ var NavBar = React.createClass({
         });
     },
     handleSignOut: function () {
-        firebase.auth().signOut().then(function() {
-            // Sign-out successful.
-            }, function(error) {
-            // An error happened.
-        });
-        console.log("signed out");  
+
     },
     // määritellään search boxin näkyvyys
     showSearch: function (e) { 
@@ -102,7 +95,7 @@ var NavBar = React.createClass({
                         <MenuItem divider />
                         <MenuItem eventKey={1.3} href="#/home/FAQ">FAQ</MenuItem>
                     </NavDropdown>
-                    <NavItem onClick={this.showSearch} eventKey={2} href={ this.state.showSearch ? ("#/home/search") : ("#/home/")}><span className="glyphicon glyphicon-search navbar-icon" /></NavItem>
+                    <NavItem onClick={this.showSearch} eventKey={2}><span className="glyphicon glyphicon-search navbar-icon" /></NavItem>
                         {/* <NavItem eventKey={2} href="#">Link</NavItem> */}    
                     </Nav>
                            

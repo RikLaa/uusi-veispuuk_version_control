@@ -1,5 +1,4 @@
 import React from 'react';
-import firebase from 'firebase';
 import Post from './Post.jsx';
 
 import { Button } from 'react-bootstrap';
@@ -30,97 +29,7 @@ var Container = React.createClass({
 
     },
     getJSON: function() {
-          /* tehdään jos käyttäjä on kirjautunut sisään. Koska kaikki on asynconista joudutaan aina suorittamaan
-        yksi asia kerrallaan. ESIM jos yritetään hakea postaukset tietokannasta heti login sivulta tultaessa,
-        se ei onnistu koska käyttäjän kirjautumista ei ole vielä varmistettu. Alla oleva funktio varmistaa että
-        käyttäjä on varmasti kirjautunut sisään ennen kuin muita toimenpiteitä tehdään*/
-           firebase.auth().onAuthStateChanged(function(user) {
-            if (user) {
-                console.log("user signed in");
 
-                var usersTable = firebase.database().ref('users');
-                var imgPostsTable = firebase.database().ref('imgPosts');
-                var postsTable = firebase.database().ref('posts');
-
-                var amountToRetrieve = this.state.postNumbers;
-                amountToRetrieve += 12;
-                // console.log(amountToRetrieve);
-
-                // hae käyttäjät
-                var users = [];
-                usersTable.once('value', function(snapshot) {
-                    var usersArray = Array.from(snapshot.val());
-                    users = usersArray.map( function(user, index) {
-                        return [user];
-                    })
-                    // users = $.map(snapshot.val(), function(user, index) {
-                        // return [user];
-                    // });
-                    // console.log("käyttäjät");
-                    // tallennetaan käyttäjät containerin this.state.users tilaan. Lisätään loading tilaa yhdellä
-                    this.setState({
-                        users: users,
-                        loading: this.state.loading + 1
-                    });
-                    //console.log(users);
-                }.bind(this));
-
-                // hae kuvapostaukset
-                var imgPosts = [];
-                imgPostsTable.orderByKey().startAt('0').limitToLast(amountToRetrieve).once('value', function(snapshot) {
-                    var imgArray = Array.from(snapshot.val());
-                    console.log(imgArray)
-                    imgPosts = imgArray.map(function(imgPost, index) {
-                        return [imgPost];
-                    })
-
-                    // imgPosts = $.map(snapshot.val(), function(imgPost, index) {
-                    //     return [imgPost];
-                    // });
-                    imgPosts.reverse();
-                    // console.log("kuvat");
-                    //console.log(imgPosts);
-                    this.setState( {
-                        imgPosts: imgPosts,
-                        loading: this.state.loading + 1,
-                    });
-
-                }.bind(this));
-
-                // hae tekstipostaukset
-                var posts = [];
-                postsTable.orderByKey().startAt('0').limitToLast(amountToRetrieve).once('value', function(snapshot) {
-                    var postArray = Array.from(snapshot.val());
-                    posts = postArray.map(function(post, index) {
-                     if (post !== undefined) {
-                         return [post];
-                        } 
-                    })
-
-                    //console.log(snapshot.val());
-                    // posts = $.map(snapshot.val(), function(post, index) {
-                    //     if (post !== undefined) {
-                    //      return [post];
-                    //     } 
-                    // });
-                    posts.reverse();
-                    //  console.log(posts);
-                    // console.log("postaukset");
-                    //console.log(posts);
-                    /* tallennetaan taulukko this.state.posts -tilaan,
-                    ja vaihdetaan loading: false. Jolloin tiedetään että kaikki on ladattu. */
-                    this.setState({
-                        posts: posts,
-                        loading: this.state.loading + 1,
-                        postNumbers: amountToRetrieve
-                    });
-                    
-                }.bind(this));  
-            
-            } else {
-                console.log("user NOT signed in");
-            }
-            }.bind(this));  
     },
     render: function () {
 

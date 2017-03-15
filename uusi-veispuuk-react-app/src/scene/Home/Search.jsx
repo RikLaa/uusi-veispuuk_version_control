@@ -1,6 +1,4 @@
 import React from 'react';
-import firebase from 'firebase';
-// import $ from 'jquery';
 
 import { Button } from 'react-bootstrap';
 
@@ -25,71 +23,6 @@ var Search = React.createClass({
     },
     searchContent: function(nextProps) {
 
-        var amountToRetrieve = this.state.amountToRetrieve + 50;
-        this.setState({
-            loading: true
-        });
-        console.log(nextProps.searchWord);
-        var searchWord = nextProps.searchWord;
-        var searchTag = searchWord;
-        
-
-        
-        console.log(searchTag);
-        if (searchTag !== '') {
-        firebase.auth().onAuthStateChanged(function(user) {
-            if (user) {
-                
-                var postsTable = firebase.database().ref('posts/');
-                var posts = [];
-                var imgPostsTable = firebase.database().ref('imgPosts');
-                var imgPosts = [];
-
-                postsTable.orderByChild('tag').equalTo(searchTag).once('value', function(snapshot) {
-                    posts = snapshot.val().map(function(post, index) {
-                        return [post];
-                    });
-
-                    // posts = $.map(snapshot.val(), function(post, index) {
-                    //     return [post];
-                    // });
-                    console.log(posts);
-                   
-                    posts.reverse();
-                    console.log(this.state.loading);
-                    this.setState({
-                        posts: posts,
-                        loading: false,
-                        amountToRetrieve: amountToRetrieve
-                    });
-
-                }.bind(this));
-
-                imgPostsTable.orderByKey().startAt('0').limitToLast(amountToRetrieve).once('value', function(snapshot) {
-                    imgPosts = snapshot.val().map( function(imgPost, index) {
-                        return [imgPost];
-                    });
-
-                    // imgPosts = $.map(snapshot.val(), function(imgPost, index) {
-                    //     return [imgPost];
-                    // });
-                    imgPosts.reverse();
-                    
-                    this.setState({
-                        imgPosts: imgPosts
-                        //loading: this.state.loading + 1
-                    });
-
-                }.bind(this));
-
-               
-
-            } else  {
-                console.log("user not logged in");
-            }
-        }.bind(this));
-
-        }
     },
     render: function() {
 

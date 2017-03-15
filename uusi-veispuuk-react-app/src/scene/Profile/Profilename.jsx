@@ -1,5 +1,4 @@
 import React from 'react';
-import * as firebase from 'firebase';
 
 var Profilename = React.createClass({
     

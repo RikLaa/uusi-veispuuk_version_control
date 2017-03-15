@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button, FormGroup, Form, FormControl, Col, Checkbox, ControlLabel, Modal } from 'react-bootstrap';
 // import $ from 'jquery';
-import firebase from 'firebase';
 import { Link } from 'react-router';
 import ReactDOM from 'react-dom';
 
@@ -77,16 +76,6 @@ var Registration = React.createClass({
     reader.readAsDataURL(e.target.files[0]);
   },  
     handleSignIn: function () {
-
-        var email = "testi@testi.com";
-        var password = "salasana";
-        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            // ...
-        });
-        console.log("signed in");
             
     },
     render: function () {

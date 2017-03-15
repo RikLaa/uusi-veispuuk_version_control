@@ -1,28 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
-import firebase from 'firebase';
 
 import { Button, Modal, ControlLabel, FormGroup, Form, Col, FormControl, Checkbox} from 'react-bootstrap';
 
 import './Login.css'; 
-
- // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBKdpXjEkwmATZJCifxicLQirKkcGTN8oY",
-    authDomain: "uusi-veispuuk-react-app.firebaseapp.com",
-    databaseURL: "https://uusi-veispuuk-react-app.firebaseio.com",
-    storageBucket: "uusi-veispuuk-react-app.appspot.com",
-    messagingSenderId: "175581837886"
-  };
-  firebase.initializeApp(config);
-
-/*firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-      console.log("user signed in");
-  } else {
-    console.log("user NOT signed in");
-  }
-});*/
 
 var Login = React.createClass({
     render: function() {
@@ -43,15 +24,6 @@ var LoginBox = React.createClass({
     
     handleSignIn: function () {
 
-        var email = "testi@testi.com";
-        var password = "salasana";
-        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-            // Handle Errors here.
-            //var errorCode = error.code;
-            //var errorMessage = error.message;
-            // ...
-        });
-        console.log("signed in");
             
     },
     render: function () {
