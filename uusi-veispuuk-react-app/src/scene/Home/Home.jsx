@@ -33,7 +33,7 @@ var Home = React.createClass({
         });
     },
     componentDidMount: function() {
-        console.log('mounted');
+        console.log('Im riku can you work plz');
         axios.get('/api')
         .then( (response) => {
             console.log(response);
