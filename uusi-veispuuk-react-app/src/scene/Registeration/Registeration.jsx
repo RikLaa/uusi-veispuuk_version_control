@@ -83,7 +83,7 @@ var Registration = React.createClass({
             <div className="container">
                 <div className="row">
 
-                    <Button id="registerButton" bsStyle="success">rekisteröidy</Button>
+                    
 
                
 
@@ -159,7 +159,6 @@ var Registration = React.createClass({
       </Col>
     <Col sm={10}> 
    
-    
       <FormControl componentClass="select" placeholder="select">
         <option value="select">Rajakatu</option>
         <option value="other">Dynamo</option>

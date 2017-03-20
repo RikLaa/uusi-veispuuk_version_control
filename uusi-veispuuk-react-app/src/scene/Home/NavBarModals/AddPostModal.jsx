@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { Button, FormGroup, Form, FormControl, ControlLabel, Modal } from 'react-bootstrap';
 
 var AddPostModal = React.createClass({
@@ -43,7 +44,7 @@ var AddPostModal = React.createClass({
                         <Modal.Title className="text-center">Aloita keskustelu</Modal.Title> </Modal.Header>
                         <Modal.Body>
             
-                        <Form horizontal>
+                        <Form horizontal action="tähänjotainmillätoteutetaan se ajax sinne ööö posts/create osoitteeseen">
                             <div className="Row"> 
                                 <div className="col-sm-12 coll-sm-offset">
                                     <FormGroup>
