@@ -50,10 +50,10 @@ var Registration = React.createClass({
     //    alert("Name must be filled out");
     //    return false;
     //}
-         if (name.value === null) {
-         alert("Name must be filled out");
-         return false;
-     }
+      //   if (name.value === null) {
+    //     alert("Name must be filled out");
+      //   return false;
+    // }
                if (password === null) {
         alert("password must be filled out");
        return false;}
