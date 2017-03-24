@@ -10,11 +10,7 @@ var Registration = React.createClass({
     getInitialState: function() {
         return{showModal: false}
        },
-    componentDidMount: function () {
-        // $('#registerButton').click(function () {
-        //     console.log("click");
-        // });
-    },
+ 
     Open: function () {
         this.setState ({
             showModal: true
@@ -27,7 +23,7 @@ var Registration = React.createClass({
         });
     },
     
-    //handle submit Form Validation
+    //handle submit Form validation // ei tää oikeesti mitään validoi, kuha ottaa talteen
     validateForm: function (e) {
       //  var divDOMNode = ReactDOM.findDOMNode(ref);
         // prevent normal submit event
@@ -42,18 +38,10 @@ var Registration = React.createClass({
         var password = ReactDOM.findDOMNode(this.refs.password);
         var password2 = ReactDOM.findDOMNode(this.refs.password2);
         // var box = ReactDOM.findDOMNode(this.refs.box.value);
-         console.log(name.value);
+        console.log(name.value);
         console.log(password.value);
         console.log(password2.value);
-        
-   //     if (name.value === "" || name=="" || name==null) { } {
-    //    alert("Name must be filled out");
-    //    return false;
-    //}
-      //   if (name.value === null) {
-    //     alert("Name must be filled out");
-      //   return false;
-    // }
+
                if (password === null) {
         alert("password must be filled out");
        return false;}

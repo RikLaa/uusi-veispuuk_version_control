@@ -38,10 +38,65 @@ var AddPostModal = React.createClass({
     }, */
     
     
+    handleUserMessage: function (e) {
+        
+       var title = ReactDOM.findDOMNode(this.refs.title);
+        var content = ReactDOM.findDOMNode(this.refs.content);
+        var tag = ReactDOM.findDOMNode(this.refs.tag);
+      if (title !== '', content !== '') {
+        // call the sendmessages of ChatContainer throught the props
+        this.sendMessage(title);
+        //this.props.sendMessage(content);
+        //this.props.sendMessage(tag);
+          
+      }
+      // Prevent default and clear the textarea
+      event.preventDefault();
+      this.refs.title.value = null;
+    this.refs.content.value = null;
     
+    },
+    
+    // add a new message AND update the messages list
+  sendMessage: function(tiitle) {
+      
+      // Send a get request axios
+
+     axios.get('/api/posts/create', {
+    phptitle: 'ARSKA WAS HERE',
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  }); 
+      
+     
+  },      
+      
+      /*
+      axios({
+  method: 'get',
+  //url: '/api/posts/create',
+  url: '/api',
+  data: {
+      phptitle: tiitle,      
+  },
+
+  
+});
+      
+      
+      */
+      
+      
+      
+      
+
     
         //Ottaa formin datan talteen
-    StoreFormData: function (e) {
+  /*  StoreFormData: function (e) {
      
       
         // Console.log tulostaa inputin valuen vain jos on määritelty näin:ReactDOM.findDOMNode(this.refs.email); jos laittaa (this.refs.email.value); Niin valuea ei saada. Kuitenkaan tämä taktiikka ei sitten toimi loppuun asti. DUH
@@ -53,10 +108,11 @@ var AddPostModal = React.createClass({
         console.log(title.value);
         console.log(content.value);
         console.log(tag.value);
+        */
         
   
     //    { this.Open();}
-    },
+ //   },
     
     
 
@@ -103,7 +159,7 @@ var AddPostModal = React.createClass({
                     </Modal.Body>
                 <Modal.Footer>
             <div className="col-sm-3 col-md-offset-9">
-           <Button type="submit" bsStyle="success" onClick={this.StoreFormData}>Julkaise</Button>
+           <Button type="submit" bsStyle="success" onClick={this.handleUserMessage}>Julkaise</Button>
              
              </div>
                 </Modal.Footer>
