@@ -74,8 +74,8 @@ var Container = React.createClass({
             var title = post.title;
             var content = post.content;
             var comments = post.comments;
-            var date = post.date.slice(0, 11);
-            var time = post.date.slice(10, 21);
+            var date = post.created_at.slice(0, 11);
+            var time = post.created_at.slice(10, 21);
             var tag = post.tag;
             //console.log(post);
             /* renderoidaan jokainen postauskomponentti Post-komponentin avulla. 
