@@ -50,28 +50,28 @@ var Post = React.createClass({
     render: function () {
 
 
-        // käydään läpi kaikki kommentit ja renderoidaan ne näytölle Comment -komponentin avulla
-         var comments = this.props.comments.map(function (comment) {
-             /*var userID = comment.userID;
+       /* // käydään läpi kaikki kommentit ja renderoidaan ne näytölle Comment -komponentin avulla*/
+         //var comments = this.props.comments.map(function (comment) {
+             //[>var userID = comment.userID;
              
-             var name = this.props.users.map( function(user) {
-                 if (userID === user.userID) {
-                     var nameString = user.firstName + " " + user.lastName;
-                     return nameString;
-                 } else {
-                     return "";
-                 }
-             });*/
-             var name = 'username';
-             var key = comment.commentID;
-             var content = comment.content;
-             var date = comment.date.slice(0, 11);
-             var time = comment.date.slice(16, 21);
-            //  console.log(time);
-             return (
-                  <Comment key={key} userName={name} content={content} date={date} time={time}/>
-             );    
-         });
+             //var name = this.props.users.map( function(user) {
+                 //if (userID === user.userID) {
+                     //var nameString = user.firstName + " " + user.lastName;
+                     //return nameString;
+                 //} else {
+                     //return "";
+                 //}
+             //});*/
+             //var name = 'username';
+             //var key = comment.commentID;
+             //var content = comment.content;
+             //var date = comment.date.slice(0, 11);
+             //var time = comment.date.slice(16, 21);
+            ////  console.log(time);
+             //return (
+                  //<Comment key={key} userName={name} content={content} date={date} time={time}/>
+             //);    
+         /*});*/
 
          
 
@@ -80,8 +80,10 @@ var Post = React.createClass({
             <div>
                 <div onClick={this.open} className="col-md-3">
                     <div className="addBorder postBox post-box-color">
-                        <h3 className="title-color">{this.props.title}</h3>
-                        <p>{this.props.content}</p>
+                        <div className="postBox-wrapper">
+                            <h3 className="title-color">{this.props.title}</h3>
+                            <p>{this.props.content}</p>
+                        </div>
                     </div>
                 </div>
                 {/* Modalin show -property määrittää onko model avattuna vai ei. Sille annettaan this.state.showModal arvo
@@ -95,7 +97,7 @@ var Post = React.createClass({
                         <p>#{this.props.tag}</p>
                        <small>{this.props.date} klo {this.props.time}</small>
                         <hr />
-                        {comments}
+                        {/*comments*/}
 
                         <Form>
                             <FormGroup>

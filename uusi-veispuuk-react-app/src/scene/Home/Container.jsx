@@ -1,6 +1,6 @@
 import React from 'react';
 import Post from './Post.jsx';
-
+import axios from 'axios';
 import { Button } from 'react-bootstrap';
 
 
@@ -29,13 +29,22 @@ var Container = React.createClass({
 
     },
     getJSON: function() {
+        axios.get('/api/posts')
+            .then( (response) => {
+                //console.log(response);
+                this.setState({
+                    posts: response.data,
+                    loading: 1
+                })
+        
+        } )
 
     },
     render: function () {
 
 
         // jos kaikkia ajax käskyjä ei ole vielä haettu (yhteensä 3), niin näytetään latausruutu
-        if (this.state.loading < 3) { 
+        if (this.state.loading < 1) { 
             return (
                 <div className="fade-in">
                     <div className="loader center-block"></div>
@@ -45,10 +54,10 @@ var Container = React.createClass({
           
         };
 
-        
+       console.log(this.state.posts); 
+
         // käydään läpi kaikki postaukset this.state.posts -taulukosta
         var posts = this.state.posts.map(function (post) {
-            //console.log(post);
             var userID = post.userID;
             
             // etsitään userID:llä käyttäjälle etu- ja sukunimi.
@@ -65,8 +74,8 @@ var Container = React.createClass({
             var title = post.title;
             var content = post.content;
             var comments = post.comments;
-            var date = post.date.slice(0, 11);
-            var time = post.date.slice(16, 21);
+            var date = post.created_at.slice(0, 11);
+            var time = post.created_at.slice(10, 21);
             var tag = post.tag;
             //console.log(post);
             /* renderoidaan jokainen postauskomponentti Post-komponentin avulla. 

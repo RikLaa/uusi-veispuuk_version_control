@@ -33,11 +33,7 @@ var Home = React.createClass({
         });
     },
     componentDidMount: function() {
-        console.log('mounted');
-        axios.get('/api')
-        .then( (response) => {
-            console.log(response);
-        } )
+
     },
     render: function () {
         return (            

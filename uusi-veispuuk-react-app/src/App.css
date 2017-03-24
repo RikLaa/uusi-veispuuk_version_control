@@ -216,7 +216,6 @@ margin-top: 5%;
     text-align: center;
 }
 
-
 #modal_rekisterointi_footer {
     text-align: center;
 }
@@ -244,13 +243,32 @@ padding-top: 10%;
 /*-----------------------CONTAINER---------------------*/
 .col-md-4 {
     padding: 10px;
-   
 }
+
 .postBox {
     height: 250px;
-    margin: 10px;
+    /*margin: 10px;*/
     padding: 20px; 
+    padding-bottom: 20px;
     overflow: hidden;
+}
+/*Tama pitaa korjata. postboxin sisalto, ei leikkaudu alhaalta oikein jos
+sen sisalle ei maarita kiintealla korkeudella olevaa divia. En tieda miksi.*/
+.postBox-wrapper {
+    /*padding: 20px;*/
+    max-height: 200px;
+    overflow: hidden;
+}
+.postBox:after {
+    content: '';
+    display: block; 
+    height: 20px;
+    position: absolute;
+    bottom: 0;
+}
+
+.postBox > p {
+    overflow: hidden; 
 }
 
 .comment-text-field {
