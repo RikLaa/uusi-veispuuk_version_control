@@ -1,5 +1,5 @@
 import React from 'react';
-
+import axios from 'axios';
 import Post from '../Home/Post.jsx';
 import { Button } from 'react-bootstrap';
 import './Profile.css'
