@@ -53,8 +53,8 @@ var AddPictureModal = React.createClass({
                                     <div className="col-sm-10">
                                         <FormControl componentClass="select" placeholder="select">
                                 
-                                            <option value="other">#Pasin koodit</option>
-                                            <option value="other">#Vain insinööri jutut</option>
+                                            <option value="other">#Pasinkoodit</option>
+                                            <option value="other">#Vaininsinöörijutut</option>
                                             <option value="other">#Kissa</option>
                                             <option value="other">#Kalja</option>
                                         </FormControl>

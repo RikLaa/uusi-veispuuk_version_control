@@ -1,4 +1,7 @@
 import React from 'react';
+import axios from 'axios';
+import { Link } from 'react-router';
+import ReactDOM from 'react-dom';
 import { Button, FormGroup, Form, FormControl, ControlLabel, Modal } from 'react-bootstrap';
 
 var AddPostModal = React.createClass({
@@ -7,7 +10,7 @@ var AddPostModal = React.createClass({
             newPosts: []
         };
     },
-    addPost: function(e) {
+   /* addPost: function(e) {
         var d = new Date();
         var key = d.getMilliseconds();
         var title = document.getElementById('postHeaderInput').value;
@@ -32,7 +35,86 @@ var AddPostModal = React.createClass({
 
         this.props.addPostToParent(newPost);
 
+    }, */
+    
+    
+    handleUserMessage: function (e) {
+        
+       var title = ReactDOM.findDOMNode(this.refs.title);
+        var content = ReactDOM.findDOMNode(this.refs.content);
+        var tag = ReactDOM.findDOMNode(this.refs.tag);
+      if (title !== '', content !== '') {
+        // call the sendmessages of ChatContainer throught the props
+        this.sendMessage(title);
+        //this.props.sendMessage(content);
+        //this.props.sendMessage(tag);
+          
+      }
+      // Prevent default and clear the textarea
+      event.preventDefault();
+      this.refs.title.value = null;
+    this.refs.content.value = null;
+    
     },
+    
+    // add a new message AND update the messages list
+  sendMessage: function(tiitle) {
+      
+      // Send a get request axios
+
+     axios.get('/api/posts/create', {
+    phptitle: 'ARSKA WAS HERE',
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  }); 
+      
+     
+  },      
+      
+      /*
+      axios({
+  method: 'get',
+  //url: '/api/posts/create',
+  url: '/api',
+  data: {
+      phptitle: tiitle,      
+  },
+
+  
+});
+      
+      
+      */
+      
+      
+      
+      
+
+    
+        //Ottaa formin datan talteen
+  /*  StoreFormData: function (e) {
+     
+      
+        // Console.log tulostaa inputin valuen vain jos on määritelty näin:ReactDOM.findDOMNode(this.refs.email); jos laittaa (this.refs.email.value); Niin valuea ei saada. Kuitenkaan tämä taktiikka ei sitten toimi loppuun asti. DUH
+        //Palataan asiaan jos liikaa aikaa..
+        
+        var title = ReactDOM.findDOMNode(this.refs.title);
+        var content = ReactDOM.findDOMNode(this.refs.content);
+        var tag = ReactDOM.findDOMNode(this.refs.tag);
+        console.log(title.value);
+        console.log(content.value);
+        console.log(tag.value);
+        */
+        
+  
+    //    { this.Open();}
+ //   },
+    
+    
 
     render: function() {
 
@@ -43,13 +125,13 @@ var AddPostModal = React.createClass({
                         <Modal.Title className="text-center">Aloita keskustelu</Modal.Title> </Modal.Header>
                         <Modal.Body>
             
-                        <Form horizontal>
+                        <Form horizontal action="tähänjotainmillätoteutetaan se ajax sinne ööö posts/create osoitteeseen">
                             <div className="Row"> 
                                 <div className="col-sm-12 coll-sm-offset">
                                     <FormGroup>
                                         <ControlLabel>Kirjoita viestisi </ControlLabel>
-                                        <FormControl id="postHeaderInput" type="text" placeholder="Otsikko" />    
-                                        <FormControl id="postContentInput" componentClass="textarea" placeholder="Sisältö" rows="12" />
+                                        <FormControl id="postHeaderInput" type="text" ref='title' placeholder="Otsikko" />    
+                                        <FormControl id="postContentInput" componentClass="textarea" ref='content' placeholder="Sisältö" rows="12" />
                                     </FormGroup>  
                                 </div>
                             </div>
@@ -63,9 +145,9 @@ var AddPostModal = React.createClass({
                                     </div>
                             
                                     <div className="col-sm-10">
-                                        <FormControl id="tagSelect"  componentClass="select" placeholder="select">
-                                            <option value="pasin_koodit">#Pasin koodit</option>
-                                            <option value="vaininsinoorijutu">#Vain insinööri jutut</option>
+                                        <FormControl id="tagSelect" ref='tag' componentClass="select" placeholder="select">
+                                            <option value="pasin_koodit">#PasinKoodit</option>
+                                            <option value="vaininsinoorijutu">#VainInsinöörijutut</option>
                                             <option value="kissa">#Kissa</option>
                                             <option value="kalja">#Kalja</option>
                                         </FormControl>
@@ -77,7 +159,8 @@ var AddPostModal = React.createClass({
                     </Modal.Body>
                 <Modal.Footer>
             <div className="col-sm-3 col-md-offset-9">
-           <Button type="submit" bsStyle="success" onClick={this.addPost}>Julkaise</Button>
+           <Button type="submit" bsStyle="success" onClick={this.handleUserMessage}>Julkaise</Button>
+             
              </div>
                 </Modal.Footer>
                     
