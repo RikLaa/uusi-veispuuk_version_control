@@ -62,7 +62,7 @@ var AddPostModal = React.createClass({
       
       // Send a get request axios
 
-     axios.get('/api/posts/create', {
+     axios.post('/api/posts', {
     phptitle: 'ARSKA WAS HERE',
   })
   .then(function (response) {
