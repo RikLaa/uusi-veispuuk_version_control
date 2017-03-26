@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import $ from 'jquery';
 import { Link } from 'react-router';
 import ReactDOM from 'react-dom';
 import { Button, FormGroup, Form, FormControl, ControlLabel, Modal } from 'react-bootstrap';
@@ -45,7 +46,7 @@ var AddPostModal = React.createClass({
         var tag = ReactDOM.findDOMNode(this.refs.tag);
       if (title !== '', content !== '') {
         // call the sendmessages of ChatContainer throught the props
-        this.sendMessage(title);
+        this.sendMessage(title.value);
         //this.props.sendMessage(content);
         //this.props.sendMessage(tag);
           
@@ -58,19 +59,35 @@ var AddPostModal = React.createClass({
     },
     
     // add a new message AND update the messages list
-  sendMessage: function(tiitle) {
-      
-      // Send a get request axios
+  sendMessage: function(title) {
 
-     axios.post('/api/posts', {
-    phptitle: 'ARSKA WAS HERE',
-  })
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  }); 
+      $.ajax({
+          method: 'get',
+          url: '/api/posts/create',
+          data: {
+              title: title,
+              content: 'here is some content woohoo'
+          }
+      })
+          .done( function(data) {
+              console.log(data);
+          })
+
+
+       //Send a get request axios
+
+
+/*      axios.get('/api/posts/create', {*/
+          //params: {
+              //phptitle: 'arskawashereeeee'
+          //}
+   //})
+  //.then(function (response) {
+    //console.log(response);
+  //})
+  //.catch(function (error) {
+    //console.log(error);
+  //}); 
       
      
   },      
