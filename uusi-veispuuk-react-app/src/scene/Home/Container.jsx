@@ -60,15 +60,6 @@ var Container = React.createClass({
         var posts = this.state.posts.map(function (post) {
             var userID = post.userID;
             
-            // etsitään userID:llä käyttäjälle etu- ja sukunimi.
-            var name = this.state.users.map(function(user) {
-                if (userID === user.userID) {
-                    var userString = user.firstName + " " + user.lastName;
-                    return userString;
-                } else {
-                    return "";
-                }
-            });
 
             var key = post.postID;
             var title = post.title;

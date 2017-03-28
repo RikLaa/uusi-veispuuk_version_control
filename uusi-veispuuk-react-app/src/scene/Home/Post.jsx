@@ -23,57 +23,54 @@ var Post = React.createClass({
         });
     },
     addComment: function() {
-        console.log(this.state.comments);
-        var comments = this.state.comments;
+        // jos tekstikentta on tyhja, ei lisata kommenttia
+        if (document.getElementById('comment-text-field').value.length > 0) {
+            var comments = this.state.comments;
 
-        var key = this.state.comments.length + 1;
-        var content = document.getElementById('comment-text-field').value;
-        var date = 'Mon Aug 12';
-        var time = '19:45';
-    
-        var newComment = {
-            commentID: key,
-            content: content,
-            date: date,
-            time: time
-        };
+            // Get the last comment in the post 
+            var last = this.state.comments.slice(-1)[0].commentID;
+            console.log(last);
+            // increment the id by one more
+            var key = last + 1;
+            var content = document.getElementById('comment-text-field').value;
+            var updated_at = '2017-03-28 10:08:01';
+            var created_at = '2017-03-28 10:08:01';
 
-        comments.push(newComment);
-        this.setState({
-            comments: comments
-        });
+            var newComment = {
+                commentID: key,
+                content: content,
+                created_at: created_at,
+                updated_at: updated_at
+            };
 
-        // nollataan texbox
-        document.getElementById('comment-text-field').value = '';
+            comments.push(newComment);
+            this.setState({
+                comments: comments
+            });
 
+            // nollataan texbox
+            document.getElementById('comment-text-field').value = '';
+
+        }
+        
     },
     render: function () {
 
-
-       /* // käydään läpi kaikki kommentit ja renderoidaan ne näytölle Comment -komponentin avulla*/
-         //var comments = this.props.comments.map(function (comment) {
-             //[>var userID = comment.userID;
+        // käydään läpi kaikki kommentit ja renderoidaan ne näytölle Comment -komponentin avulla
+         var comments = this.props.comments.map(function (comment) {
+             var userID = comment.userID;
              
-             //var name = this.props.users.map( function(user) {
-                 //if (userID === user.userID) {
-                     //var nameString = user.firstName + " " + user.lastName;
-                     //return nameString;
-                 //} else {
-                     //return "";
-                 //}
-             //});*/
-             //var name = 'username';
-             //var key = comment.commentID;
-             //var content = comment.content;
-             //var date = comment.date.slice(0, 11);
-             //var time = comment.date.slice(16, 21);
-            ////  console.log(time);
-             //return (
-                  //<Comment key={key} userName={name} content={content} date={date} time={time}/>
-             //);    
-         /*});*/
+            var name = 'username here';
+             var key = comment.commentID;
+             var content = comment.content;
+             var date = comment.created_at.slice(0, 11);
+             var time = comment.created_at.slice(10, 21);
+              //console.log(key);
+             return (
+                  <Comment key={key} keyValue={key} userName={name} content={content} date={date} time={time}/>
+             );    
+         });
 
-         
 
          // renderoidaan postaus näytölle
         return (
@@ -97,7 +94,7 @@ var Post = React.createClass({
                         <p>#{this.props.tag}</p>
                        <small>{this.props.date} klo {this.props.time}</small>
                         <hr />
-                        {/*comments*/}
+                        {comments}
 
                         <Form>
                             <FormGroup>
