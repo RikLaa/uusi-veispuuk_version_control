@@ -11,9 +11,11 @@ var AddPictureModal = React.createClass({
 
     reader.onload = function (e) {
         // get loaded data and render thumbnail.
-        //console.log(e.target.result);
+        console.log(e.target.result);
 
         document.getElementById("image_thumb").src = e.target.result;
+        
+        
     };
 
     // read the image file as a data URL.

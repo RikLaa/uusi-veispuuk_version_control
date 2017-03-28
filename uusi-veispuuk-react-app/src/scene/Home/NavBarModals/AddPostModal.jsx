@@ -46,7 +46,7 @@ var AddPostModal = React.createClass({
         var tag = ReactDOM.findDOMNode(this.refs.tag);
       if (title !== '', content !== '') {
         // call the sendmessages of ChatContainer throught the props
-        this.sendMessage(title.value);
+        this.sendMessage(title.value, content.value, tag.value);
         //this.props.sendMessage(content);
         //this.props.sendMessage(tag);
           
@@ -59,53 +59,31 @@ var AddPostModal = React.createClass({
     },
     
     // add a new message AND update the messages list
-  sendMessage: function(title) {
+  sendMessage: function(title,content,tag) {
 
       $.ajax({
           method: 'get',
           url: '/api/posts/create',
           data: {
               title: title,
-              content: 'here is some content woohoo'
+              content: content,
+              tag: tag
+        
           }
       })
           .done( function(data) {
               console.log(data);
+             // Tähän joku fiksumpi ratkaisu, jos aikaa löytyy. Nyt aiheuttaa typerän välähdyksen kun sivu päivittyy
+            function pageReload() {
+             location.reload();
+              }
+           pageReload();
           })
 
 
-       //Send a get request axios
-
-
-/*      axios.get('/api/posts/create', {*/
-          //params: {
-              //phptitle: 'arskawashereeeee'
-          //}
-   //})
-  //.then(function (response) {
-    //console.log(response);
-  //})
-  //.catch(function (error) {
-    //console.log(error);
-  //}); 
-      
-     
-  },      
-      
-      /*
-      axios({
-  method: 'get',
-  //url: '/api/posts/create',
-  url: '/api',
-  data: {
-      phptitle: tiitle,      
+    
   },
 
-  
-});
-      
-      
-      */
       
       
       
