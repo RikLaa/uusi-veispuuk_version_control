@@ -1,8 +1,11 @@
 import React from 'react';
+import { browserHistory } from 'react-router';
 import { Button, FormGroup, Form, FormControl, Col, Checkbox, ControlLabel, Modal } from 'react-bootstrap';
 // import $ from 'jquery';
 import { Link } from 'react-router';
 import ReactDOM from 'react-dom';
+
+import $ from 'jquery';
 
 
 
@@ -22,6 +25,27 @@ var Registration = React.createClass({
             showModal: false
         });
     },
+    createNewUserAjax: function(user) {
+        console.log(user);
+        
+        $.ajax({
+            method: 'post',
+            url: '/api/register',
+            data: user
+        }) .done( function(response) {
+              console.log(response);
+          
+          if (response) {
+              // tallentaminen onnistui
+              console.log('käyttäjä luotu');
+              browserHistory.goBack();
+          } else {
+              // ei onnistunut
+                  alert("Virhe käyttäjää luomisessa! Yritä uudestaan!");
+          }
+             
+          })
+    },
     
     //handle submit Form validation // ei tää oikeesti mitään validoi, kuha ottaa talteen
     validateForm: function (e) {
@@ -32,20 +56,40 @@ var Registration = React.createClass({
         // Console.log tulostaa inputin valuen vain jos on määritelty näin:ReactDOM.findDOMNode(this.refs.name); jos laittaa (this.refs.email.value); Niin valuea ei saada. Kuitenkaan tämä taktiikka ei sitten toimi loppuun asti. DUH
         //Palataan asiaan jos liikaa aikaa..
         
-        var name = ReactDOM.findDOMNode(this.refs.name);
-        // var email = ReactDOM.findDOMNode(this.refs.email.value);
-        // var fname = ReactDOM.findDOMNode(this.refs.fname.value);
+        var firstName = ReactDOM.findDOMNode(this.refs.firstName);
+        var lastName = ReactDOM.findDOMNode(this.refs.lastName);
+        var email = ReactDOM.findDOMNode(this.refs.email);
         var password = ReactDOM.findDOMNode(this.refs.password);
         var password2 = ReactDOM.findDOMNode(this.refs.password2);
+        var campus = ReactDOM.findDOMNode(this.refs.campus);
+        var field = ReactDOM.findDOMNode(this.refs.field);
         // var box = ReactDOM.findDOMNode(this.refs.box.value);
-        console.log(name.value);
+        /*console.log(firstName.value);
+        console.log(lastName.value);
+        console.log(email.value);
         console.log(password.value);
         console.log(password2.value);
+        console.log(campus.value);
+        console.log(field.value);*/
+        
 
-               if (password === null) {
-        alert("password must be filled out");
+        if (password === null) {
+            alert("password must be filled out");
        return false;}
-       else { this.Open();}
+       else { 
+           //this.Open();
+           var user = {
+               firstName: firstName.value,
+               lastName: lastName.value,
+               email: email.value,
+               password: password.value,
+               campus: campus.value,
+               field: field.value
+           };
+           
+           this.createNewUserAjax(user);
+           
+       }
     },
     
     
@@ -86,7 +130,7 @@ var Registration = React.createClass({
         Etunimi
       </Col>
       <Col sm={10}>
-        <FormControl type="name" placeholder="" ref='fname' />
+        <FormControl type="name" placeholder="" ref='firstName' />
       </Col>
     </FormGroup>
 
@@ -95,7 +139,7 @@ var Registration = React.createClass({
         Sukunimi
       </Col>
       <Col sm={10}>
-        <FormControl type="name" placeholder="" ref='name'  />
+        <FormControl type="name" placeholder="" ref='lastName'  />
       </Col>
     </FormGroup>
                        
@@ -147,7 +191,7 @@ var Registration = React.createClass({
       </Col>
     <Col sm={10}> 
    
-      <FormControl componentClass="select" placeholder="select">
+      <FormControl ref='campus' componentClass="select" placeholder="select">
         <option value="select">Rajakatu</option>
         <option value="other">Dynamo</option>
         <option value="other">Suomalainen Musiikkikampus</option>
@@ -158,11 +202,11 @@ var Registration = React.createClass({
     </FormGroup>
 
         <FormGroup controlId="formHorizontalPassword">
-      <Col componentClass={ControlLabel} sm={2}>
+      <Col  componentClass={ControlLabel} sm={2}>
         Koulutusala
       </Col>
       <Col sm={10}>
-        <FormControl type="text" placeholder="" />
+        <FormControl type="text" placeholder="" ref='field' />
       </Col>
     </FormGroup>
 
