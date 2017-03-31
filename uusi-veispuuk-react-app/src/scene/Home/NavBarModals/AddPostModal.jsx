@@ -120,7 +120,7 @@ var AddPostModal = React.createClass({
                         <Modal.Title className="text-center">Aloita keskustelu</Modal.Title> </Modal.Header>
                         <Modal.Body>
             
-                        <Form horizontal action="tähänjotainmillätoteutetaan se ajax sinne ööö posts/create osoitteeseen">
+                        <Form horizontal>
                             <div className="Row"> 
                                 <div className="col-sm-12 coll-sm-offset">
                                     <FormGroup>
