@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 import Comment from './Comment.jsx';
 import { Button, Form, FormControl, FormGroup, Modal } from 'react-bootstrap';
 
@@ -26,27 +27,51 @@ var Post = React.createClass({
         // jos tekstikentta on tyhja, ei lisata kommenttia
         if (document.getElementById('comment-text-field').value.length > 0) {
             var comments = this.state.comments;
-
-            // Get the last comment in the post 
-            var last = this.state.comments.slice(-1)[0].commentID;
-            console.log(last);
-            // increment the id by one more
-            var key = last + 1;
-            var content = document.getElementById('comment-text-field').value;
-            var updated_at = '2017-03-28 10:08:01';
-            var created_at = '2017-03-28 10:08:01';
+            var content = document.getElementById('comment-text-field').value
 
             var newComment = {
-                commentID: key,
-                content: content,
-                created_at: created_at,
-                updated_at: updated_at
+                userID: 1,
+                postID: 1,
+                content: content
             };
 
-            comments.push(newComment);
-            this.setState({
-                comments: comments
-            });
+            $.ajax({
+                method: 'post',
+                url: '/api/comments',
+                data: newComment
+            }).done( function(data) {
+                if (data) {
+                    //console.log(data);
+                    comments = this.state.comments;
+                    comments[this.state.comments.length + 1] = data[0];
+
+                    this.setState({
+                        comments: comments 
+                    })
+                }
+            }.bind(this))
+
+
+            /*// Get the last comment in the post */
+            //var last = this.state.comments.slice(-1)[0].commentID;
+            //console.log(last);
+            //// increment the id by one more
+            //var key = last + 1;
+            //var content = document.getElementById('comment-text-field').value;
+            //var updated_at = '2017-03-28 10:08:01';
+            //var created_at = '2017-03-28 10:08:01';
+
+            //var newComment = {
+                //commentID: key,
+                //content: content,
+                //created_at: created_at,
+                //updated_at: updated_at
+            //};
+
+            //comments.push(newComment);
+            //this.setState({
+                //comments: comments
+            /*});*/
 
             // nollataan texbox
             document.getElementById('comment-text-field').value = '';
@@ -56,11 +81,12 @@ var Post = React.createClass({
     },
     render: function () {
 
+        console.log(this.state.comments);
         // käydään läpi kaikki kommentit ja renderoidaan ne näytölle Comment -komponentin avulla
          var comments = this.props.comments.map(function (comment) {
              var userID = comment.userID;
-             
-            var name = 'username here';
+            var postID = comment.postID;  
+             var name = 'username here';
              var key = comment.commentID;
              var content = comment.content;
              var date = comment.created_at.slice(0, 11);

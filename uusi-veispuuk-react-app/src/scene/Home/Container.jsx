@@ -72,7 +72,7 @@ var Container = React.createClass({
             /* renderoidaan jokainen postauskomponentti Post-komponentin avulla. 
             Sille annettaan tarvittavat tiedot propseina jotta niihin päästään käsiksi myöhemmin*/
             return (
-                <Post key={key} userName={name} users={this.state.users} title={title} content={content} comments={comments} date={date} time={time} tag={tag}/>
+                <Post postID={key} key={key} userName={name} users={this.state.users} title={title} content={content} comments={comments} date={date} time={time} tag={tag}/>
             );   
         }.bind(this));
 
