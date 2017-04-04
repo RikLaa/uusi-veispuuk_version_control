@@ -13,9 +13,9 @@ var AddPictureModal = React.createClass({
 
     reader.onload = function (e) {
         // get loaded data and render thumbnail.
-    //    console.log(e.target.result);
+       console.log(e.target.result);
         var image = e.target.result;
-        console.log(image);
+       //console.log(image);
 
         document.getElementById("image_thumb").src = e.target.result;
         
@@ -29,13 +29,14 @@ var AddPictureModal = React.createClass({
     handleUserMessage: function (e) {
        var image = ReactDOM.findDOMNode(this.refs.finalImage);
         var tag = ReactDOM.findDOMNode(this.refs.tag);
-       {
+     //  console.log(tag);
+        console.log(image);
         // call the sendmessages of ChatContainer throught the props
-        this.sendMessage(image.value, tag.value);
+        this.sendMessage(image.src, tag.value);
         //this.props.sendMessage(content);
         //this.props.sendMessage(tag);
           
-      }
+      
         },
    
     // add a new message AND update the messages list
@@ -52,11 +53,11 @@ var AddPictureModal = React.createClass({
       })
           .done( function(data) {
               console.log(data);
-       /*      // Tähän joku fiksumpi ratkaisu, jos aikaa löytyy. Nyt aiheuttaa typerän välähdyksen kun sivu päivittyy
+            // Tähän joku fiksumpi ratkaisu, jos aikaa löytyy. Nyt aiheuttaa typerän välähdyksen kun sivu päivittyy
             function pageReload() {
              location.reload();
               }
-           pageReload(); */
+           pageReload(); 
           })
 
 
@@ -84,7 +85,7 @@ var AddPictureModal = React.createClass({
                                         <div className="col-md-10 col-md-offset-3">
                                             <label className="btn btn-default btn-file">
                                             <input id="add_picture" type="file" name="datafile" size="45" onChange={this.addPicture}  ref='picture'/>
-                                            </label>
+                                          <p>Maksimi kuvan koko: 100 kb</p></label>
                                         </div>
                                     </FormGroup>
                                 </div>
@@ -97,10 +98,10 @@ var AddPictureModal = React.createClass({
                                     <div className="col-sm-10">
                                         <FormControl ref='tag' componentClass="select" placeholder="select">
                                 
-                                            <option value="other">#Pasinkoodit</option>
-                                            <option value="other">#Vaininsinöörijutut</option>
-                                            <option value="other">#Kissa</option>
-                                            <option value="other">#Kalja</option>
+                                            <option value="PasinKoodit">#PasinKoodit</option>
+                                            <option value="VainInsinöörojutut">#VainInsinööriJutut</option>
+                                            <option value="Kissa">#Kissa</option>
+                                            <option value="Kalja">#Kalja</option>
                                         </FormControl>
                                     </div>
                                 </FormGroup>
