@@ -63,7 +63,7 @@ var AddPictureModal = React.createClass({
 
     
   },    
-
+  //<Image responsive id="image" src="http://yle.fi/aihe/sites/aihe/files/migrated/oppiminen/images/siili_kuva_risto_salovaara.jpg" /> 
     
     render: function() {
         return (

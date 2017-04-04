@@ -1,6 +1,6 @@
 import React from 'react';
 import Comment from './Comment.jsx';
-import { Button, Form, FormControl, FormGroup, Modal } from 'react-bootstrap';
+import { Button, Form, FormControl, FormGroup, Modal, Image } from 'react-bootstrap';
 
 var Post = React.createClass({
     getInitialState: function () {
@@ -80,34 +80,47 @@ var Post = React.createClass({
                         <div className="postBox-wrapper">
                             <h3 className="title-color">{this.props.title}</h3>
                             <p>{this.props.content}</p>
+                            <Image src={this.props.image} responsive />
                         </div>
                     </div>
                 </div>
                 {/* Modalin show -property määrittää onko model avattuna vai ei. Sille annettaan this.state.showModal arvo
                     joka määritettiin ylempänä */}
                 <Modal show={this.state.showModal} onHide={this.close}>
+         
                     <Modal.Header closeButton>
-                        <Modal.Title className="title-color">{this.props.title}</Modal.Title>
-                        <br />
-                        <p>{this.props.content}</p>
+                <Modal.Title className="title-color">{this.props.title}</Modal.Title>
+                               <p>{this.props.content}</p>
                         <p>{this.props.userName}</p>
+                        <Image ref='finalImage'src={this.props.image} responsive />
                         <p>#{this.props.tag}</p>
                        <small>{this.props.date} klo {this.props.time}</small>
-                        <hr />
-                        {comments}
-
+                    
+                        </Modal.Header>
+                    
+                        <Modal.Body>
+                 
+                       
+                         {comments}
+                
+                       
+                    </Modal.Body>
+                     <Modal.Footer>
+                         
                         <Form>
                             <FormGroup>
                                 <FormControl id="comment-text-field" bsSize="large" className="comment-text-field" componentClass="textarea"></FormControl>
                             </FormGroup>
                             
                             <FormGroup>
-                                <Button onClick={this.addComment} className="pull-right">Lähetä</Button>
+                                <Button  bsStyle="success" onClick={this.addComment} className="pull-right">Lähetä</Button>
                             </FormGroup>
                         </Form>
 
-                        
-                    </Modal.Header>
+                      </Modal.Footer>   
+                    
+                     
+                
                 </Modal>
 
             </div>
