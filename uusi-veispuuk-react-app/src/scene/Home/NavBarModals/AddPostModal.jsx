@@ -120,7 +120,7 @@ var AddPostModal = React.createClass({
                         <Modal.Title className="text-center">Aloita keskustelu</Modal.Title> </Modal.Header>
                         <Modal.Body>
             
-                        <Form horizontal action="tähänjotainmillätoteutetaan se ajax sinne ööö posts/create osoitteeseen">
+                        <Form horizontal>
                             <div className="Row"> 
                                 <div className="col-sm-12 coll-sm-offset">
                                     <FormGroup>
@@ -141,10 +141,10 @@ var AddPostModal = React.createClass({
                             
                                     <div className="col-sm-10">
                                         <FormControl id="tagSelect" ref='tag' componentClass="select" placeholder="select">
-                                            <option value="pasin_koodit">#PasinKoodit</option>
-                                            <option value="vaininsinoorijutu">#VainInsinöörijutut</option>
-                                            <option value="kissa">#Kissa</option>
-                                            <option value="kalja">#Kalja</option>
+                                            <option value="pasinKoodit">#PasinKoodit</option>
+                                            <option value="VainInsinööriJutut">#VainInsinöörijutut</option>
+                                            <option value="Kissa">#Kissa</option>
+                                            <option value="Kalja">#Kalja</option>
                                         </FormControl>
                                     </div>
                                 </FormGroup>

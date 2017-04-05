@@ -68,11 +68,12 @@ var Container = React.createClass({
             var date = post.created_at.slice(0, 11);
             var time = post.created_at.slice(10, 21);
             var tag = post.tag;
-            //console.log(post);
+            var image = post.pictureURL;
+            console.log(post);
             /* renderoidaan jokainen postauskomponentti Post-komponentin avulla. 
             Sille annettaan tarvittavat tiedot propseina jotta niihin päästään käsiksi myöhemmin*/
             return (
-                <Post postID={key} key={key} userName={name} users={this.state.users} title={title} content={content} comments={comments} date={date} time={time} tag={tag}/>
+                <Post  postID={key} key={key} userName={name} users={this.state.users} title={title} content={content} comments={comments} date={date} time={time} tag={tag} image={image}/>
             );   
         }.bind(this));
 
