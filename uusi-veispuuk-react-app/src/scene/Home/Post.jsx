@@ -28,10 +28,12 @@ var Post = React.createClass({
         if (document.getElementById('comment-text-field').value.length > 0) {
             var comments = this.state.comments;
             var content = document.getElementById('comment-text-field').value
+            //console.log(this.props.postID);
 
+            // create a new comment, get userID from ???? and postID from this.props
             var newComment = {
                 userID: 1,
-                postID: 1,
+                postID: this.props.postID,
                 content: content
             };
 
