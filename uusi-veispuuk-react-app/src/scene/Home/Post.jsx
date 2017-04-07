@@ -2,6 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import Comment from './Comment.jsx';
 import { Button, Form, FormControl, FormGroup, Modal, Image } from 'react-bootstrap';
+import './post.css';
 
 var Post = React.createClass({
     getInitialState: function () {
@@ -81,9 +82,54 @@ var Post = React.createClass({
         }
         
     },
+    
+    //onko postaus kuvapostaus vai tekstipostaus
+    //if type=1 niin return tekstipostaus, jos muuta niin return kuvapostaus
+    
+    postCheck: function () {
+        console.log(this.props.postType)
+            if (this.props.postType == 1) {
+      return (
+                <div>
+              <Modal.Title className="title-color">{this.props.title}</Modal.Title>
+                        <p>{this.props.content}</p>
+                        <p>{this.props.userName}</p>
+                        <p>#{this.props.tag}</p>
+                       <small>{this.props.date} klo {this.props.time}</small>
+          </div>
+      );
+    } else {
+      return (
+                    <div>
+                     <Image id="imagePost"src={this.props.image} responsive />
+                        <p>{this.props.userName}</p>
+                        <p>#{this.props.tag}</p>
+                       <small>{this.props.date} klo {this.props.time}</small>
+          </div>
+      );
+    }
+        
+    },
+    
+    
+    thumbCheck: function () {
+        console.log(this.props.postType)
+            if (this.props.postType == 1) {
+      return (
+                <div>
+                <h3 className="title-color">{this.props.title}</h3>
+                            <p>{this.props.content}</p>
+          </div>
+      );
+    }   
+    },
+    
+    
+    
+    
     render: function () {
 
-        console.log(this.state.comments);
+      //  console.log(this.state.comments);
         // käydään läpi kaikki kommentit ja renderoidaan ne näytölle Comment -komponentin avulla
          var comments = this.props.comments.map(function (comment) {
              var userID = comment.userID;
@@ -106,9 +152,11 @@ var Post = React.createClass({
                 <div onClick={this.open} className="col-md-3">
                     <div className="addBorder postBox post-box-color">
                         <div className="postBox-wrapper">
-                            <h3 className="title-color">{this.props.title}</h3>
-                            <p>{this.props.content}</p>
-                            <Image src={this.props.image} responsive />
+                         { this.thumbCheck() }
+                            <div class="thumbnail">
+                                <img src={this.props.image}></img>
+                            </div>
+                         
                         </div>
                     </div>
                 </div>
@@ -117,13 +165,9 @@ var Post = React.createClass({
                 <Modal show={this.state.showModal} onHide={this.close}>
          
                     <Modal.Header closeButton>
-                <Modal.Title className="title-color">{this.props.title}</Modal.Title>
-                               <p>{this.props.content}</p>
-                        <p>{this.props.userName}</p>
-                        <Image ref='finalImage'src={this.props.image} responsive />
-                        <p>#{this.props.tag}</p>
-                       <small>{this.props.date} klo {this.props.time}</small>
-                    
+                      
+                { this.postCheck() }
+                   
                         </Modal.Header>
                     
                         <Modal.Body>
