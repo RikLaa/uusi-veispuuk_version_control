@@ -74,8 +74,11 @@ var NavBar = React.createClass({
     //  Haetaan input kentästä kirjaimet jotta voidaan etsiä postauksia search-sivulla
     getSearchInput: function(e) {
         var searchWord = document.getElementById('searchInput').value;
-        console.log(searchWord);
-        this.props.searchInputToParent(searchWord); // viedään hakusana isä-komponentille
+        var searchType = document.getElementById('searchType').value;
+        //console.log(searchWord);
+        //console.log(searchType);
+        //this.props.searchInputToParent(searchWord); // viedään hakusana isä-komponentille
+        this.props.searchInputToParent({ searchWord: searchWord, searchType: searchType });
     },
      addPostToParent: function(post) {
        // lähetetään uudet postaukset isälle
@@ -101,12 +104,13 @@ var NavBar = React.createClass({
                            
                     {this.state.showSearch ? (
                         <Navbar.Form pullLeft>
-                            <FormGroup>
+                            <FormGroup onChange={this.getSearchInput}>
                                 <FormControl id="searchInput" type="text" placeholder="#Mitähaluatetsiä" />
                             </FormGroup>
 
                                 <FormGroup controlId="formControlsSelect">
-                            <FormControl componentClass="select" placeholder="select">
+                            <FormControl id="searchType" componentClass="select" placeholder="select">
+                                <option value="kaikki">Kaikki</option> 
                                 <option value="keskustelu">Keskustelu</option>
                                 <option value="kuva">Kuva</option>
                             </FormControl>

@@ -12,7 +12,7 @@ ja Profile komponenteissa valmiiksi jotta tähän ei tarvitsisi luoda enempää 
 var Home = React.createClass({
     getInitialState: function() {
         return {
-            searchWord: '',
+            searchParams: {},
             newPost: null
         }
     },
@@ -20,9 +20,10 @@ var Home = React.createClass({
         console.log("testi");
         
     },
-    saveSearchInput: function(searchWord) {
+    saveSearchInput: function(searchParams) {
+        console.log(this.state.searchWord);
         this.setState({
-            searchWord: searchWord
+            searchParams: searchParams
         });
 
     },
@@ -41,7 +42,7 @@ var Home = React.createClass({
                     <NavBar searchInputToParent={this.saveSearchInput} addPostToParent={this.addPost}/>
                 {/* this.props.children */}
                   {/*  searchWord annettaan myös propseina search.jsx sivulle */}
-                  {this.props.children && React.cloneElement(this.props.children, { searchWord: this.state.searchWord, newPostToAdd: this.state.newPost })}
+                  {this.props.children && React.cloneElement(this.props.children, { searchParams: this.state.searchParams, newPostToAdd: this.state.newPost })}
             </div>
         );
     }

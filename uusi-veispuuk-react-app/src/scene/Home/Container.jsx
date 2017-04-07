@@ -1,5 +1,6 @@
 import React from 'react';
 import Post from './Post.jsx';
+import $ from 'jquery';
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
 
@@ -20,12 +21,14 @@ var Container = React.createClass({
       this.getJSON();
     },
     componentWillReceiveProps: function(nextProps) {
-        var newPost = nextProps.newPostToAdd; // uusi postaus
-        var oldPosts = this.state.posts; // vanhat postaukset
-        oldPosts.unshift(newPost); // uusi postaus taulukon kärkeen
-        this.setState({
-            posts: oldPosts
-        });
+        console.log(nextProps);
+        this.getSearchJSON(nextProps.searchParams);
+        /*var newPost = nextProps.newPostToAdd; // uusi postaus*/
+        //var oldPosts = this.state.posts; // vanhat postaukset
+        //oldPosts.unshift(newPost); // uusi postaus taulukon kärkeen
+        //this.setState({
+            //posts: oldPosts
+        /*});*/
 
     },
     getJSON: function() {
@@ -38,6 +41,26 @@ var Container = React.createClass({
                 })
         
         } )
+
+    },
+    getSearchJSON: function(params) {
+
+        console.log(params);
+        $.ajax({
+                method: 'get',
+                url: '/api/search',
+            data: {
+                tag: params.searchWord,
+                type: params.searchType
+            }
+        }).done( function(data) {
+            console.log(data);
+            /*this.setState({*/
+                //posts: data[0]
+            //})
+
+        }.bind(this))
+
 
     },
     render: function () {
@@ -54,7 +77,6 @@ var Container = React.createClass({
           
         };
 
-       console.log(this.state.posts); 
 
         // käydään läpi kaikki postaukset this.state.posts -taulukosta
         var posts = this.state.posts.map(function (post) {
@@ -69,7 +91,7 @@ var Container = React.createClass({
             var time = post.created_at.slice(10, 21);
             var tag = post.tag;
             var image = post.pictureURL;
-            console.log(post);
+            //console.log(post);
             /* renderoidaan jokainen postauskomponentti Post-komponentin avulla. 
             Sille annettaan tarvittavat tiedot propseina jotta niihin päästään käsiksi myöhemmin*/
             return (
