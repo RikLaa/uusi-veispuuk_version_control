@@ -93,7 +93,7 @@ var Post = React.createClass({
                 <div>
               <Modal.Title className="title-color">{this.props.title}</Modal.Title>
                         <p>{this.props.content}</p>
-                        <p>{this.props.userName}</p>
+                        <p>username here{this.props.userName}</p>
                         <p>#{this.props.tag}</p>
                        <small>{this.props.date} klo {this.props.time}</small>
           </div>
@@ -102,7 +102,7 @@ var Post = React.createClass({
       return (
                     <div>
                      <Image id="imagePost"src={this.props.image} responsive />
-                        <p>{this.props.userName}</p>
+                        <p>username here{this.props.userName}</p>
                         <p>#{this.props.tag}</p>
                        <small>{this.props.date} klo {this.props.time}</small>
           </div>
