@@ -29,6 +29,7 @@ var Profile = React.createClass({
     },
     componentDidMount: function () {
       this.getJSON();
+    this.getProfileInfo();
     },
     componentWillReceiveProps: function(nextProps) {
         var newPost = nextProps.newPostToAdd; // uusi postaus
@@ -51,6 +52,19 @@ var Profile = React.createClass({
         } )
 
     },
+    /*
+        getProfileInfo: function() {
+        axios.get('/api/user/show')
+            .then( (response) => {
+                //console.log(response);
+                this.setState({
+                    user: response.data,
+                    loading: 1
+                })
+        
+        } )
+
+    }, */
 
     render: function () {
 
@@ -67,12 +81,10 @@ var Profile = React.createClass({
         };
 
        console.log(this.state.posts); 
-
+        console.log(this.state.user);
         // käydään läpi kaikki postaukset this.state.posts -taulukosta
         var posts = this.state.posts.map(function (post) {
             var userID = post.userID;
-            
-
             var key = post.postID;
             var title = post.title;
             var content = post.content;
