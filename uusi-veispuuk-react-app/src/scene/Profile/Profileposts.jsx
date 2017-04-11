@@ -4,6 +4,8 @@ import axios from 'axios';
 import { Button, Form, FormControl, FormGroup, Modal, Image } from 'react-bootstrap';
 import Post from '../Home/Post.jsx';
 import './Profile.css';
+import Comment from '../Home/Comment.jsx';
+
 
 
 
@@ -56,28 +58,6 @@ var Profileposts = React.createClass({
                     })
                 }
             }.bind(this))
-
-
-            /*// Get the last comment in the post */
-            //var last = this.state.comments.slice(-1)[0].commentID;
-            //console.log(last);
-            //// increment the id by one more
-            //var key = last + 1;
-            //var content = document.getElementById('comment-text-field').value;
-            //var updated_at = '2017-03-28 10:08:01';
-            //var created_at = '2017-03-28 10:08:01';
-
-            //var newComment = {
-                //commentID: key,
-                //content: content,
-                //created_at: created_at,
-                //updated_at: updated_at
-            //};
-
-            //comments.push(newComment);
-            //this.setState({
-                //comments: comments
-            /*});*/
 
             // nollataan texbox
             document.getElementById('comment-text-field').value = '';

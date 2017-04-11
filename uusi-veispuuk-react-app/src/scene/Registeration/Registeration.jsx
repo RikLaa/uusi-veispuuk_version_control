@@ -1,6 +1,6 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
-import { Button, FormGroup, Form, FormControl, Col, Checkbox, ControlLabel, Modal } from 'react-bootstrap';
+import { Button, FormGroup, Form, FormControl, Col, Checkbox, ControlLabel, Modal, Image } from 'react-bootstrap';
 // import $ from 'jquery';
 import { Link } from 'react-router';
 import ReactDOM from 'react-dom';
@@ -10,6 +10,29 @@ import $ from 'jquery';
 
 
 var Registration = React.createClass({
+    
+    
+         //Handle add picture 
+  addPicture: function(e){
+    //  console.log(e.target);
+      var reader = new FileReader();
+
+    reader.onload = function (e) {
+        // get loaded data and render thumbnail.
+    //   console.log(e.target.result);
+        var image = e.target.result;
+     //console.log(image);
+
+        document.getElementById("image_thumb").src = e.target.result;
+        
+        
+    };
+
+    // read the image file as a data URL.
+    reader.readAsDataURL(e.target.files[0]);
+  },
+    
+    
     getInitialState: function() {
         return{showModal: false}
        },
@@ -25,6 +48,8 @@ var Registration = React.createClass({
             showModal: false
         });
     },
+    
+     
     createNewUserAjax: function(user) {
         console.log(user);
         
@@ -41,11 +66,13 @@ var Registration = React.createClass({
               browserHistory.goBack();
           } else {
               // ei onnistunut
-                  alert("Virhe käyttäjää luomisessa! Yritä uudestaan!");
+                  alert("Virhe käyttäjän luomisessa! Yritä uudestaan!");
           }
              
           })
     },
+    
+    
     
     //handle submit Form validation // ei tää oikeesti mitään validoi, kuha ottaa talteen
     validateForm: function (e) {
@@ -55,7 +82,7 @@ var Registration = React.createClass({
       //  var name = this.refs.name.value;
         // Console.log tulostaa inputin valuen vain jos on määritelty näin:ReactDOM.findDOMNode(this.refs.name); jos laittaa (this.refs.email.value); Niin valuea ei saada. Kuitenkaan tämä taktiikka ei sitten toimi loppuun asti. DUH
         //Palataan asiaan jos liikaa aikaa..
-        
+         var image = ReactDOM.findDOMNode(this.refs.finalImage);
         var firstName = ReactDOM.findDOMNode(this.refs.firstName);
         var lastName = ReactDOM.findDOMNode(this.refs.lastName);
         var email = ReactDOM.findDOMNode(this.refs.email);
@@ -63,9 +90,10 @@ var Registration = React.createClass({
         var password2 = ReactDOM.findDOMNode(this.refs.password2);
         var campus = ReactDOM.findDOMNode(this.refs.campus);
         var field = ReactDOM.findDOMNode(this.refs.field);
+        
         // var box = ReactDOM.findDOMNode(this.refs.box.value);
-        /*console.log(firstName.value);
-        console.log(lastName.value);
+       console.log(image.src);
+        /* console.log(lastName.value);
         console.log(email.value);
         console.log(password.value);
         console.log(password2.value);
@@ -84,7 +112,8 @@ var Registration = React.createClass({
                email: email.value,
                password: password.value,
                campus: campus.value,
-               field: field.value
+               field: field.value,
+               image: image.src
            };
            
            this.createNewUserAjax(user);
@@ -93,20 +122,6 @@ var Registration = React.createClass({
     },
     
     
-    //Handle add picture
-    addPicture: function(e){
-      console.log(e.target);
-      var reader = new FileReader();
-
-    reader.onload = function (e) {
-        // get loaded data and render thumbnail.
-        console.log(e.target.result);
-        document.getElementById("image_esikatselu").src = e.target.result;
-    };
-
-    // read the image file as a data URL.
-    reader.readAsDataURL(e.target.files[0]);
-  },  
     handleSignIn: function () {
             
     },
@@ -179,7 +194,7 @@ var Registration = React.createClass({
       <Col sm={10}>
       
 <input type="file" id="uploadimage" name="datafile" size="45" onChange={this.addPicture}  ref='picture'/>
-        <img alt="preview" id="image_esikatselu"/>
+          <Image id="image_thumb" ref='finalImage' responsive/>
         
              </Col>
     </FormGroup>

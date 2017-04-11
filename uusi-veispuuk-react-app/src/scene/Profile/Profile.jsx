@@ -51,22 +51,7 @@ var Profile = React.createClass({
         } )
 
     },
-    ///Tähän jotain että se hakee buttonista kaikki käyttäjän postaukset
-    //en jaksa enää yökoodata..
-        getALL: function() {
-        axios.get('/api/user/')
-            .then( (response) => {
-                //console.log(response);
-                this.setState({
-                    posts: response.data,
-                    loading: 1
-                })
-        
-        } )
 
-    },
-    
-    
     render: function () {
 
 

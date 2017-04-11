@@ -93,7 +93,7 @@ var NavBar = React.createClass({
                         <MenuItem divider />
                         <MenuItem eventKey={1.2} href="#" onClick={this.showModal.bind(this, "picture")}>Lisää kuva</MenuItem>
                         <MenuItem divider />
-                        <MenuItem eventKey={1.3} href="#/home/FAQ">FAQ</MenuItem>
+                        <MenuItem eventKey={1.3} href="/home/FAQ">FAQ</MenuItem>
                     </NavDropdown>
                     <NavItem onClick={this.showSearch} eventKey={2}><span className="glyphicon glyphicon-search navbar-icon" /></NavItem>
                         {/* <NavItem eventKey={2} href="#">Link</NavItem> */}    
@@ -121,7 +121,7 @@ var NavBar = React.createClass({
 
                         <Nav pullRight>
                         <NavDropdown noCaret eventKey={3} title={<span className="glyphicon glyphicon-user navbar-icon" />} id="nav-dropdown-2">
-                        <MenuItem eventKey={3.1} href="#/home/profile">Profiili</MenuItem>
+                        <MenuItem eventKey={3.1} href="/home/profile">Profiili</MenuItem>
                             <MenuItem divider />
                         <MenuItem eventKey={3.2} onClick={this.handleSignOut} href="/">Kirjaudu ulos</MenuItem>
 
