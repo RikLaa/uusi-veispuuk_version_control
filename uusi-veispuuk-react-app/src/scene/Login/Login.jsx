@@ -1,5 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router';
+import ReactDOM from 'react-dom';
+import { browserHistory, Link } from 'react-router';
+import $ from 'jquery';
 
 import { Button, Modal, ControlLabel, FormGroup, Form, Col, FormControl, Checkbox} from 'react-bootstrap';
 
@@ -23,7 +25,32 @@ var LoginBox = React.createClass({
        },
     
     handleSignIn: function () {
-
+          var email = ReactDOM.findDOMNode(this.refs.email);
+          var password = ReactDOM.findDOMNode(this.refs.password);
+        
+        
+        
+         $.ajax({
+            method: 'post',
+            url: '/api/login',
+            data: {
+                email: email.value,
+                password: password.value
+            }
+        }) .done( function(response) {
+              console.log(response);
+             
+          
+          if (response) {
+              // kirjautuminen onnistui
+              browserHistory.push('/home/main');
+        
+          } else {
+              // ei onnistunut
+                  alert("Väärä käyttäjätunnus/salasana");
+          }
+             
+          })
             
     },
     render: function () {
@@ -42,7 +69,7 @@ var LoginBox = React.createClass({
                                         Sähköposti
                                     </Col>
                                     <Col sm={10}>
-                                    <FormControl type="email" placeholder="" />
+                                    <FormControl ref="email" type="email" placeholder="" />
                                     </Col>
                                       </FormGroup>  
                                     <FormGroup controlId="formHorizontalPassword">
@@ -50,7 +77,7 @@ var LoginBox = React.createClass({
                                         Salasana
                                     </Col>
                                     <Col sm={10}>
-                                    <FormControl type="password" placeholder="" />
+                                    <FormControl ref="password" type="password" placeholder="" />
                                     </Col>
                                     </FormGroup>
                                        <FormGroup>
@@ -72,7 +99,7 @@ var LoginBox = React.createClass({
                 
                         
                         
-                    <Button type="submit" bsStyle="success" onClick={this.handleSignIn} > <Link id="button1" to="home">Kirjaudu sisään</Link></Button>
+                    <Button type="submit" bsStyle="success" onClick={this.handleSignIn} >Kirjaudu sisään</Button>
                                        
                      
                         <Button type="submit" bsStyle="primary"> <Link id="button1" to="registeration">Rekisteröidy</Link></Button>

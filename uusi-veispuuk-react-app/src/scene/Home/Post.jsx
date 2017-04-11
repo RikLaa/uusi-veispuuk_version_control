@@ -129,7 +129,7 @@ var Post = React.createClass({
     
     render: function () {
 
-      //  console.log(this.state.comments);
+
         // käydään läpi kaikki kommentit ja renderoidaan ne näytölle Comment -komponentin avulla
          var comments = this.props.comments.map(function (comment) {
              var userID = comment.userID;
