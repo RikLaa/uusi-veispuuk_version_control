@@ -22,7 +22,15 @@ var Container = React.createClass({
     },
     componentWillReceiveProps: function(nextProps) {
         console.log(nextProps);
-        this.getSearchJSON(nextProps.searchParams);
+
+        // if searchbox is closed in navbar, searchtype will be NONE
+        if (nextProps.searchParams.searchType === 'NONE') {
+            // so there will not be any search needed, so we can just load initial data from server
+            this.getJSON();
+        } else {
+            // we need to run search
+            this.getSearchJSON(nextProps.searchParams);
+        }
         /*var newPost = nextProps.newPostToAdd; // uusi postaus*/
         //var oldPosts = this.state.posts; // vanhat postaukset
         //oldPosts.unshift(newPost); // uusi postaus taulukon kärkeen
@@ -34,7 +42,7 @@ var Container = React.createClass({
     getJSON: function() {
         axios.get('/api/posts')
             .then( (response) => {
-                //console.log(response);
+                //console.log(response.data);
                 this.setState({
                     posts: response.data,
                     loading: 1
@@ -55,9 +63,9 @@ var Container = React.createClass({
             }
         }).done( function(data) {
             console.log(data);
-            /*this.setState({*/
-                //posts: data[0]
-            //})
+            this.setState({
+                posts: data
+            })
 
         }.bind(this))
 
@@ -80,7 +88,7 @@ var Container = React.createClass({
 
         // käydään läpi kaikki postaukset this.state.posts -taulukosta
         var posts = this.state.posts.map(function (post) {
-            var userID = post.userID;
+            //var userID = post.userID;
             var key = post.postID;
             var title = post.title;
             var content = post.content;

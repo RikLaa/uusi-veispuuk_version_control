@@ -3,16 +3,16 @@ import React from 'react';
 import './Profile.css';
 import $ from 'jquery';
 import { Button ,Modal } from 'react-bootstrap';
-import Container from '../Home/Container.jsx'
-import data from './Userdata.json'
-import userName from './Profilename.jsx'
-import posts from './Profileposts.jsx'
-import comments from '../Home/Comment.jsx'
-import {Form, FormControl, FormGroup} from 'react-bootstrap';
-import Profileposts from './Profileposts.jsx'
+//import Container from '../Home/Container.jsx'
+//import data from './Userdata.json'
+//import userName from './Profilename.jsx'
+//import posts from './Profileposts.jsx'
+//import comments from '../Home/Comment.jsx'
+//import {Form, FormControl, FormGroup} from 'react-bootstrap';
+/*import Profileposts from './Profileposts.jsx'*/
 import Post from './Profileposts.jsx'
-import Comment from '../Home/Comment.jsx'
-import Profilename from './Profilename.jsx'
+/*import Comment from '../Home/Comment.jsx'*/
+/*import Profilename from './Profilename.jsx'*/
 import './Profile.css'
 
 var Profile = React.createClass({
@@ -29,7 +29,7 @@ var Profile = React.createClass({
     },
     componentDidMount: function () {
       this.getJSON();
-    this.getProfileInfo();
+    //this.getProfileInfo();
     },
     componentWillReceiveProps: function(nextProps) {
         var newPost = nextProps.newPostToAdd; // uusi postaus

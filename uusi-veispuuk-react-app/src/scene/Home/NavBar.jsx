@@ -64,6 +64,8 @@ var NavBar = React.createClass({
             })  
             //console.log(this.state.search); 
         } else {
+            // we need to container.jsx to stop searching if searchpanel is closed
+            this.props.searchInputToParent({ searchWord: '', searchType: 'NONE' });     
             this.setState({
                 showSearch: false
             });
@@ -108,14 +110,22 @@ var NavBar = React.createClass({
                                 <FormControl id="searchInput" type="text" placeholder="#Mitähaluatetsiä" />
                             </FormGroup>
 
-                                <FormGroup controlId="formControlsSelect">
-                            <FormControl id="searchType" componentClass="select" placeholder="select">
-                                <option value="kaikki">Kaikki</option> 
-                                <option value="keskustelu">Keskustelu</option>
-                                <option value="kuva">Kuva</option>
-                            </FormControl>
+                            <FormGroup>
+                                <FormControl id="searchType" componentClass="select" placeholder="select">
+                                    <option value="kaikki">Kaikki</option> 
+
+                                    {/* 
+                                    MUUTETAAN NAMA JOS KERETAAN
+                                    <option value="keskustelu">Keskustelu</option>
+                                    <option value="kuva">Kuva</option>
+
+                                    */}
+                                    
+                                </FormControl>
                             </FormGroup>
-                            <Button onClick={this.getSearchInput} type="submit">Etsi</Button>
+
+                            {/* <Button onClick={this.getSearchInput} type="submit">Etsi</Button> */}
+                            
                         </Navbar.Form>
                     ) : null }
                         

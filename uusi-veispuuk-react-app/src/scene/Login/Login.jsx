@@ -37,7 +37,7 @@ var LoginBox = React.createClass({
                 email: email.value,
                 password: password.value
             }
-        }) .done( function(response) {
+        }).done( function(response) {
               console.log(response);
              
           
