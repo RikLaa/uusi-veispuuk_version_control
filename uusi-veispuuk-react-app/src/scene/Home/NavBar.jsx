@@ -1,4 +1,6 @@
 import React from 'react';
+import { browserHistory } from 'react-router';
+import $ from 'jquery';
 
 import AddPostModal from './NavBarModals/AddPostModal.jsx';
 import AddPictureModal from './NavBarModals/AddPictureModal.jsx';
@@ -53,6 +55,16 @@ var NavBar = React.createClass({
     },
     handleSignOut: function () {
 
+        $.ajax({
+            url: '/api/logout',
+            method: 'post'
+        }).done( function(response) {
+            if (response) {
+                browserHistory.push('/');
+            } else {
+                alert('Uloskirjautuminen ei onnistunut!');
+            }
+        } )
     },
     // määritellään search boxin näkyvyys
     showSearch: function (e) { 
@@ -137,7 +149,7 @@ var NavBar = React.createClass({
                         <NavDropdown noCaret eventKey={3} title={<span className="glyphicon glyphicon-user navbar-icon" />} id="nav-dropdown-2">
                         <MenuItem eventKey={3.1} href="/home/profile">Profiili</MenuItem>
                             <MenuItem divider />
-                        <MenuItem eventKey={3.2} onClick={this.handleSignOut} href="/">Kirjaudu ulos</MenuItem>
+                        <MenuItem eventKey={3.2} onClick={this.handleSignOut}>Kirjaudu ulos</MenuItem>
 
                         
                     </NavDropdown>
