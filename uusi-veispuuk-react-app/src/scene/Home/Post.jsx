@@ -153,7 +153,7 @@ var Post = React.createClass({
                     <div className="addBorder postBox post-box-color">
                         <div className="postBox-wrapper">
                          { this.thumbCheck() }
-                            <div class="thumbnail">
+                            <div className="">
                                 <img src={this.props.image}></img>
                             </div>
                          

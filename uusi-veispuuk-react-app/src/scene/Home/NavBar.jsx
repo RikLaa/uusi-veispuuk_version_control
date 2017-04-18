@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { browserHistory } from 'react-router';
 import $ from 'jquery';
 
@@ -19,13 +20,34 @@ var NavBar = React.createClass({
             },
             showSearch: false,
             searchInput: '',
-            newPostsToRender: []
+            newPostsToRender: [],
+            user: {}
         }
     },
    componentDidUpdate: function() {
        //console.log(this.state.searchInput);
         //this.props.getSearchInput(searchWord);
+        
    },
+    
+     componentDidMount: function () {
+    
+    this.getProfileInfo();
+    },
+    
+     getProfileInfo: function() {
+        axios.get('/api/user/show')
+            .then( (response) => {
+                console.log(response.data[0]);
+                this.setState({
+                    user: response.data[0],
+                    loading: 1
+                })
+        
+        } )
+
+    }, 
+    
     showModal: function(type) {
         // määritetään näkyvyys jommalle kummalle modaalille
         if (type === "picture") {
@@ -141,11 +163,12 @@ var NavBar = React.createClass({
                         </Navbar.Form>
                     ) : null }
                         
-                        {/*<Nav className="col-sm-10" id="navbar_logo">
-                            <NavItem href="#/home/" className="" id="">Etusivulle</NavItem>
-                        </Nav>*/}
+                        {<Nav className="col-sm-10" id="navbar_logo">
+                            <NavItem href="/home/" className="" id="">Etusivulle</NavItem>
+                        </Nav>}
 
                         <Nav pullRight>
+                            <NavItem className=""  href="/home/profile" id="">{this.state.user.firstName}</NavItem>
                         <NavDropdown noCaret eventKey={3} title={<span className="glyphicon glyphicon-user navbar-icon" />} id="nav-dropdown-2">
                         <MenuItem eventKey={3.1} href="/home/profile">Profiili</MenuItem>
                             <MenuItem divider />

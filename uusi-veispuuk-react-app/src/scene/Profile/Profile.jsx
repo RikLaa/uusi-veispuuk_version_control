@@ -21,7 +21,7 @@ var Profile = React.createClass({
         // loading tila näyttää onko postaukset ladattu vai ei
         return { 
             loading: 0,
-            users: [],
+            user: {},
             posts: [],
             imgPosts: [],
             postNumbers: 0
@@ -29,8 +29,9 @@ var Profile = React.createClass({
     },
     componentDidMount: function () {
       this.getJSON();
-    //this.getProfileInfo();
+    this.getProfileInfo();
     },
+    
     componentWillReceiveProps: function(nextProps) {
         var newPost = nextProps.newPostToAdd; // uusi postaus
         var oldPosts = this.state.posts; // vanhat postaukset
@@ -52,19 +53,19 @@ var Profile = React.createClass({
         } )
 
     },
-    /*
+    
         getProfileInfo: function() {
         axios.get('/api/user/show')
             .then( (response) => {
-                //console.log(response);
+                console.log(response.data[0]);
                 this.setState({
-                    user: response.data,
+                    user: response.data[0],
                     loading: 1
                 })
         
         } )
 
-    }, */
+    }, 
 
     render: function () {
 
@@ -80,8 +81,8 @@ var Profile = React.createClass({
           
         };
 
-       console.log(this.state.posts); 
-        console.log(this.state.user);
+    //   console.log(this.state.posts); 
+       // console.log(this.state.user);
         // käydään läpi kaikki postaukset this.state.posts -taulukosta
         var posts = this.state.posts.map(function (post) {
             var userID = post.userID;
@@ -98,7 +99,7 @@ var Profile = React.createClass({
             /* renderoidaan jokainen postauskomponentti Post-komponentin avulla. 
             Sille annettaan tarvittavat tiedot propseina jotta niihin päästään käsiksi myöhemmin*/
             return (
-                <Post  postID={key} key={key} userName={name} users={this.state.users} title={title} content={content} comments={comments} date={date} time={time} tag={tag} image={image} postType={type}/>
+                <Post  postID={key} key={key} userName={name} title={title} content={content} comments={comments} date={date} time={time} tag={tag} image={image} postType={type}/>
             );   
         }.bind(this));
         
@@ -111,12 +112,12 @@ var Profile = React.createClass({
                  <div className="row fade-in">
             <div className="col-md-4">
  
-            <h2>Ismo Kalevi Lehtinen</h2>
-                 <img id="img_profile" src="https://firebasestorage.googleapis.com/v0/b/uusi-veispuuk-react-app.appspot.com/o/images%2F0.jpg?alt=media&token=c26f5dda-4ffa-460d-855a-c1d71c5dd4ae"/> 
-            <h3>Tieto- ja viestintätekniikka</h3>
-            <h4>Dynamo</h4>
+            <h2>{this.state.user.firstName} {this.state.user.lastName}</h2>
+                 <img id="img_profile" src={this.state.user.pictureURL}/> 
+            <h3>{this.state.user.field}</h3>
+            <h4>{this.state.user.campus}</h4>
             
-            <p>Moi oon tosi kiva ja tykkään kissoista! Kaikki kivat tytöt, laitelkaa mulle viestii!</p>
+           
                </div>
              <div className="col-md-8">
                     {posts}               
