@@ -115,7 +115,7 @@ var Profile = React.createClass({
             <h2>{this.state.user.firstName} {this.state.user.lastName}</h2>
                  <img id="img_profile" src={this.state.user.pictureURL}/> 
             <h3>{this.state.user.field}</h3>
-            <h4>{this.state.user.campus}</h4>
+            {/* <h4>{this.state.user.campus}</h4>*/}
             
            
                </div>
