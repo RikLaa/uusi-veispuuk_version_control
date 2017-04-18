@@ -163,7 +163,7 @@ var NavBar = React.createClass({
                         </Navbar.Form>
                     ) : null }
                         
-                        {<Nav className="col-sm-10" id="navbar_logo">
+                        {<Nav id="navbar_logo">
                             <NavItem href="/home/" className="" id="">Etusivulle</NavItem>
                         </Nav>}
 
